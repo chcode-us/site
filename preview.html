@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#07070a">
+<title>chcode @GitHub — Python & AI Developer</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --bg:#07070a;
+    --bg-soft:#0c0c11;
+    --card:#101015;
+    --card-hover:#14141b;
+    --text:#f3f3f5;
+    --muted:#85858f;
+    --line:#202027;
+    --purple:#8a2be2;
+    --cyan:#00d9ff;
+    --green:#65d99a;
+    --radius:18px;
+    --max:1160px;
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    background:var(--bg);
+    color:var(--text);
+    font-family:"Inter",sans-serif;
+    overflow-x:hidden;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button{
+    font-family:inherit;
+}
+
+::selection{
+    background:var(--purple);
+    color:white;
+}
+
+/* Background */
+
+.grid{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:-2;
+    opacity:.32;
+    background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+    background-size:60px 60px;
+    mask-image:linear-gradient(to bottom,#000,transparent 90%);
+}
+
+.glow{
+    position:fixed;
+    width:500px;
+    height:500px;
+    border-radius:50%;
+    background:rgba(138,43,226,.07);
+    filter:blur(100px);
+    pointer-events:none;
+    z-index:-3;
+    top:-200px;
+    right:-150px;
+}
+
+/* Layout */
+
+.container{
+    width:min(var(--max),calc(100% - 40px));
+    margin:auto;
+}
+
+section{
+    padding:120px 0;
+}
+
+/* Header */
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:100;
+    border-bottom:1px solid rgba(255,255,255,.06);
+    background:rgba(7,7,10,.78);
+    backdrop-filter:blur(18px);
+}
+
+.nav{
+    height:72px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-family:"DM Mono",monospace;
+    font-weight:500;
+    font-size:17px;
+    letter-spacing:-.5px;
+}
+
+.logo .at{
+    color:var(--cyan);
+}
+
+.nav-links{
+    display:flex;
+    gap:30px;
+}
+
+.nav-links a{
+    color:#85858f;
+    font-size:13px;
+    transition:.2s;
+}
+
+.nav-links a:hover{
+    color:white;
+}
+
+.menu{
+    display:none;
+    border:0;
+    background:none;
+    color:white;
+    font-size:23px;
+    cursor:pointer;
+}
+
+/* Hero */
+
+.hero{
+    min-height:100vh;
+    padding-top:160px;
+    display:flex;
+    align-items:center;
+}
+
+.hero-layout{
+    display:grid;
+    grid-template-columns:1.35fr .65fr;
+    gap:80px;
+    align-items:center;
+}
+
+.status{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    color:#8e8e99;
+    font-family:"DM Mono",monospace;
+    font-size:12px;
+    margin-bottom:25px;
+}
+
+.status-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:var(--green);
+    box-shadow:0 0 12px rgba(101,217,154,.7);
+}
+
+h1{
+    max-width:850px;
+    font-size:clamp(48px,7vw,88px);
+    line-height:.98;
+    letter-spacing:-5px;
+}
+
+h1 span{
+    color:var(--cyan);
+}
+
+.hero-subtitle{
+    margin-top:28px;
+    max-width:650px;
+    color:var(--muted);
+    font-size:17px;
+    line-height:1.8;
+}
+
+.typewriter{
+    margin-top:25px;
+    min-height:25px;
+    color:#c5c5cc;
+    font-family:"DM Mono",monospace;
+    font-size:14px;
+}
+
+.typewriter::before{
+    content:">";
+    color:var(--purple);
+    margin-right:9px;
+}
+
+.cursor{
+    display:inline-block;
+    width:7px;
+    height:16px;
+    background:var(--cyan);
+    vertical-align:-3px;
+    margin-left:3px;
+    animation:blink .8s infinite;
+}
+
+@keyframes blink{
+    50%{opacity:0}
+}
+
+.buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:34px;
+}
+
+.btn{
+    min-height:48px;
+    padding:0 19px;
+    border:1px solid var(--line);
+    border-radius:10px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    font-family:"DM Mono",monospace;
+    font-size:12px;
+    transition:.25s;
+}
+
+.btn:hover{
+    border-color:#44444e;
+    background:#111117;
+    transform:translateY(-2px);
+}
+
+.btn-primary{
+    background:white;
+    color:#07070a;
+    border-color:white;
+}
+
+.btn-primary:hover{
+    background:#e9e9ed;
+    color:#07070a;
+}
+
+/* Hero card */
+
+.profile-card{
+    border:1px solid var(--line);
+    background:rgba(16,16,21,.72);
+    border-radius:var(--radius);
+    overflow:hidden;
+    box-shadow:0 30px 80px rgba(0,0,0,.35);
+}
+
+.profile-top{
+    height:42px;
+    border-bottom:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    padding:0 15px;
+    gap:7px;
+}
+
+.dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:#34343d;
+}
+
+.profile-title{
+    margin-left:auto;
+    margin-right:auto;
+    color:#555560;
+    font:11px "DM Mono",monospace;
+}
+
+.profile-body{
+    padding:27px;
+}
+
+.terminal-line{
+    font:12px/2 "DM Mono",monospace;
+    color:#777783;
+}
+
+.terminal-line strong{
+    color:var(--cyan);
+    font-weight:400;
+}
+
+.profile-name{
+    margin:28px 0 8px;
+    font-size:26px;
+    font-weight:700;
+}
+
+.profile-role{
+    color:var(--muted);
+    font:12px "DM Mono",monospace;
+}
+
+.profile-stack{
+    margin-top:28px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:7px;
+}
+
+.stack{
+    padding:7px 9px;
+    border:1px solid var(--line);
+    border-radius:7px;
+    color:#9999a3;
+    font:10px "DM Mono",monospace;
+}
+
+/* Section */
+
+.section-head{
+    display:flex;
+    justify-content:space-between;
+    gap:30px;
+    align-items:end;
+    margin-bottom:45px;
+}
+
+.label{
+    color:var(--purple);
+    font:11px "DM Mono",monospace;
+    margin-bottom:13px;
+}
+
+h2{
+    font-size:clamp(35px,5vw,56px);
+    letter-spacing:-3px;
+}
+
+.section-text{
+    max-width:480px;
+    color:var(--muted);
+    line-height:1.7;
+    font-size:14px;
+}
+
+/* About */
+
+.about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+}
+
+.about-card{
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:32px;
+    background:var(--card);
+}
+
+.about-card h3{
+    font-size:22px;
+    margin-bottom:15px;
+}
+
+.about-card p{
+    color:var(--muted);
+    line-height:1.8;
+    font-size:14px;
+}
+
+.skills{
+    margin-top:25px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+}
+
+.skill{
+    padding:8px 10px;
+    border-radius:7px;
+    background:#15151b;
+    border:1px solid var(--line);
+    color:#b4b4bd;
+    font:11px "DM Mono",monospace;
+}
+
+/* Projects */
+
+.projects{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.project{
+    position:relative;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    background:var(--card);
+    padding:28px;
+    min-height:300px;
+    display:flex;
+    flex-direction:column;
+    transition:.3s;
+}
+
+.project:hover{
+    background:var(--card-hover);
+    border-color:#34343e;
+    transform:translateY(-5px);
+}
+
+.project-number{
+    color:#555560;
+    font:10px "DM Mono",monospace;
+}
+
+.project-icon{
+    font-size:28px;
+    margin:32px 0 20px;
+}
+
+.project h3{
+    font-size:19px;
+    margin-bottom:12px;
+}
+
+.project p{
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.7;
+}
+
+.project-tags{
+    margin-top:auto;
+    padding-top:25px;
+    display:flex;
+    gap:7px;
+    flex-wrap:wrap;
+}
+
+.project-tags span{
+    color:#72727d;
+    font:9px "DM Mono",monospace;
+}
+
+/* Services */
+
+.services{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+}
+
+.service{
+    padding:28px;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    background:var(--card);
+}
+
+.service-icon{
+    font-size:23px;
+    margin-bottom:20px;
+}
+
+.service h3{
+    font-size:17px;
+    margin-bottom:10px;
+}
+
+.service p{
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.7;
+}
+
+/* Contact */
+
+.contact{
+    border:1px solid var(--line);
+    border-radius:24px;
+    padding:60px;
+    background:
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(138,43,226,.09),
+            transparent 35%
+        ),
+        var(--card);
+}
+
+.contact h2{
+    max-width:700px;
+}
+
+.contact-description{
+    color:var(--muted);
+    margin-top:17px;
+    max-width:600px;
+    line-height:1.7;
+    font-size:14px;
+}
+
+.contact-links{
+    margin-top:35px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+}
+
+.contact-link{
+    padding:18px;
+    border:1px solid var(--line);
+    border-radius:11px;
+    transition:.25s;
+}
+
+.contact-link:hover{
+    border-color:#3c3c47;
+    background:#15151b;
+}
+
+.contact-label{
+    color:#666671;
+    font:9px "DM Mono",monospace;
+    margin-bottom:8px;
+}
+
+.contact-value{
+    font:12px "DM Mono",monospace;
+    color:#dddde3;
+    word-break:break-word;
+}
+
+/* Footer */
+
+footer{
+    border-top:1px solid var(--line);
+    padding:28px 0;
+}
+
+.footer{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.footer-left{
+    color:#666671;
+    font:11px "DM Mono",monospace;
+}
+
+.footer-love{
+    color:#9999a2;
+    font-size:12px;
+}
+
+.footer-love span{
+    color:#ff5d86;
+}
+
+.github{
+    color:#777781;
+    font:11px "DM Mono",monospace;
+    transition:.2s;
+}
+
+.github:hover{
+    color:white;
+}
+
+/* Reveal */
+
+.reveal{
+    opacity:0;
+    transform:translateY(25px);
+    transition:.7s ease;
+}
+
+.reveal.show{
+    opacity:1;
+    transform:none;
+}
+
+/* Mobile */
+
+@media(max-width:900px){
+
+    .hero-layout{
+        grid-template-columns:1fr;
+        gap:50px;
+    }
+
+    .about-grid{
+        grid-template-columns:1fr;
+    }
+
+    .projects,
+    .services{
+        grid-template-columns:1fr;
+    }
+
+    .contact-links{
+        grid-template-columns:1fr;
+    }
+
+    .section-head{
+        display:block;
+    }
+
+    .section-text{
+        margin-top:18px;
+    }
+}
+
+@media(max-width:650px){
+
+    .container{
+        width:min(100% - 26px,var(--max));
+    }
+
+    .nav{
+        height:65px;
+    }
+
+    .menu{
+        display:block;
+    }
+
+    .nav-links{
+        display:none;
+        position:absolute;
+        left:13px;
+        right:13px;
+        top:70px;
+        padding:8px;
+        background:#0c0c11;
+        border:1px solid var(--line);
+        border-radius:12px;
+        flex-direction:column;
+        gap:0;
+    }
+
+    .nav-links.open{
+        display:flex;
+    }
+
+    .nav-links a{
+        padding:13px;
+    }
+
+    section{
+        padding:85px 0;
+    }
+
+    .hero{
+        padding-top:120px;
+    }
+
+    h1{
+        font-size:clamp(45px,15vw,70px);
+        letter-spacing:-4px;
+    }
+
+    .hero-subtitle{
+        font-size:15px;
+    }
+
+    .profile-card{
+        border-radius:14px;
+    }
+
+    .about-card,
+    .project,
+    .service{
+        padding:24px;
+    }
+
+    .contact{
+        padding:30px 22px;
+        border-radius:18px;
+    }
+
+    .footer{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="grid"></div>
+<div class="glow"></div>
+
+<header>
+    <div class="container nav">
+
+        <a href="#home" class="logo">
+            chcode <span class="at">@GitHub</span>
+        </a>
+
+        <button class="menu" id="menu">
+            ☰
+        </button>
+
+        <nav class="nav-links" id="navLinks">
+            <a href="#about">Обо мне</a>
+            <a href="#projects">Проекты</a>
+            <a href="#services">Услуги</a>
+            <a href="#contact">Контакты</a>
+        </nav>
+
+    </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+    <div class="container hero-layout">
+
+        <div>
+
+            <div class="status">
+                <span class="status-dot"></span>
+                AVAILABLE FOR PROJECTS
+            </div>
+
+            <h1>
+                Python.<br>
+                AI.<br>
+                <span>Automation.</span>
+            </h1>
+
+            <div class="typewriter">
+                <span id="type"></span><span class="cursor"></span>
+            </div>
+
+            <p class="hero-subtitle">
+                Разрабатываю чат-ботов, AI-инструменты и
+                автоматизацию под конкретные задачи.
+                Чистый код, нормальная архитектура и
+                никаких конструкторов там, где нужен код.
+            </p>
+
+            <div class="buttons">
+
+                <a href="#projects" class="btn btn-primary">
+                    Посмотреть проекты
+                </a>
+
+                <a href="#contact" class="btn">
+                    Связаться
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="profile-card">
+
+            <div class="profile-top">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+
+                <span class="profile-title">
+                    chcode.py
+                </span>
+            </div>
+
+            <div class="profile-body">
+
+                <div class="terminal-line">
+                    $ <strong>python</strong> developer.py
+                </div>
+
+                <div class="terminal-line">
+                    status = <strong>"online"</strong>
+                </div>
+
+                <div class="terminal-line">
+                    focus = <strong>"AI + automation"</strong>
+                </div>
+
+                <div class="profile-name">
+                    chcode
+                </div>
+
+                <div class="profile-role">
+                    PYTHON DEVELOPER / AI ENGINEER
+                </div>
+
+                <div class="profile-stack">
+
+                    <span class="stack">Python</span>
+                    <span class="stack">Aiogram</span>
+                    <span class="stack">OpenAI</span>
+                    <span class="stack">DeepSeek</span>
+                    <span class="stack">API</span>
+                    <span class="stack">SQL</span>
+                    <span class="stack">WebSocket</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section id="about">
+
+    <div class="container">
+
+        <div class="section-head reveal">
+
+            <div>
+                <div class="label">01 / ABOUT</div>
+                <h2>Обо мне</h2>
+            </div>
+
+            <p class="section-text">
+                Люблю делать небольшие, быстрые и понятные
+                системы, которые реально решают задачу.
+            </p>
+
+        </div>
+
+        <div class="about-grid">
+
+            <div class="about-card reveal">
+
+                <h3>Разработка без лишнего.</h3>
+
+                <p>
+                    Основной стек — Python. Создаю Telegram-ботов,
+                    автоматизацию, API-интеграции и системы с базами
+                    данных. Если в проекте нужен AI — подключаю
+                    модели и превращаю их в полезный инструмент,
+                    а не просто чат с нейросетью.
+                </p>
+
+                <div class="skills">
+                    <span class="skill">Python</span>
+                    <span class="skill">Aiogram</span>
+                    <span class="skill">SQLite</span>
+                    <span class="skill">PostgreSQL</span>
+                    <span class="skill">REST API</span>
+                    <span class="skill">OpenAI API</span>
+                    <span class="skill">DeepSeek</span>
+                </div>
+
+            </div>
+
+            <div class="about-card reveal">
+
+                <h3>Что важно в работе.</h3>
+
+                <p>
+                    Сначала разбираюсь в задаче, затем выбираю
+                    подходящую архитектуру. Код должен быть
+                    поддерживаемым, интерфейс — понятным,
+                    а автоматизация — действительно экономить
+                    время.
+                </p>
+
+                <div class="skills">
+                    <span class="skill">CUSTOM CODE</span>
+                    <span class="skill">AUTOMATION</span>
+                    <span class="skill">AI</span>
+                    <span class="skill">BACKEND</span>
+                    <span class="skill">DATABASES</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- PROJECTS -->
+
+<section id="projects">
+
+    <div class="container">
+
+        <div class="section-head reveal">
+
+            <div>
+                <div class="label">02 / PROJECTS</div>
+                <h2>Проекты</h2>
+            </div>
+
+            <p class="section-text">
+                Несколько направлений, в которых я работаю.
+            </p>
+
+        </div>
+
+        <div class="projects">
+
+            <article class="project reveal">
+
+                <div class="project-number">
+                    PROJECT / 01
+                </div>
+
+                <div class="project-icon">🛍️</div>
+
+                <h3>Auto-Sales System</h3>
+
+                <p>
+                    Цифровой магазин с автоматическими продажами,
+                    личным кабинетом, заказами и интеграцией
+                    Crypto / СБП оплаты.
+                </p>
+
+                <div class="project-tags">
+                    <span>PYTHON</span>
+                    <span>PAYMENTS</span>
+                    <span>DATABASE</span>
+                </div>
+
+            </article>
+
+            <article class="project reveal">
+
+                <div class="project-number">
+                    PROJECT / 02
+                </div>
+
+                <div class="project-icon">⚔️</div>
+
+                <h3>RolePlay Engine</h3>
+
+                <p>
+                    Игровой бот для RP-сообществ: экономика,
+                    уровни, кланы, инвентарь и игровые механики
+                    с сохранением данных в базе.
+                </p>
+
+                <div class="project-tags">
+                    <span>PYTHON</span>
+                    <span>AIOGRAM</span>
+                    <span>SQL</span>
+                </div>
+
+            </article>
+
+            <article class="project reveal">
+
+                <div class="project-number">
+                    PROJECT / 03
+                </div>
+
+                <div class="project-icon">🤖</div>
+
+                <h3>AI Assistant</h3>
+
+                <p>
+                    AI-помощник для технической поддержки:
+                    нейросеть, сценарии ответов, автоматическая
+                    обработка обращений и API.
+                </p>
+
+                <div class="project-tags">
+                    <span>AI</span>
+                    <span>LLM</span>
+                    <span>API</span>
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- SERVICES -->
+
+<section id="services">
+
+    <div class="container">
+
+        <div class="section-head reveal">
+
+            <div>
+                <div class="label">03 / SERVICES</div>
+                <h2>Что делаю</h2>
+            </div>
+
+        </div>
+
+        <div class="services">
+
+            <div class="service reveal">
+                <div class="service-icon">🤖</div>
+                <h3>Telegram-боты</h3>
+                <p>
+                    Боты для бизнеса, магазинов, сообществ,
+                    поддержки и автоматизации.
+                </p>
+            </div>
+
+            <div class="service reveal">
+                <div class="service-icon">🧠</div>
+                <h3>AI-интеграции</h3>
+                <p>
+                    Подключение нейросетей к существующим
+                    сервисам, ботам и внутренним системам.
+                </p>
+            </div>
+
+            <div class="service reveal">
+                <div class="service-icon">⚙️</div>
+                <h3>Автоматизация</h3>
+                <p>
+                    Убираю ручную рутину и связываю сервисы
+                    через API и собственный backend.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+    <div class="container">
+
+        <div class="contact reveal">
+
+            <div class="label">04 / CONTACT</div>
+
+            <h2>
+                Есть идея?<br>
+                Давайте сделаем.
+            </h2>
+
+            <p class="contact-description">
+                Напишите, что нужно разработать. Можно коротко —
+                разберём задачу и обсудим реализацию.
+            </p>
+
+            <div class="contact-links">
+
+                <a
+                    class="contact-link"
+                    href="https://t.me"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    <div class="contact-label">
+                        TELEGRAM
+                    </div>
+
+                    <div class="contact-value">
+                        @telegram
+                    </div>
+                </a>
+
+                <a
+                    class="contact-link"
+                    href="mailto:chcode@mail.ru"
+                >
+                    <div class="contact-label">
+                        РОССИЯ
+                    </div>
+
+                    <div class="contact-value">
+                        chcode@mail.ru
+                    </div>
+                </a>
+
+                <a
+                    class="contact-link"
+                    href="mailto:chcodeus@gmail.com"
+                >
+                    <div class="contact-label">
+                        USA / WORLD
+                    </div>
+
+                    <div class="contact-value">
+                        chcodeus@gmail.com
+                    </div>
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+<footer>
+
+    <div class="container footer">
+
+        <div class="footer-left">
+            © 2026 chcode
+        </div>
+
+        <div class="footer-love">
+            Создано с <span>♥</span> любовью и кофе ☕
+        </div>
+
+        <a
+            class="github"
+            href="https://github.com"
+            target="_blank"
+            rel="noopener"
+        >
+            @GitHub ↗
+        </a>
+
+    </div>
+
+</footer>
+
+<script>
+
+/* ================= TYPEWRITER ================= */
+
+const phrases = [
+    "Создаю чат-ботов на Python",
+    "Интегрирую искусственный интеллект",
+    "Автоматизирую бизнес"
+];
+
+const typeElement = document.getElementById("type");
+
+let phrase = 0;
+let position = 0;
+let deleting = false;
+
+function type(){
+
+    const text = phrases[phrase];
+
+    if(!deleting){
+
+        position++;
+
+        typeElement.textContent =
+            text.slice(0,position);
+
+        if(position === text.length){
+
+            deleting = true;
+
+            setTimeout(type,1800);
+            return;
+        }
+
+    }else{
+
+        position--;
+
+        typeElement.textContent =
+            text.slice(0,position);
+
+        if(position === 0){
+
+            deleting = false;
+
+            phrase =
+                (phrase + 1) % phrases.length;
+        }
+    }
+
+    setTimeout(
+        type,
+        deleting ? 35 : 65
+    );
+}
+
+type();
+
+
+/* ================= MOBILE MENU ================= */
+
+const menu =
+    document.getElementById("menu");
+
+const nav =
+    document.getElementById("navLinks");
+
+menu.addEventListener("click",()=>{
+
+    nav.classList.toggle("open");
+
+});
+
+document.querySelectorAll(".nav-links a")
+.forEach(link=>{
+
+    link.addEventListener("click",()=>{
+        nav.classList.remove("open");
+    });
+
+});
+
+
+/* ================= SCROLL REVEAL ================= */
+
+const elements =
+    document.querySelectorAll(".reveal");
+
+const observer =
+    new IntersectionObserver(
+        entries=>{
+
+            entries.forEach(entry=>{
+
+                if(entry.isIntersecting){
+
+                    entry.target.classList.add("show");
+
+                    observer.unobserve(
+                        entry.target
+                    );
+                }
+
+            });
+
+        },
+        {
+            threshold:.12
+        }
+    );
+
+elements.forEach(
+    element=>observer.observe(element)
+);
+
+
+/* ================= SUBTLE MOUSE EFFECT ================= */
+
+if(window.matchMedia("(pointer:fine)").matches){
+
+    document.addEventListener("mousemove",(e)=>{
+
+        const x =
+            (e.clientX / window.innerWidth - .5) * 8;
+
+        const y =
+            (e.clientY / window.innerHeight - .5) * 8;
+
+        document.querySelector(".glow").style.transform =
+            `translate(${x}px,${y}px)`;
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>
