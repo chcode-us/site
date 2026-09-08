@@ -3,1714 +3,1009 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<meta name="description" content="chcode — developer portfolio">
-<meta name="theme-color" content="#b9d8e8">
-
-<title>chcode // personal web</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Press+Start+2P&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>chcode — Windows 2000</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&display=swap');
 
-/* =========================================================
-   CHCODE // Y2K PERSONAL WEB
-   ========================================================= */
-
-:root{
-    --bg:#cfd9df;
-    --bg-light:#edf3f6;
-
-    --white:#ffffff;
-    --silver:#dce3e7;
-    --silver-dark:#9caab3;
-
-    --blue:#347da4;
-    --blue-dark:#1f5675;
-    --blue-light:#b8e1f4;
-
-    --text:#17232b;
-    --muted:#5c6b74;
-
-    --line:#77858e;
-    --shadow:rgba(30,45,55,.28);
+* {
+    box-sizing: border-box;
 }
 
-/* RESET */
-
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+html {
+    scroll-behavior: smooth;
 }
 
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    min-height:100vh;
-    overflow-x:hidden;
-
-    color:var(--text);
-
-    font-family:
-        "Space Grotesk",
-        Arial,
-        sans-serif;
-
+body {
+    margin: 0;
     background:
-        linear-gradient(
-            135deg,
-            #eef3f6 0%,
-            #c5d0d7 48%,
-            #f8fafb 100%
-        );
-
-    background-attachment:fixed;
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.9) 0 1px, transparent 2px),
+        radial-gradient(circle at 80% 30%, rgba(255,255,255,.8) 0 1px, transparent 2px),
+        linear-gradient(#d8d8d8, #a9a9a9);
+    background-size: 130px 130px, 190px 190px, auto;
+    color: #111;
+    font-family: Tahoma, Arial, sans-serif;
+    min-height: 100vh;
 }
 
-/* =========================================================
-   BACKGROUND
-   ========================================================= */
+/* =========================
+   Y2K DECOR
+========================= */
 
-body::before{
-    content:"";
-
-    position:fixed;
-    inset:0;
-
-    z-index:-5;
-
-    opacity:.32;
-
-    background-image:
-        linear-gradient(
-            rgba(40,60,70,.13) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(40,60,70,.13) 1px,
-            transparent 1px
-        );
-
-    background-size:24px 24px;
-
-    pointer-events:none;
+.star {
+    position: absolute;
+    color: white;
+    font-size: 22px;
+    text-shadow: 1px 1px #555;
+    user-select: none;
+    pointer-events: none;
 }
 
-/* subtle scanlines */
+.star.s1 { top: 90px; left: 5%; }
+.star.s2 { top: 300px; right: 8%; font-size: 30px; }
+.star.s3 { top: 680px; left: 9%; }
+.star.s4 { top: 1100px; right: 5%; font-size: 28px; }
+.star.s5 { top: 1600px; left: 4%; font-size: 32px; }
+.star.s6 { top: 2050px; right: 10%; }
+.star.s7 { top: 2700px; left: 8%; font-size: 26px; }
+.star.s8 { top: 3200px; right: 4%; }
 
-body::after{
-    content:"";
-
-    position:fixed;
-    inset:0;
-
-    z-index:9999;
-
-    pointer-events:none;
-
-    opacity:.035;
-
-    background:
-        repeating-linear-gradient(
-            to bottom,
-            transparent 0,
-            transparent 3px,
-            #000 4px
-        );
+.chrome {
+    background: linear-gradient(
+        145deg,
+        #ffffff 0%,
+        #dcdcdc 18%,
+        #888 42%,
+        #f8f8f8 58%,
+        #aaa 80%,
+        #fff 100%
+    );
+    border: 1px solid #555;
 }
 
-/* =========================================================
-   DECORATIONS
-   ========================================================= */
-
-.star{
-    position:absolute;
-
-    color:white;
-
-    font-family:Arial;
-
-    text-shadow:
-        0 1px #52616a,
-        1px 0 #52616a;
-
-    user-select:none;
-
-    pointer-events:none;
+.pixel {
+    font-family: "Press Start 2P", monospace;
 }
 
-.star.big{
-    font-size:70px;
+.retro {
+    font-family: "VT323", monospace;
 }
 
-.star.small{
-    font-size:25px;
+/* =========================
+   TOP BAR
+========================= */
+
+.top-strip {
+    height: 25px;
+    background: #eeeeee;
+    border-bottom: 1px solid #555;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    font-size: 11px;
+    justify-content: space-between;
 }
 
-.star.s1{
-    top:170px;
-    left:7%;
+.status {
+    display: flex;
+    gap: 10px;
 }
 
-.star.s2{
-    top:550px;
-    right:8%;
+.status span {
+    padding: 2px 7px;
+    border: 1px solid #777;
+    background: #ddd;
 }
 
-.star.s3{
-    top:1100px;
-    left:5%;
+.online {
+    color: #064b00;
+    font-weight: bold;
 }
 
-.star.s4{
-    top:1800px;
-    right:6%;
-}
-
-/* =========================================================
-   LOADER
-   ========================================================= */
-
-.loader{
-    position:fixed;
-
-    inset:0;
-
-    z-index:10000;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    background:#d7e0e5;
-
-    transition:.7s;
-}
-
-.loader.hide{
-    opacity:0;
-    pointer-events:none;
-}
-
-.loader-box{
-    width:min(470px,90%);
-
-    padding:25px;
-
-    border:2px solid #64727a;
-
-    border-radius:8px;
-
-    background:
-        linear-gradient(
-            #ffffff,
-            #dfe5e9 45%,
-            #b7c2c9 50%,
-            #f5f7f8
-        );
-
-    box-shadow:
-        inset 0 1px white,
-        inset 0 -1px #718089,
-        8px 10px 0 rgba(40,50,60,.15),
-        0 20px 40px rgba(40,50,60,.2);
-}
-
-.loader-title{
-    margin-bottom:18px;
-
-    font-family:
-        "Press Start 2P",
-        monospace;
-
-    font-size:10px;
-
-    color:#294f64;
-}
-
-.loader-bar{
-    height:14px;
-
-    padding:2px;
-
-    border:1px solid #65737c;
-
-    background:#aebac1;
-
-    box-shadow:
-        inset 0 2px 4px rgba(0,0,0,.25);
-}
-
-.loader-fill{
-    width:0;
-    height:100%;
-
-    background:
-        repeating-linear-gradient(
-            90deg,
-            #5b9bc0 0,
-            #5b9bc0 12px,
-            #b8e3f5 13px,
-            #b8e3f5 20px
-        );
-
-    animation:load 1.5s forwards;
-}
-
-@keyframes load{
-    to{
-        width:100%;
-    }
-}
-
-/* =========================================================
+/* =========================
    HEADER
-   ========================================================= */
+========================= */
 
-header{
-    position:fixed;
-
-    top:12px;
-    left:50%;
-
-    transform:translateX(-50%);
-
-    width:min(1180px,calc(100% - 22px));
-
-    z-index:1000;
+header {
+    background:
+        linear-gradient(#ffffff, #d2d2d2 45%, #9a9a9a 50%, #dedede 53%, #bdbdbd);
+    border-bottom: 2px solid #555;
+    box-shadow: 0 2px 5px rgba(0,0,0,.35);
+    padding: 14px 18px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-.nav{
-    display:flex;
+.header-inner {
+    max-width: 1250px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
 
-    align-items:center;
-    justify-content:space-between;
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
 
-    gap:15px;
-
-    padding:7px 9px;
-
-    border:1px solid #65737d;
-
-    border-radius:8px;
-
+.logo-disc {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
     background:
-        linear-gradient(
-            180deg,
-            #ffffff 0%,
-            #e5eaed 45%,
-            #b7c2c8 50%,
-            #edf1f3 100%
-        );
-
+        radial-gradient(circle, #eee 0 13%, #999 14% 18%, transparent 19%),
+        conic-gradient(#fff, #888, #eee, #666, #fff);
+    border: 2px solid #444;
     box-shadow:
-        inset 0 1px #ffffff,
-        inset 0 -1px #78868e,
-        3px 5px 0 rgba(40,55,65,.18),
-        0 10px 25px rgba(40,55,65,.18);
+        inset 2px 2px 4px white,
+        2px 2px 0 #555;
+    animation: spin 8s linear infinite;
 }
 
-.logo{
-    display:flex;
-
-    align-items:center;
-
-    gap:9px;
-
-    text-decoration:none;
-
-    color:#17242c;
-
-    font-family:"Orbitron",sans-serif;
-
-    font-weight:900;
+@keyframes spin {
+    to { transform: rotate(360deg); }
 }
 
-.logo-disc{
-    width:38px;
-    height:38px;
-
-    border-radius:50%;
-
-    background:
-        radial-gradient(
-            circle at center,
-            #9ca8ae 0 8%,
-            #e8eef1 9% 17%,
-            #718089 18% 20%,
-            transparent 21%
-        ),
-        conic-gradient(
-            #d7e7ee,
-            #8baec0,
-            #e8eef1,
-            #9dbbc8,
-            #dce9ee,
-            #708d9b,
-            #d7e7ee
-        );
-
-    border:1px solid #65747d;
-
-    box-shadow:
-        inset 0 1px white,
-        0 3px 5px rgba(0,0,0,.2);
-
-    animation:discSpin 12s linear infinite;
+.logo-text {
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: -2px;
 }
 
-@keyframes discSpin{
-    to{
-        transform:rotate(360deg);
-    }
+.logo-text small {
+    display: block;
+    font-family: "Press Start 2P", monospace;
+    font-size: 7px;
+    letter-spacing: 0;
+    color: #444;
+    margin-top: 5px;
 }
 
-.logo span{
-    letter-spacing:-1px;
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
 }
 
-nav{
-    display:flex;
-
-    gap:4px;
+nav a {
+    color: #111;
+    text-decoration: none;
+    font-size: 12px;
+    padding: 7px 10px;
+    border: 1px solid #777;
+    background: linear-gradient(#fff,#ccc);
+    box-shadow: inset 1px 1px white, 1px 1px #555;
 }
 
-nav a{
-    padding:9px 11px;
-
-    color:#23333c;
-
-    text-decoration:none;
-
-    font-size:12px;
-
-    border:1px solid transparent;
-
-    border-radius:5px;
-
-    transition:.15s;
+nav a:hover {
+    background: linear-gradient(#ddd,#fff);
+    transform: translateY(1px);
 }
 
-nav a:hover{
-    border-color:#6d7b83;
-
-    background:
-        linear-gradient(
-            #fff,
-            #dbeaf2 50%,
-            #a9cfdf 51%,
-            #f4f9fb
-        );
-
-    box-shadow:
-        inset 0 1px white;
-}
-
-.lang{
-    padding:8px 11px;
-
-    color:#24343d;
-
-    border:1px solid #6d7b83;
-
-    border-radius:5px;
-
-    background:
-        linear-gradient(
-            #fff,
-            #dce3e7 50%,
-            #b2bdc4 51%,
-            #f4f6f7
-        );
-
-    cursor:pointer;
-
-    font-weight:700;
-}
-
-/* =========================================================
-   GENERAL
-   ========================================================= */
-
-.container{
-    width:min(1120px,calc(100% - 30px));
-
-    margin:auto;
-}
-
-section{
-    position:relative;
-
-    padding:105px 0;
-}
-
-.section-label{
-    margin-bottom:12px;
-
-    color:#35647c;
-
-    font-family:
-        "Press Start 2P",
-        monospace;
-
-    font-size:9px;
-}
-
-.section-title{
-    margin-bottom:28px;
-
-    color:#1b2a32;
-
-    font-family:
-        "Orbitron",
-        sans-serif;
-
-    font-size:
-        clamp(30px,5vw,56px);
-
-    line-height:1;
-}
-
-.section-title span{
-    color:#347da4;
-}
-
-/* =========================================================
-   HERO
-   ========================================================= */
-
-.hero{
-    min-height:100vh;
-
-    display:flex;
-
-    align-items:center;
-
-    padding-top:145px;
-}
-
-.hero-grid{
-    display:grid;
-
-    grid-template-columns:
-        1.15fr
-        .85fr;
-
-    gap:55px;
-
-    align-items:center;
-}
-
-.badge{
-    display:inline-flex;
-
-    align-items:center;
-
-    gap:8px;
-
-    margin-bottom:24px;
-
-    padding:7px 11px;
-
-    border:1px solid #657680;
-
-    border-radius:5px;
-
-    background:
-        linear-gradient(
-            #ffffff,
-            #dce5e9 50%,
-            #b6c5cd 51%,
-            #f7f9fa
-        );
-
-    box-shadow:
-        inset 0 1px white,
-        2px 3px rgba(40,55,65,.12);
-
-    color:#315f77;
-
-    font-family:
-        "Press Start 2P",
-        monospace;
-
-    font-size:8px;
-}
-
-.status-dot{
-    width:7px;
-    height:7px;
-
-    border-radius:50%;
-
-    background:#4d9d72;
-
-    border:1px solid #326a4d;
-
-    box-shadow:
-        0 0 0 2px #dcece3;
-}
-
-.hero h1{
-    font-family:
-        "Orbitron",
-        sans-serif;
-
-    font-size:
-        clamp(48px,8vw,92px);
-
-    line-height:.9;
-
-    letter-spacing:-5px;
-
-    color:#283841;
-
-    text-shadow:
-        0 1px #fff,
-        0 2px #9ca8ae,
-        3px 4px 0 rgba(50,60,70,.16);
-}
-
-.chrome{
-    background:
-        linear-gradient(
-            180deg,
-            #ffffff 0%,
-            #b4bec4 32%,
-            #ffffff 45%,
-            #75848d 52%,
-            #eef3f5 63%,
-            #a7b2b8 80%,
-            #ffffff 100%
-        );
-
-    -webkit-background-clip:text;
-
-    background-clip:text;
-
-    color:transparent;
-}
-
-.hero-subtitle{
-    color:#356d8b;
-
-    font-family:
-        "Orbitron",
-        sans-serif;
-
-    font-size:
-        clamp(20px,3vw,35px);
-
-    margin-top:8px;
-}
-
-.hero p{
-    max-width:650px;
-
-    margin:28px 0;
-
-    color:#4d5d66;
-
-    font-size:16px;
-
-    line-height:1.8;
-}
-
-.buttons{
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:10px;
-}
-
-.btn{
-    display:inline-flex;
-
-    align-items:center;
-    justify-content:center;
-
-    min-height:42px;
-
-    padding:0 18px;
-
-    color:#23333c;
-
-    text-decoration:none;
-
-    border:1px solid #65737d;
-
-    border-radius:6px;
-
-    background:
-        linear-gradient(
-            #ffffff,
-            #e6ecef 47%,
-            #bac5cb 50%,
-            #f7f9fa
-        );
-
-    box-shadow:
-        inset 0 1px #fff,
-        inset 0 -1px #7c8991,
-        2px 3px 0 rgba(40,55,65,.17);
-
-    transition:.12s;
-}
-
-.btn:hover{
-    transform:translateY(-1px);
-
-    background:
-        linear-gradient(
-            #ffffff,
-            #e8f5fb 47%,
-            #abd0e0 50%,
-            #f8fcfe
-        );
-}
-
-.btn:active{
-    transform:translate(1px,2px);
-
-    box-shadow:
-        inset 0 2px 4px rgba(0,0,0,.22);
-}
-
-/* =========================================================
-   WINDOW
-   ========================================================= */
-
-.window{
-    border:1px solid #687780;
-
-    border-radius:7px;
-
-    overflow:hidden;
-
-    background:#d8e0e4;
-
-    box-shadow:
-        inset 0 1px white,
-        6px 8px 0 rgba(40,55,65,.14),
-        0 20px 35px rgba(40,55,65,.18);
-
-    transform:rotate(1deg);
-
-    transition:.3s;
-}
-
-.window:hover{
-    transform:rotate(0) translateY(-4px);
-}
-
-.window-bar{
-    display:flex;
-
-    align-items:center;
-
-    gap:6px;
-
-    padding:7px 9px;
-
-    border-bottom:1px solid #6d7b84;
-
-    background:
-        linear-gradient(
-            #fdfefe,
-            #d9e1e5 47%,
-            #aab7bf 50%,
-            #edf1f3
-        );
-}
-
-.win-dot{
-    width:12px;
-    height:12px;
-
-    border:1px solid #64737c;
-
-    border-radius:2px;
-
-    background:
-        linear-gradient(
-            #fff,
-            #bcc7cd
-        );
-
-    box-shadow:
-        inset 0 1px white;
-}
-
-.window-title{
-    margin:auto;
-
-    color:#32444e;
-
-    font-family:
-        "Press Start 2P",
-        monospace;
-
-    font-size:7px;
-}
-
-.terminal{
-    padding:30px;
-
-    color:#26363f;
-
-    font-family:
-        "Courier New",
-        monospace;
-
-    font-size:13px;
-
-    line-height:2;
-}
-
-.prompt{
-    color:#2b6380;
-}
-
-.command{
-    color:#17232b;
-    font-weight:bold;
-}
-
-.value{
-    color:#52636c;
-}
-
-.cursor{
-    display:inline-block;
-
-    width:7px;
-    height:14px;
-
-    background:#397d9e;
-
-    vertical-align:middle;
-
-    animation:blink .8s infinite;
-}
-
-@keyframes blink{
-    50%{
-        opacity:.2;
-    }
-}
-
-/* =========================================================
+/* =========================
    MARQUEE
-   ========================================================= */
+========================= */
 
-.marquee{
-    overflow:hidden;
-
-    border-top:1px solid #76858e;
-    border-bottom:1px solid #76858e;
-
-    background:
-        linear-gradient(
-            #edf2f4,
-            #c0cbd1 50%,
-            #f3f6f7
-        );
-
-    box-shadow:
-        inset 0 1px white,
-        inset 0 -1px rgba(70,85,95,.3);
+.marquee {
+    background: #111;
+    color: #fff;
+    overflow: hidden;
+    white-space: nowrap;
+    border-bottom: 2px solid #555;
+    font-family: "VT323", monospace;
+    font-size: 20px;
+    padding: 3px 0;
 }
 
-.marquee-track{
-    display:flex;
-
-    width:max-content;
-
-    padding:11px 0;
-
-    animation:marquee 25s linear infinite;
+.marquee div {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 22s linear infinite;
 }
 
-.marquee span{
-    margin:0 25px;
-
-    color:#36596a;
-
-    font-family:
-        "Press Start 2P",
-        monospace;
-
-    font-size:9px;
-
-    white-space:nowrap;
-}
-
-.marquee b{
-    color:#8a9aa3;
-}
-
-@keyframes marquee{
-    to{
-        transform:translateX(-50%);
+@keyframes marquee {
+    to {
+        transform: translateX(-100%);
     }
 }
 
-/* =========================================================
-   CARDS
-   ========================================================= */
+/* =========================
+   MAIN
+========================= */
 
-.card,
-.project,
-.service,
-.friend,
-.contact-box{
-    border:1px solid #77858d;
-
-    border-radius:9px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.98),
-            rgba(215,222,226,.96)
-        );
-
-    box-shadow:
-        inset 0 1px white,
-        inset 0 -1px rgba(70,85,95,.3),
-        6px 8px 0 rgba(55,70,80,.1),
-        0 15px 30px rgba(50,65,75,.15);
+main {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 15px;
 }
 
-/* =========================================================
+.section {
+    margin: 65px 0;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.section-title h2 {
+    font-family: "Press Start 2P", monospace;
+    font-size: 18px;
+    margin: 0;
+}
+
+.section-title .line {
+    height: 2px;
+    flex: 1;
+    background: #555;
+}
+
+/* =========================
+   WINDOWS
+========================= */
+
+.window {
+    background: #d4d0c8;
+    border: 2px solid;
+    border-color: #fff #404040 #404040 #fff;
+    box-shadow: 3px 3px 0 #333;
+}
+
+.titlebar {
+    height: 25px;
+    background: linear-gradient(
+        90deg,
+        #0b3d91,
+        #3973c7 60%,
+        #0b3d91
+    );
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    padding: 0 5px;
+    justify-content: space-between;
+    cursor: move;
+}
+
+.title-buttons {
+    display: flex;
+    gap: 2px;
+}
+
+.win-btn {
+    width: 19px;
+    height: 18px;
+    background: #d4d0c8;
+    color: #111;
+    border: 1px solid;
+    border-color: #fff #555 #555 #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+}
+
+.window-content {
+    padding: 20px;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 590px;
+    display: grid;
+    grid-template-columns: 1.25fr .75fr;
+    gap: 30px;
+    align-items: center;
+}
+
+.hero-text {
+    position: relative;
+}
+
+.hero-kicker {
+    display: inline-block;
+    background: #111;
+    color: #fff;
+    padding: 7px 11px;
+    font-family: "Press Start 2P", monospace;
+    font-size: 8px;
+    margin-bottom: 15px;
+}
+
+.hero h1 {
+    margin: 0;
+    font-size: clamp(52px, 8vw, 105px);
+    letter-spacing: -7px;
+    line-height: .85;
+    background: linear-gradient(#fff, #777, #eee, #666);
+    -webkit-background-clip: text;
+    color: transparent;
+    filter: drop-shadow(2px 3px 0 #444);
+}
+
+.hero h1 span {
+    color: #111;
+    -webkit-text-fill-color: #111;
+}
+
+.hero-subtitle {
+    font-family: "VT323", monospace;
+    font-size: 34px;
+    margin: 25px 0;
+}
+
+.hero-description {
+    max-width: 650px;
+    line-height: 1.7;
+    font-size: 15px;
+}
+
+.hero-buttons {
+    margin-top: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.retro-button {
+    display: inline-block;
+    color: #111;
+    text-decoration: none;
+    background: linear-gradient(#fff,#d4d4d4);
+    border: 2px solid;
+    border-color: #fff #555 #555 #fff;
+    padding: 10px 17px;
+    box-shadow: 2px 2px 0 #222;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.retro-button:active {
+    border-color: #555 #fff #fff #555;
+    box-shadow: none;
+    transform: translate(2px,2px);
+}
+
+/* =========================
+   COMPUTER
+========================= */
+
+.pc {
+    text-align: center;
+}
+
+.monitor {
+    background: #cfcfcf;
+    border: 3px solid;
+    border-color: #fff #555 #555 #fff;
+    padding: 15px;
+    box-shadow: 7px 7px 0 #333;
+}
+
+.screen {
+    background: #0c270c;
+    color: #71ff71;
+    height: 270px;
+    border: 7px solid #555;
+    padding: 18px;
+    text-align: left;
+    font-family: "VT323", monospace;
+    font-size: 20px;
+    overflow: hidden;
+    box-shadow: inset 0 0 20px #000;
+}
+
+.screen .cursor {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+.monitor-bottom {
+    width: 150px;
+    height: 25px;
+    background: #aaa;
+    margin: 0 auto;
+    border: 2px solid #555;
+}
+
+.keyboard {
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: repeat(14,1fr);
+    gap: 3px;
+}
+
+.key {
+    height: 15px;
+    background: #ddd;
+    border: 1px solid #888;
+    box-shadow: inset 1px 1px #fff;
+}
+
+/* =========================
    ABOUT
-   ========================================================= */
+========================= */
 
-.about-grid{
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    gap:18px;
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
 }
 
-.card{
-    padding:28px;
+.info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-.card h3{
-    margin-bottom:13px;
-
-    color:#294452;
-
-    font-family:"Orbitron",sans-serif;
+.info-list li {
+    padding: 9px;
+    border-bottom: 1px dotted #777;
 }
 
-.card p{
-    color:#53636c;
-
-    line-height:1.75;
+.info-list b {
+    display: inline-block;
+    width: 120px;
 }
 
-.code-card{
-    font-family:
-        "Courier New",
-        monospace;
+/* =========================
+   SKILLS
+========================= */
 
-    line-height:2;
+.skills {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 12px;
 }
 
-.code-card .key{
-    color:#316f91;
+.skill {
+    text-align: center;
+    padding: 18px 10px;
+    background: linear-gradient(#fff,#ccc);
+    border: 1px solid #777;
+    box-shadow: 2px 2px 0 #555;
 }
 
-.code-card .str{
-    color:#52707e;
+.skill-icon {
+    font-size: 34px;
+    margin-bottom: 10px;
 }
 
-.code-card .num{
-    color:#283941;
+.skill-name {
+    font-family: "Press Start 2P";
+    font-size: 9px;
 }
 
-/* =========================================================
+/* =========================
    PROJECTS
-   ========================================================= */
+========================= */
 
-.projects{
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:18px;
+.projects {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px;
 }
 
-.project{
-    min-height:300px;
-
-    padding:26px;
-
-    transition:.2s;
+.project {
+    position: relative;
 }
 
-.project:hover{
-    transform:translateY(-5px);
-
-    box-shadow:
-        inset 0 1px white,
-        8px 12px 0 rgba(55,70,80,.12),
-        0 20px 35px rgba(50,65,75,.18);
+.project-body {
+    padding: 20px;
 }
 
-.project-number{
-    color:#56717e;
-
-    font-family:
-        "Press Start 2P",
-        monospace;
-
-    font-size:8px;
+.project-icon {
+    font-size: 42px;
+    float: left;
+    margin-right: 15px;
 }
 
-.project-icon{
-    margin:28px 0 16px;
-
-    font-size:40px;
-
-    filter:
-        grayscale(.3)
-        drop-shadow(2px 3px 0 rgba(50,60,70,.18));
+.project h3 {
+    margin-top: 0;
+    font-size: 20px;
 }
 
-.project h3{
-    margin-bottom:11px;
-
-    color:#294452;
-
-    font-family:"Orbitron",sans-serif;
+.project p {
+    line-height: 1.6;
+    font-size: 14px;
+    clear: both;
 }
 
-.project p{
-    color:#5a6971;
-
-    font-size:14px;
-
-    line-height:1.7;
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
 }
 
-.tags{
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:6px;
-
-    margin-top:19px;
+.tag {
+    font-family: "Press Start 2P";
+    font-size: 7px;
+    padding: 6px;
+    background: #111;
+    color: white;
 }
 
-.tag{
-    padding:5px 7px;
-
-    color:#3e6172;
-
-    border:1px solid #84949d;
-
-    border-radius:4px;
-
-    background:
-        linear-gradient(
-            #f9fbfc,
-            #d6dfe4
-        );
-
-    font-family:
-        "Courier New",
-        monospace;
-
-    font-size:9px;
-}
-
-/* =========================================================
+/* =========================
    SERVICES
-   ========================================================= */
+========================= */
 
-.services{
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:18px;
+.services {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 15px;
 }
 
-.service{
-    padding:32px 24px;
-
-    text-align:center;
+.service {
+    padding: 20px;
+    text-align: center;
 }
 
-.service-icon{
-    margin-bottom:15px;
-
-    font-size:38px;
-
-    filter:
-        grayscale(.25)
-        drop-shadow(2px 3px rgba(40,50,60,.15));
+.service .icon {
+    font-size: 45px;
 }
 
-.service h3{
-    margin-bottom:10px;
-
-    color:#294452;
-
-    font-family:"Orbitron",sans-serif;
-
-    font-size:15px;
+.service h3 {
+    font-size: 16px;
 }
 
-.service p{
-    color:#5b6b73;
+/* =========================
+   TIMELINE
+========================= */
 
-    font-size:14px;
-
-    line-height:1.6;
+.timeline {
+    border-left: 4px solid #555;
+    margin-left: 20px;
+    padding-left: 30px;
 }
 
-/* =========================================================
-   VISITOR COUNTER
-   ========================================================= */
-
-.visitor-section{
-    text-align:center;
+.timeline-item {
+    position: relative;
+    margin-bottom: 35px;
 }
 
-.visitor-box{
-    width:min(680px,100%);
+.timeline-item::before {
+    content: "★";
+    position: absolute;
+    left: -47px;
+    top: -5px;
+    font-size: 23px;
+}
 
-    margin:30px auto 0;
+.timeline-year {
+    font-family: "Press Start 2P";
+    font-size: 9px;
+}
 
-    padding:32px;
+/* =========================
+   WINDOWS DESKTOP
+========================= */
 
-    border:1px solid #697881;
-
-    border-radius:9px;
-
+.desktop {
+    min-height: 390px;
+    position: relative;
     background:
-        linear-gradient(
-            #f8fafb,
-            #d5dee3 50%,
-            #edf1f3
-        );
-
-    box-shadow:
-        inset 0 1px white,
-        inset 0 -1px #87949c,
-        6px 8px 0 rgba(55,70,80,.1),
-        0 15px 30px rgba(50,65,75,.15);
+        linear-gradient(90deg,rgba(255,255,255,.15) 1px,transparent 1px),
+        linear-gradient(rgba(255,255,255,.15) 1px,transparent 1px),
+        #008080;
+    background-size: 20px 20px;
+    border: 3px solid;
+    border-color: #555 #fff #fff #555;
+    overflow: hidden;
 }
 
-.counter-label{
-    color:#506672;
-
-    font-family:
-        "Press Start 2P",
-        monospace;
-
-    font-size:8px;
+.desktop-icon {
+    width: 85px;
+    color: white;
+    text-align: center;
+    margin: 18px;
+    cursor: pointer;
+    text-shadow: 1px 1px #000;
 }
 
-.counter{
-    display:flex;
-
-    justify-content:center;
-
-    gap:5px;
-
-    margin:20px 0;
+.desktop-icon .icon {
+    font-size: 38px;
+    display: block;
 }
 
-.digit{
-    width:43px;
-    height:57px;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    color:#dceaf1;
-
-    border:1px solid #263b47;
-
-    border-radius:3px;
-
-    background:
-        linear-gradient(
-            #354e5b,
-            #101b22
-        );
-
-    box-shadow:
-        inset 0 1px rgba(255,255,255,.25),
-        inset 0 -2px rgba(0,0,0,.35);
-
-    font-family:
-        "Press Start 2P",
-        monospace;
-
-    font-size:17px;
-
-    text-shadow:
-        0 1px #000;
+.desktop-icon span {
+    font-size: 11px;
+    display: block;
 }
 
-.visitor-note{
-    color:#71818a;
-
-    font-size:11px;
+.fake-window {
+    position: absolute;
+    width: 430px;
+    left: 50%;
+    top: 35px;
+    transform: translateX(-50%);
 }
 
-/* =========================================================
-   FRIENDS
-   ========================================================= */
-
-.friends{
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:16px;
+.fake-window .window-content {
+    min-height: 190px;
+    background: white;
 }
 
-.friend{
-    min-height:145px;
+/* =========================
+   BADGES
+========================= */
 
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:space-between;
-
-    padding:21px;
+.badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
 }
 
-.friend-top{
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
+.badge {
+    min-width: 115px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(#fff,#aaa);
+    border: 2px solid;
+    border-color: #fff #555 #555 #fff;
+    font-family: "Press Start 2P";
+    font-size: 7px;
+    box-shadow: 2px 2px #333;
 }
 
-.friend-logo{
-    width:42px;
-    height:42px;
+/* =========================
+   COUNTER
+========================= */
 
-    display:grid;
-
-    place-items:center;
-
-    color:#304955;
-
-    border:1px solid #71818a;
-
-    border-radius:6px;
-
-    background:
-        linear-gradient(
-            #fff,
-            #d5dfe4 48%,
-            #aebbc3 50%,
-            #f5f8f9
-        );
-
-    box-shadow:
-        inset 0 1px white;
+.counter {
+    text-align: center;
+    margin: 20px 0;
 }
 
-.friend h3{
-    color:#334e5c;
-
-    font-size:14px;
+.counter-number {
+    display: inline-block;
+    background: #000;
+    color: #00ff00;
+    padding: 8px 15px;
+    font-family: "VT323";
+    font-size: 28px;
+    letter-spacing: 5px;
+    border: 3px inset #aaa;
 }
 
-.friend p{
-    margin-top:4px;
-
-    color:#7a8991;
-
-    font-size:11px;
-}
-
-.friend a{
-    color:#356f8d;
-
-    text-decoration:none;
-
-    font-family:
-        "Courier New",
-        monospace;
-
-    font-size:11px;
-}
-
-.friend a:hover{
-    text-decoration:underline;
-}
-
-.sponsor-note{
-    margin-top:20px;
-
-    color:#65757e;
-
-    font-size:11px;
-}
-
-/* =========================================================
+/* =========================
    CONTACT
-   ========================================================= */
+========================= */
 
-.contact{
-    text-align:center;
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
 }
 
-.contact-box{
-    padding:55px 30px;
+.contact-item {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    padding: 13px;
+    border-bottom: 1px dotted #777;
 }
 
-.contact h2{
-    margin-bottom:18px;
-
-    color:#253741;
-
-    font-family:
-        "Orbitron",
-        sans-serif;
-
-    font-size:
-        clamp(30px,6vw,62px);
-
-    line-height:1;
+.contact-item .icon {
+    font-size: 30px;
 }
 
-.contact h2 span{
-    color:#367c9f;
+.contact-item a {
+    color: #064b91;
 }
 
-.contacts{
-    display:flex;
-
-    flex-wrap:wrap;
-
-    justify-content:center;
-
-    gap:8px;
-
-    margin-top:28px;
-}
-
-.contact-link{
-    padding:11px 15px;
-
-    color:#365a6b;
-
-    text-decoration:none;
-
-    border:1px solid #7b8991;
-
-    border-radius:5px;
-
-    background:
-        linear-gradient(
-            #ffffff,
-            #dce4e8 50%,
-            #b7c3c9 51%,
-            #f8fafb
-        );
-
-    box-shadow:
-        inset 0 1px white,
-        2px 3px rgba(40,55,65,.12);
-
-    transition:.15s;
-}
-
-.contact-link:hover{
-    transform:translateY(-2px);
-}
-
-/* =========================================================
+/* =========================
    FOOTER
-   ========================================================= */
+========================= */
 
-footer{
-    padding:40px 0 55px;
-
-    text-align:center;
-
-    border-top:1px solid #7c8991;
-
-    background:
-        linear-gradient(
-            #dfe6ea,
-            #c0cbd1
-        );
+footer {
+    background: #c0c0c0;
+    border-top: 3px solid #555;
+    padding: 35px 15px;
+    text-align: center;
 }
 
-.footer-logo{
-    color:#334b58;
-
-    font-family:
-        "Orbitron",
-        sans-serif;
-
-    font-size:20px;
-
-    font-weight:900;
+.footer-logo {
+    font-family: "Press Start 2P";
+    font-size: 15px;
 }
 
-footer p{
-    margin-top:10px;
-
-    color:#6a7b84;
-
-    font-size:11px;
+.footer-text {
+    font-family: "VT323";
+    font-size: 21px;
+    margin: 15px 0;
 }
 
-.footer-badges{
-    display:flex;
-
-    justify-content:center;
-
-    flex-wrap:wrap;
-
-    gap:6px;
-
-    margin-top:18px;
+.footer-stars {
+    font-size: 25px;
+    letter-spacing: 10px;
 }
 
-.footer-badge{
-    padding:6px 8px;
+/* =========================
+   LANGUAGE
+========================= */
 
-    color:#4b6775;
-
-    border:1px solid #84929a;
-
-    border-radius:4px;
-
-    background:#e9eef1;
-
-    font-family:
-        "Courier New",
-        monospace;
-
-    font-size:8px;
+.lang {
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+    z-index: 5000;
 }
 
-/* =========================================================
-   MOBILE
-   ========================================================= */
+.lang button {
+    cursor: pointer;
+    background: #d4d0c8;
+    border: 2px solid;
+    border-color: #fff #555 #555 #fff;
+    padding: 9px 12px;
+    font-weight: bold;
+}
 
-@media(max-width:850px){
+/* =========================
+   RESPONSIVE
+========================= */
 
-    nav{
-        display:none;
+@media(max-width: 900px) {
+    .hero,
+    .about-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
     }
 
-    .hero-grid,
-    .about-grid{
-        grid-template-columns:1fr;
+    .skills {
+        grid-template-columns: repeat(2,1fr);
     }
 
-    .projects,
     .services,
-    .friends{
-        grid-template-columns:1fr;
+    .projects {
+        grid-template-columns: 1fr;
     }
 
-    .hero{
-        padding-top:125px;
+    nav {
+        display: none;
     }
 
-    .window{
-        transform:none;
+    .hero {
+        min-height: auto;
     }
 
-    section{
-        padding:80px 0;
+    .fake-window {
+        width: 90%;
     }
-
 }
 
-@media(max-width:500px){
-
-    .container{
-        width:min(100% - 20px,1120px);
+@media(max-width: 500px) {
+    .skills {
+        grid-template-columns: 1fr;
     }
 
-    header{
-        width:calc(100% - 16px);
+    .hero h1 {
+        font-size: 55px;
     }
 
-    .logo span{
-        font-size:13px;
+    .keyboard {
+        grid-template-columns: repeat(7,1fr);
     }
-
-    .hero h1{
-        font-size:46px;
-
-        letter-spacing:-3px;
-    }
-
-    .hero p{
-        font-size:14px;
-    }
-
-    .terminal{
-        padding:20px;
-
-        font-size:11px;
-    }
-
-    .digit{
-        width:32px;
-        height:49px;
-
-        font-size:13px;
-    }
-
-    .star{
-        display:none;
-    }
-
 }
-
-/* =========================================================
-   SELECTION
-   ========================================================= */
-
-::selection{
-    color:#fff;
-
-    background:#397e9f;
-}
-
 </style>
 </head>
 
 <body>
 
-<!-- =======================================================
-     LOADER
-     ======================================================= -->
+<div class="star s1">✦</div>
+<div class="star s2">★</div>
+<div class="star s3">✧</div>
+<div class="star s4">✦</div>
+<div class="star s5">★</div>
+<div class="star s6">✧</div>
+<div class="star s7">✦</div>
+<div class="star s8">★</div>
 
-<div class="loader" id="loader">
-
-    <div class="loader-box">
-
-        <div class="loader-title">
-            CHCODE.EXE // LOADING PERSONAL WEB...
-        </div>
-
-        <div class="loader-bar">
-            <div class="loader-fill"></div>
-        </div>
-
+<div class="top-strip">
+    <div>chcode.exe — personal homepage</div>
+    <div class="status">
+        <span class="online">● ONLINE</span>
+        <span>Windows 2000</span>
     </div>
-
 </div>
 
-<!-- DECORATIONS -->
-
-<div class="star big s1">✦</div>
-<div class="star small s2">★</div>
-<div class="star small s3">✦</div>
-<div class="star big s4">✧</div>
-
-
-<!-- =======================================================
-     HEADER
-     ======================================================= -->
-
 <header>
+    <div class="header-inner">
 
-    <div class="nav">
-
-        <a href="#home" class="logo">
-
+        <div class="logo">
             <div class="logo-disc"></div>
-
-            <span>chcode</span>
-
-        </a>
+            <div class="logo-text">
+                chcode
+                <small>© 2000—2026 INTERNET USER</small>
+            </div>
+        </div>
 
         <nav>
-
-            <a href="#about">ABOUT</a>
-            <a href="#projects">PROJECTS</a>
-            <a href="#services">SERVICES</a>
-            <a href="#friends">FRIENDS</a>
-            <a href="#contact">CONTACT</a>
-
+            <a href="#home">Главная</a>
+            <a href="#about">Обо мне</a>
+            <a href="#skills">Навыки</a>
+            <a href="#projects">Проекты</a>
+            <a href="#services">Услуги</a>
+            <a href="#history">История</a>
+            <a href="#desktop">Windows</a>
+            <a href="#contacts">Контакты</a>
         </nav>
 
-        <button
-            class="lang"
-            onclick="cycleLanguage()"
-        >
-            RU
-        </button>
-
     </div>
-
 </header>
 
-
-<!-- =======================================================
-     HERO
-     ======================================================= -->
+<div class="marquee">
+    <div>
+        ★ WELCOME TO CHCODE.DEV ★ РАЗРАБОТКА • PYTHON • TELEGRAM • WEB • AI • AUTOMATION ★ BEST VIEWED IN 1024×768 ★
+    </div>
+</div>
 
 <main>
 
-<section class="hero" id="home">
+<!-- HERO -->
 
-    <div class="container">
+<section class="hero section" id="home">
 
-        <div class="hero-grid">
+    <div class="hero-text">
 
-            <div>
+        <div class="hero-kicker">
+            PERSONAL HOMEPAGE v2.000
+        </div>
 
-                <div class="badge">
+        <h1>
+            ch<span>code</span>
+        </h1>
 
-                    <span class="status-dot"></span>
+        <div class="hero-subtitle">
+            Разработчик из эпохи Интернета
+        </div>
 
-                    PERSONAL WEB // ONLINE
+        <p class="hero-description">
+            Привет! Я chcode — разработчик, который создаёт сайты,
+            Telegram-ботов, автоматизацию и цифровые проекты.
+            Здесь нет бесконечных AI-градиентов.
+            Только код, Windows 2000, Интернет и немного Y2K.
+        </p>
 
+        <div class="hero-buttons">
+            <a class="retro-button" href="#projects">★ МОИ ПРОЕКТЫ</a>
+            <a class="retro-button" href="#contacts">✉ СВЯЗАТЬСЯ</a>
+            <a class="retro-button" href="#desktop">🖥 MY COMPUTER</a>
+        </div>
+
+    </div>
+
+    <div class="pc">
+
+        <div class="monitor">
+
+            <div class="screen">
+                Microsoft(R) Windows 2000<br>
+                Copyright Microsoft Corp.<br><br>
+
+                C:\CHCODE&gt; whoami<br>
+                chcode<br><br>
+
+                C:\CHCODE&gt; status<br>
+                developer.exe<br>
+                STATUS: ONLINE<br>
+                LOCATION: INTERNET<br>
+                SYSTEM: WIN2000<br><br>
+
+                C:\CHCODE&gt; _
+                <span class="cursor">█</span>
+            </div>
+
+            <div class="monitor-bottom"></div>
+
+        </div>
+
+        <div class="keyboard">
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
+            <div class="key"></div><div class="key"></div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section class="section" id="about">
+
+    <div class="section-title">
+        <h2>ОБО МНЕ</h2>
+        <div class="line"></div>
+        <span>★</span>
+    </div>
+
+    <div class="about-grid">
+
+        <div class="window">
+
+            <div class="titlebar">
+                <span>📄 about_me.txt — Notepad</span>
+                <div class="title-buttons">
+                    <div class="win-btn">_</div>
+                    <div class="win-btn">□</div>
+                    <div class="win-btn">×</div>
                 </div>
+            </div>
 
-                <h1>
-
-                    <span class="chrome">
-                        chcode
-                    </span>
-
-                </h1>
-
-                <div class="hero-subtitle">
-                    digital developer.
-                </div>
+            <div class="window-content">
 
                 <p>
-
-                    Welcome to my little corner of the Internet.
-                    I build websites, Telegram bots, backend systems,
-                    AI experiments and other things that should probably
-                    not be started at 2 AM.
-
+                    Я занимаюсь разработкой цифровых продуктов,
+                    экспериментирую с современными технологиями
+                    и люблю превращать идеи в работающие проекты.
                 </p>
 
-                <div class="buttons">
+                <p>
+                    Основные направления — Python, Telegram,
+                    Web-разработка, автоматизация и AI-интеграции.
+                </p>
 
-                    <a
-                        href="#projects"
-                        class="btn"
-                    >
-                        ★ ENTER PROJECTS
-                    </a>
-
-                    <a
-                        href="#contact"
-                        class="btn"
-                    >
-                        ✉ CONTACT
-                    </a>
-
-                </div>
+                <p>
+                    А этот сайт — маленькая дань эпохе,
+                    когда Интернет был серым, блестящим
+                    и на каждой странице стоял счётчик посетителей.
+                </p>
 
             </div>
 
+        </div>
 
-            <!-- WINDOW -->
+        <div class="window">
 
-            <div class="window">
-
-                <div class="window-bar">
-
-                    <span class="win-dot"></span>
-                    <span class="win-dot"></span>
-                    <span class="win-dot"></span>
-
-                    <div class="window-title">
-                        chcode://terminal
-                    </div>
-
+            <div class="titlebar">
+                <span>⚙ System Properties</span>
+                <div class="title-buttons">
+                    <div class="win-btn">_</div>
+                    <div class="win-btn">□</div>
+                    <div class="win-btn">×</div>
                 </div>
+            </div>
 
-                <div class="terminal">
+            <div class="window-content">
 
-                    <div>
-
-                        <span class="prompt">
-                            C:\CHCODE&gt;
-                        </span>
-
-                        whoami
-
-                    </div>
-
-                    <div class="value">
-                        developer
-                    </div>
-
-                    <br>
-
-                    <div>
-
-                        <span class="prompt">
-                            C:\CHCODE&gt;
-                        </span>
-
-                        status
-
-                    </div>
-
-                    <div class="value">
-                        ONLINE
-                    </div>
-
-                    <div class="value">
-                        coffee = required
-                    </div>
-
-                    <div class="value">
-                        ideas = unlimited
-                    </div>
-
-                    <br>
-
-                    <div>
-
-                        <span class="prompt">
-                            C:\CHCODE&gt;
-                        </span>
-
-                        _
-                        <span class="cursor"></span>
-
-                    </div>
-
-                </div>
+                <ul class="info-list">
+                    <li><b>Nickname:</b> chcode</li>
+                    <li><b>Role:</b> Developer</li>
+                    <li><b>OS:</b> Windows 2000</li>
+                    <li><b>Language:</b> Русский / English</li>
+                    <li><b>Status:</b> 🟢 Online</li>
+                    <li><b>Favorite:</b> ★ Y2K Internet</li>
+                </ul>
 
             </div>
 
@@ -1721,125 +1016,56 @@ footer p{
 </section>
 
 
-<!-- =======================================================
-     MARQUEE
-     ======================================================= -->
+<!-- SKILLS -->
 
-<div class="marquee">
+<section class="section" id="skills">
 
-    <div class="marquee-track">
-
-        <span>★ WELCOME</span>
-        <span>✦ CHCODE</span>
-        <span>★ PERSONAL WEB</span>
-        <span>✦ PYTHON</span>
-        <span>★ JAVASCRIPT</span>
-        <span>✦ TELEGRAM</span>
-        <span>★ BACKEND</span>
-        <span>✦ WEB</span>
-
-        <span>★ WELCOME</span>
-        <span>✦ CHCODE</span>
-        <span>★ PERSONAL WEB</span>
-        <span>✦ PYTHON</span>
-        <span>★ JAVASCRIPT</span>
-        <span>✦ TELEGRAM</span>
-        <span>★ BACKEND</span>
-        <span>✦ WEB</span>
-
+    <div class="section-title">
+        <h2>НАВЫКИ</h2>
+        <div class="line"></div>
+        <span>✦</span>
     </div>
 
-</div>
+    <div class="skills">
 
-
-<!-- =======================================================
-     ABOUT
-     ======================================================= -->
-
-<section id="about">
-
-    <div class="container">
-
-        <div class="section-label">
-            01 / ABOUT.TXT
+        <div class="skill">
+            <div class="skill-icon">🐍</div>
+            <div class="skill-name">PYTHON</div>
         </div>
 
-        <h2 class="section-title">
-            About <span>me.</span>
-        </h2>
+        <div class="skill">
+            <div class="skill-icon">🌐</div>
+            <div class="skill-name">HTML / CSS</div>
+        </div>
 
+        <div class="skill">
+            <div class="skill-icon">⚡</div>
+            <div class="skill-name">JAVASCRIPT</div>
+        </div>
 
-        <div class="about-grid">
+        <div class="skill">
+            <div class="skill-icon">🤖</div>
+            <div class="skill-name">TELEGRAM</div>
+        </div>
 
-            <div class="card">
+        <div class="skill">
+            <div class="skill-icon">🗄️</div>
+            <div class="skill-name">DATABASES</div>
+        </div>
 
-                <h3>
-                    HELLO, INTERNET!
-                </h3>
+        <div class="skill">
+            <div class="skill-icon">☁️</div>
+            <div class="skill-name">SERVER</div>
+        </div>
 
-                <p>
+        <div class="skill">
+            <div class="skill-icon">🔧</div>
+            <div class="skill-name">GITHUB</div>
+        </div>
 
-                    I'm chcode — a developer who likes
-                    creating useful digital things.
-
-                </p>
-
-                <br>
-
-                <p>
-
-                    My main interests are web development,
-                    Python, Telegram bots, backend systems,
-                    automation and artificial intelligence.
-
-                </p>
-
-                <br>
-
-                <p>
-
-                    This website is intentionally personal.
-                    No corporate landing page energy here.
-
-                </p>
-
-            </div>
-
-
-            <div class="card code-card">
-
-                <div>
-                    <span class="key">nickname</span> =
-                    <span class="str">"chcode"</span>
-                </div>
-
-                <div>
-                    <span class="key">occupation</span> =
-                    <span class="str">"developer"</span>
-                </div>
-
-                <div>
-                    <span class="key">location</span> =
-                    <span class="str">"internet"</span>
-                </div>
-
-                <div>
-                    <span class="key">status</span> =
-                    <span class="str">"online"</span>
-                </div>
-
-                <div>
-                    <span class="key">coffee</span> =
-                    <span class="str">true</span>
-                </div>
-
-                <div>
-                    <span class="key">ideas</span> =
-                    <span class="num">∞</span>
-                </div>
-
-            </div>
-
+        <div class="skill">
+            <div class="skill-icon">🧠</div>
+            <div class="skill-name">AI API</div>
         </div>
 
     </div>
@@ -1847,201 +1073,149 @@ footer p{
 </section>
 
 
-<!-- =======================================================
-     PROJECTS
-     ======================================================= -->
+<!-- PROJECTS -->
 
-<section id="projects">
+<section class="section" id="projects">
 
-    <div class="container">
+    <div class="section-title">
+        <h2>ПРОЕКТЫ</h2>
+        <div class="line"></div>
+        <span>★</span>
+    </div>
 
-        <div class="section-label">
-            02 / PROJECTS
-        </div>
+    <div class="projects">
 
-        <h2 class="section-title">
-            Stuff I've <span>built.</span>
-        </h2>
+        <div class="window project">
 
-
-        <div class="projects">
-
-
-            <article class="project">
-
-                <div class="project-number">
-                    PROJECT 01
+            <div class="titlebar">
+                <span>📁 Csanaks</span>
+                <div class="title-buttons">
+                    <div class="win-btn">_</div>
+                    <div class="win-btn">□</div>
+                    <div class="win-btn">×</div>
                 </div>
+            </div>
 
-                <div class="project-icon">
-                    💿
-                </div>
+            <div class="project-body">
 
-                <h3>
-                    CSANAKS
-                </h3>
+                <div class="project-icon">💬</div>
+
+                <h3>Csanaks</h3>
 
                 <p>
-
-                    Modern messenger project with
-                    real-time communication, groups,
-                    channels, reactions and files.
-
+                    Современный мессенджер с чатами,
+                    группами, каналами, реакциями,
+                    профилями и WebSocket.
                 </p>
 
                 <div class="tags">
-
-                    <span class="tag">NODE.JS</span>
-                    <span class="tag">SQLITE</span>
+                    <span class="tag">NODE</span>
                     <span class="tag">WEBSOCKET</span>
-
+                    <span class="tag">SQLITE</span>
                 </div>
 
-            </article>
+            </div>
+
+        </div>
 
 
-            <article class="project">
+        <div class="window project">
 
-                <div class="project-number">
-                    PROJECT 02
+            <div class="titlebar">
+                <span>📁 Stargrad</span>
+                <div class="title-buttons">
+                    <div class="win-btn">_</div>
+                    <div class="win-btn">□</div>
+                    <div class="win-btn">×</div>
                 </div>
+            </div>
 
-                <div class="project-icon">
-                    🤖
-                </div>
+            <div class="project-body">
 
-                <h3>
-                    TELEGRAM BOTS
-                </h3>
+                <div class="project-icon">🏙️</div>
+
+                <h3>Stargrad</h3>
 
                 <p>
-
-                    Telegram bots for communities,
-                    RP projects, administration
-                    and automation.
-
+                    RP-город с экономикой,
+                    профессиями, образованием,
+                    государственными структурами
+                    и Telegram-ботом.
                 </p>
 
                 <div class="tags">
+                    <span class="tag">PYTHON</span>
+                    <span class="tag">AIOGRAM</span>
+                    <span class="tag">SQLITE</span>
+                </div>
 
+            </div>
+
+        </div>
+
+
+        <div class="window project">
+
+            <div class="titlebar">
+                <span>📁 Telegram Bots</span>
+                <div class="title-buttons">
+                    <div class="win-btn">_</div>
+                    <div class="win-btn">□</div>
+                    <div class="win-btn">×</div>
+                </div>
+            </div>
+
+            <div class="project-body">
+
+                <div class="project-icon">🤖</div>
+
+                <h3>Telegram Bots</h3>
+
+                <p>
+                    Боты для автоматизации,
+                    RP-проектов, бизнеса,
+                    уведомлений и управления.
+                </p>
+
+                <div class="tags">
                     <span class="tag">PYTHON</span>
                     <span class="tag">AIOGRAM</span>
                     <span class="tag">API</span>
-
                 </div>
 
-            </article>
+            </div>
+
+        </div>
 
 
-            <article class="project">
+        <div class="window project">
 
-                <div class="project-number">
-                    PROJECT 03
+            <div class="titlebar">
+                <span>📁 chcode.us</span>
+                <div class="title-buttons">
+                    <div class="win-btn">_</div>
+                    <div class="win-btn">□</div>
+                    <div class="win-btn">×</div>
                 </div>
+            </div>
 
-                <div class="project-icon">
-                    🧠
-                </div>
+            <div class="project-body">
 
-                <h3>
-                    AI SYSTEMS
-                </h3>
+                <div class="project-icon">💿</div>
+
+                <h3>Personal Website</h3>
 
                 <p>
-
-                    Experiments with AI,
-                    automation, intelligent
-                    interfaces and useful tools.
-
+                    Моя личная страница разработчика
+                    в стиле старого Интернета
+                    и Windows 2000.
                 </p>
 
                 <div class="tags">
-
-                    <span class="tag">AI</span>
-                    <span class="tag">AUTOMATION</span>
-                    <span class="tag">PYTHON</span>
-
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">Y2K</span>
                 </div>
-
-            </article>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =======================================================
-     SERVICES
-     ======================================================= -->
-
-<section id="services">
-
-    <div class="container">
-
-        <div class="section-label">
-            03 / SERVICES
-        </div>
-
-        <h2 class="section-title">
-            What I <span>do.</span>
-        </h2>
-
-
-        <div class="services">
-
-
-            <div class="service">
-
-                <div class="service-icon">
-                    🤖
-                </div>
-
-                <h3>
-                    TELEGRAM BOTS
-                </h3>
-
-                <p>
-                    Custom bots for communities,
-                    projects and automation.
-                </p>
-
-            </div>
-
-
-            <div class="service">
-
-                <div class="service-icon">
-                    🧠
-                </div>
-
-                <h3>
-                    AI INTEGRATION
-                </h3>
-
-                <p>
-                    AI integrations for bots,
-                    websites and applications.
-                </p>
-
-            </div>
-
-
-            <div class="service">
-
-                <div class="service-icon">
-                    ⚙
-                </div>
-
-                <h3>
-                    AUTOMATION
-                </h3>
-
-                <p>
-                    Turning repetitive work
-                    into simple software.
-                </p>
 
             </div>
 
@@ -2052,48 +1226,107 @@ footer p{
 </section>
 
 
-<!-- =======================================================
-     VISITOR COUNTER
-     ======================================================= -->
+<!-- SERVICES -->
 
-<section class="visitor-section">
+<section class="section" id="services">
 
-    <div class="container">
+    <div class="section-title">
+        <h2>УСЛУГИ</h2>
+        <div class="line"></div>
+        <span>✧</span>
+    </div>
 
-        <div class="section-label">
-            04 / VISITOR.LOG
+    <div class="services">
+
+        <div class="window service">
+            <div class="window-content">
+                <div class="icon">🌐</div>
+                <h3>WEB-САЙТЫ</h3>
+                <p>
+                    Лендинги, портфолио,
+                    веб-приложения и необычные
+                    сайты.
+                </p>
+            </div>
         </div>
 
-        <h2 class="section-title">
-            People who <span>visited.</span>
-        </h2>
-
-
-        <div class="visitor-box">
-
-            <div class="counter-label">
-                TOTAL VISITS ON THIS BROWSER
+        <div class="window service">
+            <div class="window-content">
+                <div class="icon">🤖</div>
+                <h3>TELEGRAM-БОТЫ</h3>
+                <p>
+                    Боты для бизнеса,
+                    сообществ, RP и
+                    автоматизации.
+                </p>
             </div>
+        </div>
 
-
-            <div
-                class="counter"
-                id="counter"
-            >
-
-                <div class="digit">0</div>
-                <div class="digit">0</div>
-                <div class="digit">0</div>
-                <div class="digit">0</div>
-                <div class="digit">0</div>
-                <div class="digit">0</div>
-
+        <div class="window service">
+            <div class="window-content">
+                <div class="icon">⚙️</div>
+                <h3>АВТОМАТИЗАЦИЯ</h3>
+                <p>
+                    API, базы данных,
+                    уведомления и
+                    автоматические процессы.
+                </p>
             </div>
+        </div>
+
+    </div>
+
+</section>
 
 
-            <div class="visitor-note">
+<!-- HISTORY -->
 
-                ★ thanks for visiting ★
+<section class="section" id="history">
+
+    <div class="section-title">
+        <h2>ИСТОРИЯ</h2>
+        <div class="line"></div>
+        <span>★</span>
+    </div>
+
+    <div class="window">
+
+        <div class="titlebar">
+            <span>📜 chcode_history.log</span>
+        </div>
+
+        <div class="window-content">
+
+            <div class="timeline">
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2024</div>
+                    <h3>Первые проекты</h3>
+                    <p>
+                        Начало экспериментов с программированием,
+                        Telegram-ботами и вебом.
+                    </p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2025</div>
+                    <h3>Больше разработки</h3>
+                    <p>
+                        Проекты становятся сложнее:
+                        базы данных, серверы, API,
+                        полноценные приложения.
+                    </p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2026</div>
+                    <h3>chcode</h3>
+                    <p>
+                        Собственные проекты, портфолио,
+                        AI-интеграции, мессенджер
+                        и новые эксперименты.
+                    </p>
+                </div>
 
             </div>
 
@@ -2104,121 +1337,196 @@ footer p{
 </section>
 
 
-<!-- =======================================================
-     FRIENDS / SPONSORS
-     ======================================================= -->
+<!-- WINDOWS 2000 -->
 
-<section id="friends">
+<section class="section" id="desktop">
 
-    <div class="container">
+    <div class="section-title">
+        <h2>WINDOWS 2000</h2>
+        <div class="line"></div>
+        <span>🪟</span>
+    </div>
 
-        <div class="section-label">
-            05 / FRIENDS.TXT
+    <div class="desktop">
+
+        <div class="desktop-icon">
+            <div class="icon">💻</div>
+            <span>My Computer</span>
         </div>
 
-        <h2 class="section-title">
-            Friends of the <span>site.</span>
-        </h2>
+        <div class="desktop-icon">
+            <div class="icon">📁</div>
+            <span>My Projects</span>
+        </div>
+
+        <div class="desktop-icon">
+            <div class="icon">🌐</div>
+            <span>Internet Explorer</span>
+        </div>
+
+        <div class="desktop-icon">
+            <div class="icon">🗑️</div>
+            <span>Recycle Bin</span>
+        </div>
 
 
-        <div class="friends">
+        <div class="fake-window window">
+
+            <div class="titlebar">
+                <span>🌐 Internet Explorer — chcode homepage</span>
+
+                <div class="title-buttons">
+                    <div class="win-btn">_</div>
+                    <div class="win-btn">□</div>
+                    <div class="win-btn">×</div>
+                </div>
+            </div>
+
+            <div class="window-content">
+
+                <div style="
+                    border:2px inset #aaa;
+                    padding:8px;
+                    margin-bottom:12px;
+                    font-size:12px;
+                ">
+                    Address:
+                    <b>http://chcode.dev/home</b>
+                </div>
+
+                <h2 style="font-family:Georgia">
+                    Welcome to the Internet!
+                </h2>
+
+                <p>
+                    Вы нашли секретную часть сайта.
+                </p>
+
+                <p>
+                    ★ You are visitor #<span id="desktopCounter">000001</span> ★
+                </p>
+
+                <button class="retro-button"
+                        onclick="alert('Windows 2000 says hello! ★')">
+                    OK
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 
 
-            <div class="friend">
+<!-- BADGES -->
 
-                <div class="friend-top">
+<section class="section">
 
-                    <div class="friend-logo">
-                        ?
-                    </div>
+    <div class="section-title">
+        <h2>WEB BADGES</h2>
+        <div class="line"></div>
+        <span>✦</span>
+    </div>
 
+    <div class="badges">
+
+        <div class="badge">HTML 5 ★</div>
+        <div class="badge">CSS 3 ★</div>
+        <div class="badge">PYTHON ★</div>
+        <div class="badge">GITHUB ★</div>
+        <div class="badge">100% HUMAN</div>
+        <div class="badge">Y2K FAN</div>
+        <div class="badge">BEST VIEWED</div>
+        <div class="badge">NO AI GLOW</div>
+        <div class="badge">WINDOWS 2000</div>
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section class="section" id="contacts">
+
+    <div class="section-title">
+        <h2>КОНТАКТЫ</h2>
+        <div class="line"></div>
+        <span>✉</span>
+    </div>
+
+    <div class="contact-grid">
+
+        <div class="window">
+
+            <div class="titlebar">
+                <span>📨 Contact chcode</span>
+            </div>
+
+            <div class="window-content">
+
+                <div class="contact-item">
+                    <div class="icon">📧</div>
                     <div>
-
-                        <h3>
-                            Your project
-                        </h3>
-
-                        <p>
-                            indie developer
-                        </p>
-
+                        <b>Россия</b><br>
+                        <a href="mailto:chcode@mail.ru">
+                            chcode@mail.ru
+                        </a>
                     </div>
-
                 </div>
 
-                <a href="#contact">
-                    become a friend →
+                <div class="contact-item">
+                    <div class="icon">🌎</div>
+                    <div>
+                        <b>Worldwide</b><br>
+                        <a href="mailto:chcodeus@gmail.com">
+                            chcodeus@gmail.com
+                        </a>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="icon">✈️</div>
+                    <div>
+                        <b>Telegram</b><br>
+                        <a href="https://t.me/vlaidst" target="_blank">
+                            @vlaidst
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="window">
+
+            <div class="titlebar">
+                <span>📝 Message</span>
+            </div>
+
+            <div class="window-content">
+
+                <p>
+                    Есть идея проекта?
+                </p>
+
+                <p>
+                    Напиши мне — обсудим задачу,
+                    технологии и возможный вариант
+                    реализации.
+                </p>
+
+                <a class="retro-button"
+                   href="mailto:chcodeus@gmail.com">
+                    ✉ НАПИСАТЬ
                 </a>
 
             </div>
 
-
-            <div class="friend">
-
-                <div class="friend-top">
-
-                    <div class="friend-logo">
-                        ★
-                    </div>
-
-                    <div>
-
-                        <h3>
-                            Your project
-                        </h3>
-
-                        <p>
-                            small web project
-                        </p>
-
-                    </div>
-
-                </div>
-
-                <a href="#contact">
-                    become a friend →
-                </a>
-
-            </div>
-
-
-            <div class="friend">
-
-                <div class="friend-top">
-
-                    <div class="friend-logo">
-                        +
-                    </div>
-
-                    <div>
-
-                        <h3>
-                            Your project
-                        </h3>
-
-                        <p>
-                            independent creator
-                        </p>
-
-                    </div>
-
-                </div>
-
-                <a href="#contact">
-                    become a friend →
-                </a>
-
-            </div>
-
-        </div>
-
-
-        <div class="sponsor-note">
-
-            Want to appear here?
-            Contact me for collaboration.
-            Only real projects and supporters are listed.
-
         </div>
 
     </div>
@@ -2226,76 +1534,29 @@ footer p{
 </section>
 
 
-<!-- =======================================================
-     CONTACT
-     ======================================================= -->
+<!-- COUNTER -->
 
-<section
-    class="contact"
-    id="contact"
->
+<section class="section">
 
-    <div class="container">
+    <div class="window">
 
-        <div class="contact-box">
+        <div class="titlebar">
+            <span>📊 Website Statistics</span>
+        </div>
 
-            <div class="section-label">
-                06 / CONTACT.EXE
+        <div class="window-content counter">
+
+            <div>
+                YOU ARE VISITOR
             </div>
 
-            <h2>
+            <div class="counter-number" id="counter">
+                000001
+            </div>
 
-                Let's build<br>
-
-                <span>
-                    something cool.
-                </span>
-
-            </h2>
-
-            <p style="color:#5b6b73">
-
-                Have an idea?
-                Send me a message.
-
+            <p class="retro" style="font-size:22px">
+                ★ THANK YOU FOR VISITING ★
             </p>
-
-
-            <div class="contacts">
-
-                <a
-                    class="contact-link"
-                    href="https://t.me/vlaidst"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    💬 @vlaidst
-                </a>
-
-                <a
-                    class="contact-link"
-                    href="mailto:chcode@mail.ru"
-                >
-                    🇷🇺 chcode@mail.ru
-                </a>
-
-                <a
-                    class="contact-link"
-                    href="mailto:chcodeus@gmail.com"
-                >
-                    🌎 chcodeus@gmail.com
-                </a>
-
-                <a
-                    class="contact-link"
-                    href="https://github.com/chcode-us"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    💻 GitHub
-                </a>
-
-            </div>
 
         </div>
 
@@ -2306,198 +1567,142 @@ footer p{
 </main>
 
 
-<!-- =======================================================
-     FOOTER
-     ======================================================= -->
-
 <footer>
 
-    <div class="container">
+    <div class="footer-stars">
+        ★ ✦ ★ ✧ ★
+    </div>
 
-        <div class="footer-logo">
-            💿 chcode
-        </div>
+    <div class="footer-logo">
+        CHCODE.DEV
+    </div>
 
-        <p>
-            Created with ♥, code & coffee.
-        </p>
+    <div class="footer-text">
+        Сделано с ♥ любовью, кофе и старым добрым Интернетом.
+    </div>
 
-        <div class="footer-badges">
-
-            <span class="footer-badge">
-                BEST VIEWED
-            </span>
-
-            <span class="footer-badge">
-                PERSONAL WEB
-            </span>
-
-            <span class="footer-badge">
-                EST. 2026
-            </span>
-
-            <span class="footer-badge">
-                ★ ★ ★
-            </span>
-
-        </div>
-
+    <div>
+        © 2026 chcode • Windows 2000 compatible
     </div>
 
 </footer>
 
 
+<div class="lang">
+    <button onclick="switchLanguage()">
+        🇷🇺 RU / EN
+    </button>
+</div>
+
+
 <script>
 
-/* =========================================================
-   LOADER
-   ========================================================= */
+/* =========================
+   VISITOR COUNTER
+========================= */
 
-window.addEventListener("load", () => {
+let visits = Number(localStorage.getItem("chcode_visits") || 0);
 
-    setTimeout(() => {
+visits++;
 
-        document
-            .getElementById("loader")
-            .classList
-            .add("hide");
+localStorage.setItem("chcode_visits", visits);
 
-    }, 1400);
+const formatted = String(visits).padStart(6, "0");
+
+document.getElementById("counter").textContent = formatted;
+
+document.getElementById("desktopCounter").textContent = formatted;
+
+
+/* =========================
+   WINDOWS 2000 DRAG
+========================= */
+
+document.querySelectorAll(".fake-window").forEach(win => {
+
+    const title = win.querySelector(".titlebar");
+
+    let dragging = false;
+    let offsetX = 0;
+    let offsetY = 0;
+
+    title.addEventListener("mousedown", e => {
+
+        dragging = true;
+
+        const rect = win.getBoundingClientRect();
+
+        offsetX = e.clientX - rect.left;
+        offsetY = e.clientY - rect.top;
+
+        win.style.transform = "none";
+        win.style.left = rect.left + "px";
+        win.style.top = rect.top + "px";
+    });
+
+    document.addEventListener("mousemove", e => {
+
+        if (!dragging) return;
+
+        win.style.left =
+            (e.clientX - offsetX) + "px";
+
+        win.style.top =
+            (e.clientY - offsetY) + "px";
+
+    });
+
+    document.addEventListener("mouseup", () => {
+        dragging = false;
+    });
 
 });
 
 
-/* =========================================================
-   LANGUAGE BUTTON
-   ========================================================= */
+/* =========================
+   SIMPLE RU / EN
+========================= */
 
-const languages = [
-    "RU",
-    "EN",
-    "DE",
-    "中文"
-];
+let english = false;
 
-let languageIndex = 0;
+function switchLanguage() {
 
-function cycleLanguage(){
+    english = !english;
 
-    languageIndex++;
+    if (english) {
 
-    if(languageIndex >= languages.length){
-        languageIndex = 0;
+        document.documentElement.lang = "en";
+
+        document.querySelector('a[href="#home"]').textContent = "Home";
+        document.querySelector('a[href="#about"]').textContent = "About";
+        document.querySelector('a[href="#skills"]').textContent = "Skills";
+        document.querySelector('a[href="#projects"]').textContent = "Projects";
+        document.querySelector('a[href="#services"]').textContent = "Services";
+        document.querySelector('a[href="#history"]').textContent = "History";
+        document.querySelector('a[href="#desktop"]').textContent = "Windows";
+        document.querySelector('a[href="#contacts"]').textContent = "Contact";
+
+        document.querySelector(".hero-subtitle").textContent =
+            "Developer from the Internet era";
+
+        document.querySelector(".hero-description").textContent =
+            "Hi! I'm chcode — a developer creating websites, Telegram bots, automation and digital projects. No endless AI gradients. Just code, Windows 2000, Internet and a little Y2K.";
+
+        document.querySelector("#about h2").textContent = "ABOUT ME";
+        document.querySelector("#skills h2").textContent = "SKILLS";
+        document.querySelector("#projects h2").textContent = "PROJECTS";
+        document.querySelector("#services h2").textContent = "SERVICES";
+        document.querySelector("#history h2").textContent = "HISTORY";
+        document.querySelector("#desktop h2").textContent = "WINDOWS 2000";
+        document.querySelector("#contacts h2").textContent = "CONTACT";
+
+    } else {
+
+        location.reload();
+
     }
 
-    document.querySelector(".lang").textContent =
-        languages[languageIndex];
-
 }
-
-
-/* =========================================================
-   VISITOR COUNTER
-   =========================================================
-
-   Local counter.
-
-   It stores visits in localStorage so the number survives
-   page reloads in the same browser.
-
-   It is intentionally not presented as a global analytics
-   counter because there is no backend attached to this
-   standalone HTML file.
-   */
-
-const VISITOR_KEY =
-    "chcode_personal_web_visits";
-
-let visits =
-    parseInt(
-        localStorage.getItem(VISITOR_KEY) || "0",
-        10
-    );
-
-visits++;
-
-localStorage.setItem(
-    VISITOR_KEY,
-    visits
-);
-
-
-function renderCounter(value){
-
-    const formatted =
-        String(value)
-            .padStart(6, "0")
-            .slice(-6);
-
-    const digits =
-        document.querySelectorAll(
-            "#counter .digit"
-        );
-
-    digits.forEach((digit, index) => {
-
-        digit.textContent =
-            formatted[index];
-
-    });
-
-}
-
-renderCounter(visits);
-
-
-/* =========================================================
-   SMOOTH LINKS
-   ========================================================= */
-
-document
-    .querySelectorAll('a[href^="#"]')
-    .forEach(link => {
-
-        link.addEventListener("click", event => {
-
-            const target =
-                document.querySelector(
-                    link.getAttribute("href")
-                );
-
-            if(!target) return;
-
-            event.preventDefault();
-
-            target.scrollIntoView({
-                behavior:"smooth",
-                block:"start"
-            });
-
-        });
-
-    });
-
-
-/* =========================================================
-   OLD SCHOOL CONSOLE MESSAGE
-   ========================================================= */
-
-console.log(
-`
-========================================
-        CHCODE PERSONAL WEB
-========================================
-
-Welcome to my website.
-
-Status: ONLINE
-Year: 2026
-Style: Y2K / Web 2000
-
-C:\\CHCODE> _
-========================================
-`
-);
 
 </script>
 
