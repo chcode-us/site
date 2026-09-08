@@ -3,10 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>chcode — Windows 2000</title>
+
+<title>chcode — Y2K Developer</title>
+<meta name="description" content="chcode — разработчик сайтов, Telegram-ботов, автоматизации и цифровых проектов.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=VT323&display=swap" rel="stylesheet">
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&display=swap');
+/* =========================================================
+   CHCODE — Y2K PERSONAL WEBSITE
+========================================================= */
+
+:root {
+    --bg: #d9d9d9;
+    --bg-dark: #a7a7a7;
+    --white: #ffffff;
+    --silver: #c9c9c9;
+    --silver-dark: #777;
+    --text: #151515;
+    --muted: #555;
+    --black: #050505;
+    --blue: #164f86;
+    --blue-dark: #0b3158;
+
+    --pixel: "Silkscreen", monospace;
+    --terminal: "VT323", monospace;
+    --normal: Tahoma, Arial, sans-serif;
+}
 
 * {
     box-sizing: border-box;
@@ -18,111 +44,157 @@ html {
 
 body {
     margin: 0;
+    color: var(--text);
     background:
-        radial-gradient(circle at 20% 20%, rgba(255,255,255,.9) 0 1px, transparent 2px),
-        radial-gradient(circle at 80% 30%, rgba(255,255,255,.8) 0 1px, transparent 2px),
-        linear-gradient(#d8d8d8, #a9a9a9);
-    background-size: 130px 130px, 190px 190px, auto;
-    color: #111;
-    font-family: Tahoma, Arial, sans-serif;
-    min-height: 100vh;
+        radial-gradient(circle at 15% 15%, rgba(255,255,255,.95) 0 1px, transparent 2px),
+        radial-gradient(circle at 75% 35%, rgba(255,255,255,.8) 0 1px, transparent 2px),
+        radial-gradient(circle at 35% 80%, rgba(255,255,255,.7) 0 1px, transparent 2px),
+        linear-gradient(135deg, #eeeeee 0%, #cfcfcf 35%, #a8a8a8 100%);
+    background-size: 150px 150px, 190px 190px, 230px 230px, auto;
+    background-attachment: fixed;
+    font-family: var(--normal);
+    overflow-x: hidden;
 }
 
-/* =========================
-   Y2K DECOR
-========================= */
+/* =========================================================
+   DECORATIVE STARS
+========================================================= */
 
-.star {
+.y2k-star {
     position: absolute;
-    color: white;
-    font-size: 22px;
-    text-shadow: 1px 1px #555;
-    user-select: none;
+    z-index: 0;
+    color: #fff;
+    font-family: serif;
+    font-weight: bold;
+    text-shadow:
+        1px 1px 0 #777,
+        0 0 4px rgba(255,255,255,.8);
     pointer-events: none;
+    user-select: none;
+    animation: starFloat 4s ease-in-out infinite;
 }
 
-.star.s1 { top: 90px; left: 5%; }
-.star.s2 { top: 300px; right: 8%; font-size: 30px; }
-.star.s3 { top: 680px; left: 9%; }
-.star.s4 { top: 1100px; right: 5%; font-size: 28px; }
-.star.s5 { top: 1600px; left: 4%; font-size: 32px; }
-.star.s6 { top: 2050px; right: 10%; }
-.star.s7 { top: 2700px; left: 8%; font-size: 26px; }
-.star.s8 { top: 3200px; right: 4%; }
+.star-1 { top: 110px; left: 4%; font-size: 22px; }
+.star-2 { top: 290px; right: 7%; font-size: 34px; animation-delay: .7s; }
+.star-3 { top: 650px; left: 8%; font-size: 18px; animation-delay: 1s; }
+.star-4 { top: 1030px; right: 5%; font-size: 28px; animation-delay: 1.7s; }
+.star-5 { top: 1450px; left: 3%; font-size: 30px; animation-delay: .3s; }
+.star-6 { top: 1870px; right: 9%; font-size: 19px; animation-delay: 2s; }
+.star-7 { top: 2350px; left: 6%; font-size: 35px; animation-delay: 1.3s; }
+.star-8 { top: 2820px; right: 4%; font-size: 25px; animation-delay: .5s; }
+
+@keyframes starFloat {
+    0%,100% {
+        transform: translateY(0) rotate(0);
+    }
+    50% {
+        transform: translateY(-7px) rotate(8deg);
+    }
+}
+
+/* =========================================================
+   CHROME
+========================================================= */
 
 .chrome {
-    background: linear-gradient(
-        145deg,
-        #ffffff 0%,
-        #dcdcdc 18%,
-        #888 42%,
-        #f8f8f8 58%,
-        #aaa 80%,
-        #fff 100%
-    );
-    border: 1px solid #555;
+    background:
+        linear-gradient(
+            135deg,
+            #fff 0%,
+            #dcdcdc 17%,
+            #858585 38%,
+            #f4f4f4 50%,
+            #999 65%,
+            #eeeeee 83%,
+            #777 100%
+        );
 }
 
-.pixel {
-    font-family: "Press Start 2P", monospace;
+.chrome-text {
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #666 35%,
+            #ffffff 48%,
+            #888 70%,
+            #eee 100%
+        );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
-.retro {
-    font-family: "VT323", monospace;
-}
+/* =========================================================
+   TOP INFO
+========================================================= */
 
-/* =========================
-   TOP BAR
-========================= */
-
-.top-strip {
-    height: 25px;
-    background: #eeeeee;
-    border-bottom: 1px solid #555;
+.top-info {
+    height: 26px;
     display: flex;
     align-items: center;
-    padding: 0 10px;
-    font-size: 11px;
     justify-content: space-between;
+    padding: 0 12px;
+
+    background: #ececec;
+    border-bottom: 1px solid #777;
+
+    font-size: 10px;
+    color: #333;
 }
 
-.status {
+.top-right {
     display: flex;
-    gap: 10px;
+    gap: 7px;
 }
 
-.status span {
+.top-badge {
+    border: 1px solid #888;
     padding: 2px 7px;
-    border: 1px solid #777;
-    background: #ddd;
+    background: linear-gradient(#fff,#ccc);
 }
 
 .online {
-    color: #064b00;
+    color: #185e18;
     font-weight: bold;
 }
 
-/* =========================
+/* =========================================================
    HEADER
-========================= */
+========================================================= */
 
 header {
-    background:
-        linear-gradient(#ffffff, #d2d2d2 45%, #9a9a9a 50%, #dedede 53%, #bdbdbd);
-    border-bottom: 2px solid #555;
-    box-shadow: 0 2px 5px rgba(0,0,0,.35);
-    padding: 14px 18px;
     position: sticky;
     top: 0;
     z-index: 1000;
+
+    padding: 14px 18px;
+
+    border-bottom: 2px solid #555;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #dddddd 45%,
+            #999999 50%,
+            #e8e8e8 55%,
+            #bdbdbd 100%
+        );
+
+    box-shadow:
+        0 2px 5px rgba(0,0,0,.35),
+        inset 0 1px rgba(255,255,255,.9);
 }
 
 .header-inner {
     max-width: 1250px;
     margin: auto;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     gap: 20px;
 }
 
@@ -130,82 +202,124 @@ header {
     display: flex;
     align-items: center;
     gap: 13px;
+    min-width: max-content;
 }
 
 .logo-disc {
-    width: 48px;
-    height: 48px;
+    width: 50px;
+    height: 50px;
+
     border-radius: 50%;
+
     background:
-        radial-gradient(circle, #eee 0 13%, #999 14% 18%, transparent 19%),
-        conic-gradient(#fff, #888, #eee, #666, #fff);
-    border: 2px solid #444;
+        radial-gradient(
+            circle,
+            #777 0 7%,
+            #e7e7e7 8% 14%,
+            #999 15% 19%,
+            transparent 20%
+        ),
+        conic-gradient(
+            #fff,
+            #777,
+            #eee,
+            #555,
+            #ddd,
+            #fff
+        );
+
+    border: 2px solid #555;
+
     box-shadow:
-        inset 2px 2px 4px white,
+        inset 2px 2px 4px #fff,
+        inset -2px -2px 4px #444,
         2px 2px 0 #555;
-    animation: spin 8s linear infinite;
+
+    animation: discSpin 9s linear infinite;
 }
 
-@keyframes spin {
-    to { transform: rotate(360deg); }
+@keyframes discSpin {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
 
-.logo-text {
+.logo-name {
     font-size: 25px;
-    font-weight: bold;
+    font-weight: 900;
     letter-spacing: -2px;
 }
 
-.logo-text small {
+.logo-sub {
     display: block;
-    font-family: "Press Start 2P", monospace;
-    font-size: 7px;
+    margin-top: 4px;
+
+    font-family: var(--pixel);
+    font-size: 6px;
     letter-spacing: 0;
     color: #444;
-    margin-top: 5px;
 }
 
 nav {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-end;
     gap: 5px;
 }
 
 nav a {
     color: #111;
     text-decoration: none;
-    font-size: 12px;
+
     padding: 7px 10px;
-    border: 1px solid #777;
+
+    font-size: 11px;
+    font-weight: bold;
+
     background: linear-gradient(#fff,#ccc);
-    box-shadow: inset 1px 1px white, 1px 1px #555;
+
+    border: 1px solid #777;
+
+    box-shadow:
+        inset 1px 1px 0 #fff,
+        1px 1px 0 #555;
+
+    transition: .12s;
 }
 
 nav a:hover {
-    background: linear-gradient(#ddd,#fff);
+    background: linear-gradient(#d8d8d8,#fff);
     transform: translateY(1px);
 }
 
-/* =========================
+/* =========================================================
    MARQUEE
-========================= */
+========================================================= */
 
 .marquee {
-    background: #111;
-    color: #fff;
     overflow: hidden;
     white-space: nowrap;
+
+    background: #090909;
+    color: #fff;
+
     border-bottom: 2px solid #555;
-    font-family: "VT323", monospace;
+
+    font-family: var(--terminal);
     font-size: 20px;
+
     padding: 3px 0;
 }
 
-.marquee div {
+.marquee-track {
     display: inline-block;
     padding-left: 100%;
-    animation: marquee 22s linear infinite;
+
+    animation: marquee 25s linear infinite;
 }
 
 @keyframes marquee {
@@ -214,798 +328,1207 @@ nav a:hover {
     }
 }
 
-/* =========================
+/* =========================================================
    MAIN
-========================= */
+========================================================= */
 
 main {
-    max-width: 1200px;
-    margin: 30px auto;
-    padding: 0 15px;
+    max-width: 1220px;
+    margin: auto;
+    padding: 0 18px;
 }
 
-.section {
-    margin: 65px 0;
+section {
+    position: relative;
+    z-index: 1;
+    margin: 80px 0;
 }
 
-.section-title {
+/* =========================================================
+   SECTION TITLES
+========================================================= */
+
+.section-heading {
     display: flex;
     align-items: center;
-    gap: 12px;
-    margin-bottom: 18px;
+    gap: 13px;
+
+    margin-bottom: 22px;
 }
 
-.section-title h2 {
-    font-family: "Press Start 2P", monospace;
-    font-size: 18px;
+.section-heading h2 {
     margin: 0;
+
+    font-family: var(--pixel);
+    font-size: 17px;
+    line-height: 1.5;
 }
 
-.section-title .line {
-    height: 2px;
+.section-line {
     flex: 1;
-    background: #555;
+    height: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #444,
+            #aaa,
+            #fff,
+            #666
+        );
 }
 
-/* =========================
-   WINDOWS
-========================= */
-
-.window {
-    background: #d4d0c8;
-    border: 2px solid;
-    border-color: #fff #404040 #404040 #fff;
-    box-shadow: 3px 3px 0 #333;
+.section-symbol {
+    font-size: 23px;
 }
 
-.titlebar {
-    height: 25px;
-    background: linear-gradient(
-        90deg,
-        #0b3d91,
-        #3973c7 60%,
-        #0b3d91
-    );
-    color: white;
-    font-size: 12px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    padding: 0 5px;
-    justify-content: space-between;
-    cursor: move;
-}
-
-.title-buttons {
-    display: flex;
-    gap: 2px;
-}
-
-.win-btn {
-    width: 19px;
-    height: 18px;
-    background: #d4d0c8;
-    color: #111;
-    border: 1px solid;
-    border-color: #fff #555 #555 #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 11px;
-}
-
-.window-content {
-    padding: 20px;
-}
-
-/* =========================
+/* =========================================================
    HERO
-========================= */
+========================================================= */
 
 .hero {
-    min-height: 590px;
-    display: grid;
-    grid-template-columns: 1.25fr .75fr;
-    gap: 30px;
-    align-items: center;
-}
+    min-height: 650px;
 
-.hero-text {
-    position: relative;
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    align-items: center;
+
+    gap: 50px;
+
+    padding-top: 35px;
 }
 
 .hero-kicker {
     display: inline-block;
-    background: #111;
+
+    padding: 8px 12px;
+
+    background: #0c0c0c;
     color: #fff;
-    padding: 7px 11px;
-    font-family: "Press Start 2P", monospace;
+
+    font-family: var(--pixel);
     font-size: 8px;
-    margin-bottom: 15px;
+
+    box-shadow: 3px 3px 0 #777;
 }
 
 .hero h1 {
-    margin: 0;
-    font-size: clamp(52px, 8vw, 105px);
-    letter-spacing: -7px;
-    line-height: .85;
-    background: linear-gradient(#fff, #777, #eee, #666);
-    -webkit-background-clip: text;
-    color: transparent;
-    filter: drop-shadow(2px 3px 0 #444);
+    margin: 22px 0 0;
+
+    font-family: var(--normal);
+    font-size: clamp(65px, 11vw, 135px);
+
+    line-height: .78;
+    letter-spacing: -9px;
+
+    filter: drop-shadow(3px 4px 0 #555);
 }
 
-.hero h1 span {
+.hero h1 .dark {
     color: #111;
-    -webkit-text-fill-color: #111;
 }
 
 .hero-subtitle {
-    font-family: "VT323", monospace;
-    font-size: 34px;
-    margin: 25px 0;
+    margin-top: 30px;
+
+    font-family: var(--terminal);
+    font-size: 37px;
 }
 
 .hero-description {
-    max-width: 650px;
-    line-height: 1.7;
+    max-width: 690px;
+
+    margin-top: 17px;
+
     font-size: 15px;
+    line-height: 1.75;
+
+    color: #292929;
 }
 
 .hero-buttons {
-    margin-top: 25px;
     display: flex;
     flex-wrap: wrap;
+
     gap: 10px;
+
+    margin-top: 26px;
 }
 
 .retro-button {
     display: inline-block;
+
+    padding: 10px 15px;
+
     color: #111;
     text-decoration: none;
-    background: linear-gradient(#fff,#d4d4d4);
+
+    background: linear-gradient(#fff,#d0d0d0);
+
     border: 2px solid;
     border-color: #fff #555 #555 #fff;
-    padding: 10px 17px;
+
     box-shadow: 2px 2px 0 #222;
+
+    font-size: 11px;
     font-weight: bold;
-    font-size: 12px;
+
+    transition: .1s;
+}
+
+.retro-button:hover {
+    background: linear-gradient(#d8d8d8,#fff);
 }
 
 .retro-button:active {
     border-color: #555 #fff #fff #555;
     box-shadow: none;
+
     transform: translate(2px,2px);
 }
 
-/* =========================
-   COMPUTER
-========================= */
+/* =========================================================
+   HERO GRAPHIC
+========================================================= */
 
-.pc {
-    text-align: center;
+.hero-graphic {
+    position: relative;
 }
 
-.monitor {
-    background: #cfcfcf;
-    border: 3px solid;
-    border-color: #fff #555 #555 #fff;
-    padding: 15px;
-    box-shadow: 7px 7px 0 #333;
+.chrome-card {
+    padding: 12px;
+
+    border: 1px solid #555;
+
+    box-shadow:
+        6px 7px 0 #444,
+        inset 1px 1px white;
 }
 
-.screen {
-    background: #0c270c;
-    color: #71ff71;
-    height: 270px;
-    border: 7px solid #555;
-    padding: 18px;
-    text-align: left;
-    font-family: "VT323", monospace;
-    font-size: 20px;
-    overflow: hidden;
-    box-shadow: inset 0 0 20px #000;
+.card-screen {
+    min-height: 365px;
+
+    background:
+        repeating-linear-gradient(
+            0deg,
+            rgba(255,255,255,.04) 0,
+            rgba(255,255,255,.04) 1px,
+            transparent 1px,
+            transparent 4px
+        ),
+        #151515;
+
+    color: #eee;
+
+    padding: 20px;
+
+    border: 5px solid #888;
+
+    box-shadow:
+        inset 0 0 0 2px #222,
+        inset 0 0 30px rgba(255,255,255,.05);
 }
 
-.screen .cursor {
-    animation: blink 1s infinite;
+.card-top {
+    display: flex;
+    justify-content: space-between;
+
+    color: #aaa;
+
+    font-family: var(--pixel);
+    font-size: 7px;
+
+    border-bottom: 1px solid #555;
+
+    padding-bottom: 12px;
 }
 
-@keyframes blink {
-    50% { opacity: 0; }
+.code {
+    margin-top: 20px;
+
+    font-family: var(--terminal);
+    font-size: 21px;
+
+    line-height: 1.3;
 }
 
-.monitor-bottom {
-    width: 150px;
-    height: 25px;
-    background: #aaa;
-    margin: 0 auto;
-    border: 2px solid #555;
+.code .dim {
+    color: #777;
 }
 
-.keyboard {
-    margin-top: 15px;
-    display: grid;
-    grid-template-columns: repeat(14,1fr);
-    gap: 3px;
+.code .white {
+    color: #fff;
 }
 
-.key {
-    height: 15px;
-    background: #ddd;
-    border: 1px solid #888;
-    box-shadow: inset 1px 1px #fff;
+.code-cursor {
+    animation: cursorBlink 1s infinite;
 }
 
-/* =========================
+@keyframes cursorBlink {
+    50% {
+        opacity: 0;
+    }
+}
+
+.disc-decoration {
+    position: absolute;
+
+    width: 125px;
+    height: 125px;
+
+    right: -35px;
+    bottom: -45px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle,
+            #333 0 8%,
+            #ddd 9% 11%,
+            #888 12% 15%,
+            transparent 16%
+        ),
+        conic-gradient(
+            #eee,
+            #777,
+            #fff,
+            #aaa,
+            #555,
+            #eee
+        );
+
+    border: 3px solid #555;
+
+    box-shadow:
+        3px 4px 0 #444,
+        inset 3px 3px 6px #fff;
+
+    animation: discSpin 12s linear infinite;
+}
+
+/* =========================================================
+   WINDOWS / CARDS
+========================================================= */
+
+.retro-window {
+    background: #d4d4d4;
+
+    border: 1px solid #555;
+
+    box-shadow:
+        4px 4px 0 #555,
+        inset 1px 1px white;
+}
+
+.window-head {
+    padding: 7px 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #222,
+            #777,
+            #222
+        );
+
+    color: white;
+
+    font-family: var(--pixel);
+    font-size: 8px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.window-dots {
+    letter-spacing: 3px;
+}
+
+.window-body {
+    padding: 22px;
+}
+
+/* =========================================================
    ABOUT
-========================= */
+========================================================= */
 
 .about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 22px;
 }
 
-.info-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.about-text {
+    font-size: 14px;
+    line-height: 1.8;
 }
 
-.info-list li {
+.info-table {
+    width: 100%;
+    border-collapse: collapse;
+
+    font-size: 13px;
+}
+
+.info-table td {
     padding: 9px;
+
     border-bottom: 1px dotted #777;
 }
 
-.info-list b {
-    display: inline-block;
-    width: 120px;
+.info-table td:first-child {
+    width: 130px;
+    font-weight: bold;
 }
 
-/* =========================
-   SKILLS
-========================= */
+/* =========================================================
+   TERMINAL
+========================================================= */
 
-.skills {
+.terminal-box {
+    background: #101010;
+
+    border: 4px solid #777;
+
+    box-shadow:
+        4px 4px 0 #444,
+        inset 0 0 20px rgba(255,255,255,.03);
+
+    color: #ddd;
+
+    overflow: hidden;
+}
+
+.terminal-header {
+    padding: 7px 10px;
+
+    background: linear-gradient(#eee,#aaa);
+
+    color: #111;
+
+    border-bottom: 2px solid #555;
+
+    font-family: var(--pixel);
+    font-size: 7px;
+}
+
+.terminal-output {
+    height: 180px;
+
+    overflow-y: auto;
+
+    padding: 14px;
+
+    font-family: var(--terminal);
+    font-size: 20px;
+
+    line-height: 1.2;
+}
+
+.terminal-line {
+    margin-bottom: 5px;
+}
+
+.terminal-muted {
+    color: #888;
+}
+
+.terminal-input-row {
+    display: flex;
+    align-items: center;
+
+    border-top: 1px solid #555;
+
+    padding: 10px 13px;
+
+    font-family: var(--terminal);
+    font-size: 20px;
+}
+
+.prompt {
+    white-space: nowrap;
+    color: #fff;
+}
+
+#terminalInput {
+    flex: 1;
+
+    min-width: 0;
+
+    margin-left: 7px;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+    color: #fff;
+
+    font-family: var(--terminal);
+    font-size: 20px;
+}
+
+/* =========================================================
+   SKILLS
+========================================================= */
+
+.skills-grid {
     display: grid;
     grid-template-columns: repeat(4,1fr);
+
     gap: 12px;
 }
 
 .skill {
+    min-height: 130px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
     text-align: center;
-    padding: 18px 10px;
-    background: linear-gradient(#fff,#ccc);
+
+    padding: 15px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fff,
+            #bcbcbc
+        );
+
     border: 1px solid #777;
-    box-shadow: 2px 2px 0 #555;
+
+    box-shadow:
+        inset 1px 1px #fff,
+        3px 3px #555;
+
+    transition: .15s;
+}
+
+.skill:hover {
+    transform: translate(-1px,-1px);
+    box-shadow:
+        inset 1px 1px #fff,
+        5px 5px #555;
 }
 
 .skill-icon {
-    font-size: 34px;
-    margin-bottom: 10px;
+    font-size: 35px;
+    margin-bottom: 13px;
 }
 
 .skill-name {
-    font-family: "Press Start 2P";
-    font-size: 9px;
+    font-family: var(--pixel);
+    font-size: 8px;
 }
 
-/* =========================
+/* =========================================================
    PROJECTS
-========================= */
+========================================================= */
 
-.projects {
+.projects-grid {
     display: grid;
     grid-template-columns: repeat(2,1fr);
-    gap: 20px;
+    gap: 22px;
 }
 
-.project {
-    position: relative;
+.project-card {
+    min-height: 250px;
 }
 
 .project-body {
-    padding: 20px;
+    padding: 22px;
+}
+
+.project-top {
+    display: flex;
+    gap: 16px;
+    align-items: center;
 }
 
 .project-icon {
-    font-size: 42px;
-    float: left;
-    margin-right: 15px;
+    width: 62px;
+    height: 62px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 35px;
+
+    background: linear-gradient(#fff,#aaa);
+
+    border: 2px solid;
+    border-color: #fff #555 #555 #fff;
+
+    box-shadow: 2px 2px #444;
 }
 
-.project h3 {
-    margin-top: 0;
-    font-size: 20px;
+.project-title {
+    margin: 0;
+    font-size: 21px;
 }
 
-.project p {
-    line-height: 1.6;
-    font-size: 14px;
-    clear: both;
+.project-description {
+    margin-top: 18px;
+
+    font-size: 13px;
+    line-height: 1.7;
 }
 
 .tags {
     display: flex;
     flex-wrap: wrap;
     gap: 5px;
+
+    margin-top: 18px;
 }
 
 .tag {
-    font-family: "Press Start 2P";
-    font-size: 7px;
-    padding: 6px;
+    padding: 6px 8px;
+
     background: #111;
-    color: white;
+    color: #fff;
+
+    font-family: var(--pixel);
+    font-size: 6px;
 }
 
-/* =========================
+/* =========================================================
    SERVICES
-========================= */
+========================================================= */
 
-.services {
+.services-grid {
     display: grid;
     grid-template-columns: repeat(3,1fr);
-    gap: 15px;
+    gap: 17px;
 }
 
 .service {
-    padding: 20px;
     text-align: center;
 }
 
-.service .icon {
+.service-icon {
     font-size: 45px;
+    margin-bottom: 12px;
 }
 
 .service h3 {
-    font-size: 16px;
+    font-family: var(--pixel);
+    font-size: 9px;
+    line-height: 1.7;
 }
 
-/* =========================
+.service p {
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* =========================================================
+   Y2K STUFF
+========================================================= */
+
+.y2k-panel {
+    padding: 24px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff,
+            #bdbdbd 40%,
+            #eee 60%,
+            #999
+        );
+
+    border: 1px solid #555;
+
+    box-shadow:
+        inset 2px 2px white,
+        4px 4px #555;
+}
+
+.y2k-panel h3 {
+    margin-top: 0;
+
+    font-family: var(--pixel);
+    font-size: 12px;
+}
+
+.y2k-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    gap: 9px;
+
+    margin-top: 20px;
+}
+
+.y2k-badge {
+    padding: 9px 12px;
+
+    min-width: 100px;
+
+    background: linear-gradient(#fff,#aaa);
+
+    border: 2px solid;
+    border-color: #fff #555 #555 #fff;
+
+    box-shadow: 2px 2px #333;
+
+    font-family: var(--pixel);
+    font-size: 6px;
+}
+
+/* =========================================================
    TIMELINE
-========================= */
+========================================================= */
 
 .timeline {
-    border-left: 4px solid #555;
+    border-left: 3px solid #666;
+
     margin-left: 20px;
     padding-left: 30px;
 }
 
 .timeline-item {
     position: relative;
-    margin-bottom: 35px;
+    margin-bottom: 38px;
 }
 
 .timeline-item::before {
     content: "★";
+
     position: absolute;
-    left: -47px;
-    top: -5px;
-    font-size: 23px;
+
+    left: -46px;
+    top: -7px;
+
+    font-size: 24px;
+
+    color: #222;
+
+    text-shadow: 1px 1px white;
 }
 
 .timeline-year {
-    font-family: "Press Start 2P";
-    font-size: 9px;
+    font-family: var(--pixel);
+    font-size: 8px;
 }
 
-/* =========================
-   WINDOWS DESKTOP
-========================= */
-
-.desktop {
-    min-height: 390px;
-    position: relative;
-    background:
-        linear-gradient(90deg,rgba(255,255,255,.15) 1px,transparent 1px),
-        linear-gradient(rgba(255,255,255,.15) 1px,transparent 1px),
-        #008080;
-    background-size: 20px 20px;
-    border: 3px solid;
-    border-color: #555 #fff #fff #555;
-    overflow: hidden;
+.timeline h3 {
+    margin-bottom: 5px;
 }
 
-.desktop-icon {
-    width: 85px;
-    color: white;
-    text-align: center;
-    margin: 18px;
-    cursor: pointer;
-    text-shadow: 1px 1px #000;
-}
-
-.desktop-icon .icon {
-    font-size: 38px;
-    display: block;
-}
-
-.desktop-icon span {
-    font-size: 11px;
-    display: block;
-}
-
-.fake-window {
-    position: absolute;
-    width: 430px;
-    left: 50%;
-    top: 35px;
-    transform: translateX(-50%);
-}
-
-.fake-window .window-content {
-    min-height: 190px;
-    background: white;
-}
-
-/* =========================
-   BADGES
-========================= */
-
-.badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    justify-content: center;
-}
-
-.badge {
-    min-width: 115px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(#fff,#aaa);
-    border: 2px solid;
-    border-color: #fff #555 #555 #fff;
-    font-family: "Press Start 2P";
-    font-size: 7px;
-    box-shadow: 2px 2px #333;
-}
-
-/* =========================
-   COUNTER
-========================= */
-
-.counter {
-    text-align: center;
-    margin: 20px 0;
-}
-
-.counter-number {
-    display: inline-block;
-    background: #000;
-    color: #00ff00;
-    padding: 8px 15px;
-    font-family: "VT323";
-    font-size: 28px;
-    letter-spacing: 5px;
-    border: 3px inset #aaa;
-}
-
-/* =========================
+/* =========================================================
    CONTACT
-========================= */
+========================================================= */
 
 .contact-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+
+    gap: 22px;
 }
 
-.contact-item {
+.contact-row {
     display: flex;
-    gap: 15px;
     align-items: center;
-    padding: 13px;
+
+    gap: 15px;
+
+    padding: 14px 0;
+
     border-bottom: 1px dotted #777;
 }
 
-.contact-item .icon {
-    font-size: 30px;
+.contact-icon {
+    width: 40px;
+    text-align: center;
+
+    font-size: 28px;
 }
 
-.contact-item a {
-    color: #064b91;
+.contact-row a {
+    color: #104f87;
+    font-weight: bold;
 }
 
-/* =========================
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
 
 footer {
-    background: #c0c0c0;
-    border-top: 3px solid #555;
-    padding: 35px 15px;
+    margin-top: 100px;
+
+    padding: 45px 20px;
+
     text-align: center;
-}
 
-.footer-logo {
-    font-family: "Press Start 2P";
-    font-size: 15px;
-}
+    background:
+        linear-gradient(
+            180deg,
+            #eee,
+            #bbb 50%,
+            #ddd
+        );
 
-.footer-text {
-    font-family: "VT323";
-    font-size: 21px;
-    margin: 15px 0;
+    border-top: 3px solid #555;
 }
 
 .footer-stars {
     font-size: 25px;
-    letter-spacing: 10px;
+    letter-spacing: 9px;
 }
 
-/* =========================
-   LANGUAGE
-========================= */
+.footer-logo {
+    margin-top: 18px;
 
-.lang {
+    font-family: var(--pixel);
+    font-size: 15px;
+}
+
+.footer-text {
+    margin-top: 14px;
+
+    font-family: var(--terminal);
+    font-size: 22px;
+}
+
+.footer-small {
+    margin-top: 20px;
+
+    font-size: 10px;
+    color: #555;
+}
+
+/* =========================================================
+   LANGUAGE
+========================================================= */
+
+.language-switch {
     position: fixed;
+
     right: 15px;
     bottom: 15px;
+
     z-index: 5000;
 }
 
-.lang button {
+.language-switch button {
+    padding: 9px 12px;
+
     cursor: pointer;
-    background: #d4d0c8;
+
+    background: #d4d4d4;
+
     border: 2px solid;
     border-color: #fff #555 #555 #fff;
-    padding: 9px 12px;
+
+    box-shadow: 2px 2px #222;
+
     font-weight: bold;
 }
 
-/* =========================
+/* =========================================================
    RESPONSIVE
-========================= */
+========================================================= */
 
-@media(max-width: 900px) {
-    .hero,
+@media (max-width: 950px) {
+
+    .hero {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-graphic {
+        max-width: 650px;
+        width: 100%;
+        margin: auto;
+    }
+
     .about-grid,
     .contact-grid {
         grid-template-columns: 1fr;
     }
 
-    .skills {
+    .skills-grid {
         grid-template-columns: repeat(2,1fr);
     }
 
-    .services,
-    .projects {
+    .services-grid {
         grid-template-columns: 1fr;
     }
 
     nav {
         display: none;
     }
+}
+
+@media (max-width: 650px) {
+
+    main {
+        padding: 0 12px;
+    }
+
+    section {
+        margin: 55px 0;
+    }
 
     .hero {
         min-height: auto;
-    }
-
-    .fake-window {
-        width: 90%;
-    }
-}
-
-@media(max-width: 500px) {
-    .skills {
-        grid-template-columns: 1fr;
+        padding-top: 40px;
     }
 
     .hero h1 {
-        font-size: 55px;
+        font-size: 68px;
+        letter-spacing: -6px;
     }
 
-    .keyboard {
-        grid-template-columns: repeat(7,1fr);
+    .hero-subtitle {
+        font-size: 29px;
+    }
+
+    .skills-grid,
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card-screen {
+        min-height: 300px;
+    }
+
+    .top-info {
+        font-size: 8px;
+    }
+
+    .top-right {
+        display: none;
+    }
+
+    .logo-sub {
+        display: none;
+    }
+
+    .disc-decoration {
+        width: 90px;
+        height: 90px;
+        right: -10px;
     }
 }
 </style>
 </head>
 
+
 <body>
 
-<div class="star s1">✦</div>
-<div class="star s2">★</div>
-<div class="star s3">✧</div>
-<div class="star s4">✦</div>
-<div class="star s5">★</div>
-<div class="star s6">✧</div>
-<div class="star s7">✦</div>
-<div class="star s8">★</div>
+<!-- DECOR -->
 
-<div class="top-strip">
-    <div>chcode.exe — personal homepage</div>
-    <div class="status">
-        <span class="online">● ONLINE</span>
-        <span>Windows 2000</span>
+<div class="y2k-star star-1">✦</div>
+<div class="y2k-star star-2">★</div>
+<div class="y2k-star star-3">✧</div>
+<div class="y2k-star star-4">✦</div>
+<div class="y2k-star star-5">★</div>
+<div class="y2k-star star-6">✧</div>
+<div class="y2k-star star-7">✦</div>
+<div class="y2k-star star-8">★</div>
+
+
+<!-- TOP -->
+
+<div class="top-info">
+
+    <div>
+        chcode.dev / personal homepage
     </div>
+
+    <div class="top-right">
+        <span class="top-badge online">● ONLINE</span>
+        <span class="top-badge">Y2K MODE</span>
+        <span class="top-badge">v2.026</span>
+    </div>
+
 </div>
 
+
+<!-- HEADER -->
+
 <header>
+
     <div class="header-inner">
 
         <div class="logo">
+
             <div class="logo-disc"></div>
-            <div class="logo-text">
-                chcode
-                <small>© 2000—2026 INTERNET USER</small>
+
+            <div>
+                <div class="logo-name">chcode</div>
+
+                <span class="logo-sub">
+                    INTERNET USER / DEVELOPER
+                </span>
             </div>
+
         </div>
 
+
         <nav>
+
             <a href="#home">Главная</a>
             <a href="#about">Обо мне</a>
             <a href="#skills">Навыки</a>
             <a href="#projects">Проекты</a>
             <a href="#services">Услуги</a>
-            <a href="#history">История</a>
-            <a href="#desktop">Windows</a>
+            <a href="#terminal">Terminal</a>
             <a href="#contacts">Контакты</a>
+
         </nav>
 
     </div>
+
 </header>
 
+
+<!-- MARQUEE -->
+
 <div class="marquee">
-    <div>
-        ★ WELCOME TO CHCODE.DEV ★ РАЗРАБОТКА • PYTHON • TELEGRAM • WEB • AI • AUTOMATION ★ BEST VIEWED IN 1024×768 ★
+
+    <div class="marquee-track">
+        ★ WELCOME TO CHCODE ★ PYTHON • WEB • TELEGRAM • AUTOMATION • AI • Y2K INTERNET ★ BEST VIEWED WITH YOUR FAVORITE BROWSER ★
     </div>
+
 </div>
+
 
 <main>
 
-<!-- HERO -->
 
-<section class="hero section" id="home">
+<!-- =====================================================
+     HERO
+===================================================== -->
 
-    <div class="hero-text">
+<section class="hero" id="home">
+
+    <div>
 
         <div class="hero-kicker">
-            PERSONAL HOMEPAGE v2.000
+            PERSONAL HOMEPAGE // 2000→2026
         </div>
 
-        <h1>
-            ch<span>code</span>
+        <h1 class="chrome-text">
+            ch<span class="dark">code</span>
         </h1>
 
         <div class="hero-subtitle">
-            Разработчик из эпохи Интернета
+            Разработчик. Создатель. Интернет.
         </div>
 
         <p class="hero-description">
-            Привет! Я chcode — разработчик, который создаёт сайты,
-            Telegram-ботов, автоматизацию и цифровые проекты.
-            Здесь нет бесконечных AI-градиентов.
-            Только код, Windows 2000, Интернет и немного Y2K.
+            Привет! Я chcode — разработчик, который создаёт
+            сайты, Telegram-ботов, автоматизацию и цифровые
+            проекты. Люблю чистый код, необычные интерфейсы
+            и эстетику старого Интернета.
         </p>
 
         <div class="hero-buttons">
-            <a class="retro-button" href="#projects">★ МОИ ПРОЕКТЫ</a>
-            <a class="retro-button" href="#contacts">✉ СВЯЗАТЬСЯ</a>
-            <a class="retro-button" href="#desktop">🖥 MY COMPUTER</a>
+
+            <a class="retro-button" href="#projects">
+                ★ ПРОЕКТЫ
+            </a>
+
+            <a class="retro-button" href="#about">
+                ✦ ОБО МНЕ
+            </a>
+
+            <a class="retro-button" href="#terminal">
+                &gt; TERMINAL
+            </a>
+
         </div>
 
     </div>
 
-    <div class="pc">
 
-        <div class="monitor">
+    <div class="hero-graphic">
 
-            <div class="screen">
-                Microsoft(R) Windows 2000<br>
-                Copyright Microsoft Corp.<br><br>
+        <div class="chrome-card">
 
-                C:\CHCODE&gt; whoami<br>
-                chcode<br><br>
+            <div class="card-screen">
 
-                C:\CHCODE&gt; status<br>
-                developer.exe<br>
-                STATUS: ONLINE<br>
-                LOCATION: INTERNET<br>
-                SYSTEM: WIN2000<br><br>
+                <div class="card-top">
 
-                C:\CHCODE&gt; _
-                <span class="cursor">█</span>
+                    <span>CHCODE.EXE</span>
+                    <span>ONLINE</span>
+
+                </div>
+
+
+                <div class="code">
+
+                    <div class="dim">
+                        // welcome to my homepage
+                    </div>
+
+                    <br>
+
+                    <div>
+                        <span class="white">const</span>
+                        developer = {
+                    </div>
+
+                    <div>
+                        &nbsp;&nbsp;name:
+                        <span class="white">"chcode"</span>,
+                    </div>
+
+                    <div>
+                        &nbsp;&nbsp;stack:
+                        <span class="white">"Python / Web"</span>,
+                    </div>
+
+                    <div>
+                        &nbsp;&nbsp;status:
+                        <span class="white">"online"</span>,
+                    </div>
+
+                    <div>
+                        &nbsp;&nbsp;era:
+                        <span class="white">"Y2K"</span>
+                    </div>
+
+                    <div>};</div>
+
+                    <br>
+
+                    <div class="dim">
+                        // creating something...
+                    </div>
+
+                    <div>
+                        &gt; <span class="white">ready</span>
+                        <span class="code-cursor">█</span>
+                    </div>
+
+                </div>
+
             </div>
 
-            <div class="monitor-bottom"></div>
-
         </div>
 
-        <div class="keyboard">
-            <div class="key"></div><div class="key"></div>
-            <div class="key"></div><div class="key"></div>
-            <div class="key"></div><div class="key"></div>
-            <div class="key"></div><div class="key"></div>
-            <div class="key"></div><div class="key"></div>
-            <div class="key"></div><div class="key"></div>
-            <div class="key"></div><div class="key"></div>
-            <div class="key"></div><div class="key"></div>
-            <div class="key"></div><div class="key"></div>
-            <div class="key"></div><div class="key"></div>
-            <div class="key"></div><div class="key"></div>
-            <div class="key"></div><div class="key"></div>
-            <div class="key"></div><div class="key"></div>
-            <div class="key"></div><div class="key"></div>
-        </div>
+
+        <div class="disc-decoration"></div>
 
     </div>
 
 </section>
 
 
-<!-- ABOUT -->
+<!-- =====================================================
+     ABOUT
+===================================================== -->
 
-<section class="section" id="about">
+<section id="about">
 
-    <div class="section-title">
+    <div class="section-heading">
+
         <h2>ОБО МНЕ</h2>
-        <div class="line"></div>
-        <span>★</span>
+
+        <div class="section-line"></div>
+
+        <div class="section-symbol">★</div>
+
     </div>
+
 
     <div class="about-grid">
 
-        <div class="window">
 
-            <div class="titlebar">
-                <span>📄 about_me.txt — Notepad</span>
-                <div class="title-buttons">
-                    <div class="win-btn">_</div>
-                    <div class="win-btn">□</div>
-                    <div class="win-btn">×</div>
-                </div>
+        <div class="retro-window">
+
+            <div class="window-head">
+
+                <span>about_me.txt</span>
+
+                <span class="window-dots">● ● ●</span>
+
             </div>
 
-            <div class="window-content">
+            <div class="window-body">
 
-                <p>
-                    Я занимаюсь разработкой цифровых продуктов,
-                    экспериментирую с современными технологиями
-                    и люблю превращать идеи в работающие проекты.
-                </p>
+                <div class="about-text">
 
-                <p>
-                    Основные направления — Python, Telegram,
-                    Web-разработка, автоматизация и AI-интеграции.
-                </p>
+                    <p>
+                        Я занимаюсь разработкой цифровых продуктов
+                        и люблю превращать идеи в реальные проекты.
+                    </p>
 
-                <p>
-                    А этот сайт — маленькая дань эпохе,
-                    когда Интернет был серым, блестящим
-                    и на каждой странице стоял счётчик посетителей.
-                </p>
+                    <p>
+                        Основные направления — Python,
+                        Telegram, Web-разработка, API,
+                        автоматизация и AI-интеграции.
+                    </p>
+
+                    <p>
+                        При этом мне нравится экспериментировать
+                        с дизайном и делать интерфейсы,
+                        которые отличаются от обычных шаблонов.
+                    </p>
+
+                </div>
 
             </div>
 
         </div>
 
-        <div class="window">
 
-            <div class="titlebar">
-                <span>⚙ System Properties</span>
-                <div class="title-buttons">
-                    <div class="win-btn">_</div>
-                    <div class="win-btn">□</div>
-                    <div class="win-btn">×</div>
-                </div>
+        <div class="retro-window">
+
+            <div class="window-head">
+
+                <span>developer.info</span>
+
+                <span class="window-dots">● ● ●</span>
+
             </div>
 
-            <div class="window-content">
+            <div class="window-body">
 
-                <ul class="info-list">
-                    <li><b>Nickname:</b> chcode</li>
-                    <li><b>Role:</b> Developer</li>
-                    <li><b>OS:</b> Windows 2000</li>
-                    <li><b>Language:</b> Русский / English</li>
-                    <li><b>Status:</b> 🟢 Online</li>
-                    <li><b>Favorite:</b> ★ Y2K Internet</li>
-                </ul>
+                <table class="info-table">
+
+                    <tr>
+                        <td>Nickname</td>
+                        <td>chcode</td>
+                    </tr>
+
+                    <tr>
+                        <td>Role</td>
+                        <td>Developer</td>
+                    </tr>
+
+                    <tr>
+                        <td>Main stack</td>
+                        <td>Python / Web</td>
+                    </tr>
+
+                    <tr>
+                        <td>Projects</td>
+                        <td>Many...</td>
+                    </tr>
+
+                    <tr>
+                        <td>Status</td>
+                        <td>🟢 Online</td>
+                    </tr>
+
+                    <tr>
+                        <td>Favorite era</td>
+                        <td>1999—2004</td>
+                    </tr>
+
+                </table>
 
             </div>
 
@@ -1016,17 +1539,24 @@ footer {
 </section>
 
 
-<!-- SKILLS -->
+<!-- =====================================================
+     SKILLS
+===================================================== -->
 
-<section class="section" id="skills">
+<section id="skills">
 
-    <div class="section-title">
-        <h2>НАВЫКИ</h2>
-        <div class="line"></div>
-        <span>✦</span>
+    <div class="section-heading">
+
+        <h2>SKILLS / НАВЫКИ</h2>
+
+        <div class="section-line"></div>
+
+        <div class="section-symbol">✦</div>
+
     </div>
 
-    <div class="skills">
+
+    <div class="skills-grid">
 
         <div class="skill">
             <div class="skill-icon">🐍</div>
@@ -1050,7 +1580,12 @@ footer {
 
         <div class="skill">
             <div class="skill-icon">🗄️</div>
-            <div class="skill-name">DATABASES</div>
+            <div class="skill-name">DATABASE</div>
+        </div>
+
+        <div class="skill">
+            <div class="skill-icon">🔌</div>
+            <div class="skill-name">API</div>
         </div>
 
         <div class="skill">
@@ -1059,13 +1594,8 @@ footer {
         </div>
 
         <div class="skill">
-            <div class="skill-icon">🔧</div>
+            <div class="skill-icon">💻</div>
             <div class="skill-name">GITHUB</div>
-        </div>
-
-        <div class="skill">
-            <div class="skill-icon">🧠</div>
-            <div class="skill-name">AI API</div>
         </div>
 
     </div>
@@ -1073,39 +1603,52 @@ footer {
 </section>
 
 
-<!-- PROJECTS -->
+<!-- =====================================================
+     PROJECTS
+===================================================== -->
 
-<section class="section" id="projects">
+<section id="projects">
 
-    <div class="section-title">
+    <div class="section-heading">
+
         <h2>ПРОЕКТЫ</h2>
-        <div class="line"></div>
-        <span>★</span>
+
+        <div class="section-line"></div>
+
+        <div class="section-symbol">★</div>
+
     </div>
 
-    <div class="projects">
 
-        <div class="window project">
+    <div class="projects-grid">
 
-            <div class="titlebar">
-                <span>📁 Csanaks</span>
-                <div class="title-buttons">
-                    <div class="win-btn">_</div>
-                    <div class="win-btn">□</div>
-                    <div class="win-btn">×</div>
-                </div>
+
+        <article class="retro-window project-card">
+
+            <div class="window-head">
+
+                <span>project://csanaks</span>
+
+                <span>01</span>
+
             </div>
 
             <div class="project-body">
 
-                <div class="project-icon">💬</div>
+                <div class="project-top">
 
-                <h3>Csanaks</h3>
+                    <div class="project-icon">💬</div>
 
-                <p>
+                    <h3 class="project-title">
+                        Csanaks
+                    </h3>
+
+                </div>
+
+                <p class="project-description">
                     Современный мессенджер с чатами,
                     группами, каналами, реакциями,
-                    профилями и WebSocket.
+                    профилями, WebSocket и файлами.
                 </p>
 
                 <div class="tags">
@@ -1116,27 +1659,32 @@ footer {
 
             </div>
 
-        </div>
+        </article>
 
 
-        <div class="window project">
+        <article class="retro-window project-card">
 
-            <div class="titlebar">
-                <span>📁 Stargrad</span>
-                <div class="title-buttons">
-                    <div class="win-btn">_</div>
-                    <div class="win-btn">□</div>
-                    <div class="win-btn">×</div>
-                </div>
+            <div class="window-head">
+
+                <span>project://stargrad</span>
+
+                <span>02</span>
+
             </div>
 
             <div class="project-body">
 
-                <div class="project-icon">🏙️</div>
+                <div class="project-top">
 
-                <h3>Stargrad</h3>
+                    <div class="project-icon">🏙️</div>
 
-                <p>
+                    <h3 class="project-title">
+                        Stargrad
+                    </h3>
+
+                </div>
+
+                <p class="project-description">
                     RP-город с экономикой,
                     профессиями, образованием,
                     государственными структурами
@@ -1151,30 +1699,35 @@ footer {
 
             </div>
 
-        </div>
+        </article>
 
 
-        <div class="window project">
+        <article class="retro-window project-card">
 
-            <div class="titlebar">
-                <span>📁 Telegram Bots</span>
-                <div class="title-buttons">
-                    <div class="win-btn">_</div>
-                    <div class="win-btn">□</div>
-                    <div class="win-btn">×</div>
-                </div>
+            <div class="window-head">
+
+                <span>project://telegram</span>
+
+                <span>03</span>
+
             </div>
 
             <div class="project-body">
 
-                <div class="project-icon">🤖</div>
+                <div class="project-top">
 
-                <h3>Telegram Bots</h3>
+                    <div class="project-icon">🤖</div>
 
-                <p>
-                    Боты для автоматизации,
-                    RP-проектов, бизнеса,
-                    уведомлений и управления.
+                    <h3 class="project-title">
+                        Telegram Bots
+                    </h3>
+
+                </div>
+
+                <p class="project-description">
+                    Telegram-боты для автоматизации,
+                    RP-проектов, сообществ,
+                    уведомлений и бизнеса.
                 </p>
 
                 <div class="tags">
@@ -1185,30 +1738,36 @@ footer {
 
             </div>
 
-        </div>
+        </article>
 
 
-        <div class="window project">
+        <article class="retro-window project-card">
 
-            <div class="titlebar">
-                <span>📁 chcode.us</span>
-                <div class="title-buttons">
-                    <div class="win-btn">_</div>
-                    <div class="win-btn">□</div>
-                    <div class="win-btn">×</div>
-                </div>
+            <div class="window-head">
+
+                <span>project://chcode</span>
+
+                <span>04</span>
+
             </div>
 
             <div class="project-body">
 
-                <div class="project-icon">💿</div>
+                <div class="project-top">
 
-                <h3>Personal Website</h3>
+                    <div class="project-icon">💿</div>
 
-                <p>
-                    Моя личная страница разработчика
-                    в стиле старого Интернета
-                    и Windows 2000.
+                    <h3 class="project-title">
+                        chcode.dev
+                    </h3>
+
+                </div>
+
+                <p class="project-description">
+                    Личная страница разработчика
+                    с собственной Y2K-эстетикой,
+                    интерактивными элементами
+                    и ретро-интерфейсом.
                 </p>
 
                 <div class="tags">
@@ -1219,59 +1778,84 @@ footer {
 
             </div>
 
-        </div>
+        </article>
 
     </div>
 
 </section>
 
 
-<!-- SERVICES -->
+<!-- =====================================================
+     SERVICES
+===================================================== -->
 
-<section class="section" id="services">
+<section id="services">
 
-    <div class="section-title">
+    <div class="section-heading">
+
         <h2>УСЛУГИ</h2>
-        <div class="line"></div>
-        <span>✧</span>
+
+        <div class="section-line"></div>
+
+        <div class="section-symbol">✧</div>
+
     </div>
 
-    <div class="services">
 
-        <div class="window service">
-            <div class="window-content">
-                <div class="icon">🌐</div>
-                <h3>WEB-САЙТЫ</h3>
+    <div class="services-grid">
+
+
+        <div class="retro-window service">
+
+            <div class="window-body">
+
+                <div class="service-icon">🌐</div>
+
+                <h3>WEB DEVELOPMENT</h3>
+
                 <p>
-                    Лендинги, портфолио,
-                    веб-приложения и необычные
-                    сайты.
+                    Сайты, лендинги, портфолио
+                    и необычные веб-интерфейсы.
                 </p>
+
             </div>
+
         </div>
 
-        <div class="window service">
-            <div class="window-content">
-                <div class="icon">🤖</div>
-                <h3>TELEGRAM-БОТЫ</h3>
+
+        <div class="retro-window service">
+
+            <div class="window-body">
+
+                <div class="service-icon">🤖</div>
+
+                <h3>TELEGRAM BOTS</h3>
+
                 <p>
                     Боты для бизнеса,
-                    сообществ, RP и
-                    автоматизации.
+                    RP, сообществ и автоматизации.
                 </p>
+
             </div>
+
         </div>
 
-        <div class="window service">
-            <div class="window-content">
-                <div class="icon">⚙️</div>
-                <h3>АВТОМАТИЗАЦИЯ</h3>
+
+        <div class="retro-window service">
+
+            <div class="window-body">
+
+                <div class="service-icon">⚙️</div>
+
+                <h3>AUTOMATION</h3>
+
                 <p>
                     API, базы данных,
-                    уведомления и
-                    автоматические процессы.
+                    уведомления и автоматические процессы.
                 </p>
+
             </div>
+
         </div>
 
     </div>
@@ -1279,54 +1863,226 @@ footer {
 </section>
 
 
-<!-- HISTORY -->
+<!-- =====================================================
+     TERMINAL
+===================================================== -->
 
-<section class="section" id="history">
+<section id="terminal">
 
-    <div class="section-title">
-        <h2>ИСТОРИЯ</h2>
-        <div class="line"></div>
-        <span>★</span>
+    <div class="section-heading">
+
+        <h2>MINI TERMINAL</h2>
+
+        <div class="section-line"></div>
+
+        <div class="section-symbol">⌁</div>
+
     </div>
 
-    <div class="window">
 
-        <div class="titlebar">
-            <span>📜 chcode_history.log</span>
+    <div class="terminal-box">
+
+        <div class="terminal-header">
+
+            CHCODE TERMINAL — type "help"
+
         </div>
 
-        <div class="window-content">
+
+        <div
+            class="terminal-output"
+            id="terminalOutput"
+        >
+
+            <div class="terminal-line">
+                chcode terminal v2.026
+            </div>
+
+            <div class="terminal-line terminal-muted">
+                Welcome to my little corner of the Internet.
+            </div>
+
+            <div class="terminal-line">
+                Type <b>help</b> to see available commands.
+            </div>
+
+        </div>
+
+
+        <div class="terminal-input-row">
+
+            <span class="prompt">
+                C:\CHCODE&gt;
+            </span>
+
+            <input
+                id="terminalInput"
+                type="text"
+                autocomplete="off"
+                spellcheck="false"
+                aria-label="Terminal command"
+            >
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     Y2K
+===================================================== -->
+
+<section>
+
+    <div class="section-heading">
+
+        <h2>Y2K ZONE</h2>
+
+        <div class="section-line"></div>
+
+        <div class="section-symbol">★</div>
+
+    </div>
+
+
+    <div class="y2k-panel">
+
+        <h3>
+            ★ WELCOME TO THE OLD INTERNET ★
+        </h3>
+
+        <p>
+            Chrome • CDs • Pixel fonts • Stars •
+            Dial-up energy • Personal homepages
+        </p>
+
+
+        <div class="y2k-icons">
+
+            <div class="y2k-badge">
+                ★ Y2K
+            </div>
+
+            <div class="y2k-badge">
+                ✦ HTML
+            </div>
+
+            <div class="y2k-badge">
+                💿 CD-ROM
+            </div>
+
+            <div class="y2k-badge">
+                ⚡ ONLINE
+            </div>
+
+            <div class="y2k-badge">
+                ★ 100% CODE
+            </div>
+
+            <div class="y2k-badge">
+                ✧ NO AI GLOW
+            </div>
+
+            <div class="y2k-badge">
+                INTERNET
+            </div>
+
+            <div class="y2k-badge">
+                1024×768
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     HISTORY
+===================================================== -->
+
+<section>
+
+    <div class="section-heading">
+
+        <h2>DEVELOPMENT LOG</h2>
+
+        <div class="section-line"></div>
+
+        <div class="section-symbol">✦</div>
+
+    </div>
+
+
+    <div class="retro-window">
+
+        <div class="window-head">
+            chcode_history.log
+        </div>
+
+        <div class="window-body">
 
             <div class="timeline">
 
-                <div class="timeline-item">
-                    <div class="timeline-year">2024</div>
-                    <h3>Первые проекты</h3>
-                    <p>
-                        Начало экспериментов с программированием,
-                        Telegram-ботами и вебом.
-                    </p>
-                </div>
 
                 <div class="timeline-item">
-                    <div class="timeline-year">2025</div>
-                    <h3>Больше разработки</h3>
+
+                    <div class="timeline-year">
+                        2024
+                    </div>
+
+                    <h3>
+                        Первые проекты
+                    </h3>
+
+                    <p>
+                        Первые эксперименты с программированием,
+                        Telegram-ботами и веб-разработкой.
+                    </p>
+
+                </div>
+
+
+                <div class="timeline-item">
+
+                    <div class="timeline-year">
+                        2025
+                    </div>
+
+                    <h3>
+                        Больше кода
+                    </h3>
+
                     <p>
                         Проекты становятся сложнее:
-                        базы данных, серверы, API,
-                        полноценные приложения.
+                        серверы, базы данных, API
+                        и полноценные приложения.
                     </p>
+
                 </div>
+
 
                 <div class="timeline-item">
-                    <div class="timeline-year">2026</div>
-                    <h3>chcode</h3>
+
+                    <div class="timeline-year">
+                        2026
+                    </div>
+
+                    <h3>
+                        chcode
+                    </h3>
+
                     <p>
-                        Собственные проекты, портфолио,
-                        AI-интеграции, мессенджер
-                        и новые эксперименты.
+                        Собственные проекты, Csanaks,
+                        Stargrad, сайты, AI-интеграции
+                        и новый этап развития.
                     </p>
+
                 </div>
+
 
             </div>
 
@@ -1337,191 +2093,123 @@ footer {
 </section>
 
 
-<!-- WINDOWS 2000 -->
+<!-- =====================================================
+     CONTACTS
+===================================================== -->
 
-<section class="section" id="desktop">
+<section id="contacts">
 
-    <div class="section-title">
-        <h2>WINDOWS 2000</h2>
-        <div class="line"></div>
-        <span>🪟</span>
-    </div>
+    <div class="section-heading">
 
-    <div class="desktop">
-
-        <div class="desktop-icon">
-            <div class="icon">💻</div>
-            <span>My Computer</span>
-        </div>
-
-        <div class="desktop-icon">
-            <div class="icon">📁</div>
-            <span>My Projects</span>
-        </div>
-
-        <div class="desktop-icon">
-            <div class="icon">🌐</div>
-            <span>Internet Explorer</span>
-        </div>
-
-        <div class="desktop-icon">
-            <div class="icon">🗑️</div>
-            <span>Recycle Bin</span>
-        </div>
-
-
-        <div class="fake-window window">
-
-            <div class="titlebar">
-                <span>🌐 Internet Explorer — chcode homepage</span>
-
-                <div class="title-buttons">
-                    <div class="win-btn">_</div>
-                    <div class="win-btn">□</div>
-                    <div class="win-btn">×</div>
-                </div>
-            </div>
-
-            <div class="window-content">
-
-                <div style="
-                    border:2px inset #aaa;
-                    padding:8px;
-                    margin-bottom:12px;
-                    font-size:12px;
-                ">
-                    Address:
-                    <b>http://chcode.dev/home</b>
-                </div>
-
-                <h2 style="font-family:Georgia">
-                    Welcome to the Internet!
-                </h2>
-
-                <p>
-                    Вы нашли секретную часть сайта.
-                </p>
-
-                <p>
-                    ★ You are visitor #<span id="desktopCounter">000001</span> ★
-                </p>
-
-                <button class="retro-button"
-                        onclick="alert('Windows 2000 says hello! ★')">
-                    OK
-                </button>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- BADGES -->
-
-<section class="section">
-
-    <div class="section-title">
-        <h2>WEB BADGES</h2>
-        <div class="line"></div>
-        <span>✦</span>
-    </div>
-
-    <div class="badges">
-
-        <div class="badge">HTML 5 ★</div>
-        <div class="badge">CSS 3 ★</div>
-        <div class="badge">PYTHON ★</div>
-        <div class="badge">GITHUB ★</div>
-        <div class="badge">100% HUMAN</div>
-        <div class="badge">Y2K FAN</div>
-        <div class="badge">BEST VIEWED</div>
-        <div class="badge">NO AI GLOW</div>
-        <div class="badge">WINDOWS 2000</div>
-
-    </div>
-
-</section>
-
-
-<!-- CONTACT -->
-
-<section class="section" id="contacts">
-
-    <div class="section-title">
         <h2>КОНТАКТЫ</h2>
-        <div class="line"></div>
-        <span>✉</span>
+
+        <div class="section-line"></div>
+
+        <div class="section-symbol">✉</div>
+
     </div>
+
 
     <div class="contact-grid">
 
-        <div class="window">
 
-            <div class="titlebar">
-                <span>📨 Contact chcode</span>
+        <div class="retro-window">
+
+            <div class="window-head">
+                contact.list
             </div>
 
-            <div class="window-content">
+            <div class="window-body">
 
-                <div class="contact-item">
-                    <div class="icon">📧</div>
+
+                <div class="contact-row">
+
+                    <div class="contact-icon">
+                        📧
+                    </div>
+
                     <div>
+
                         <b>Россия</b><br>
+
                         <a href="mailto:chcode@mail.ru">
                             chcode@mail.ru
                         </a>
+
                     </div>
+
                 </div>
 
-                <div class="contact-item">
-                    <div class="icon">🌎</div>
+
+                <div class="contact-row">
+
+                    <div class="contact-icon">
+                        🌎
+                    </div>
+
                     <div>
+
                         <b>Worldwide</b><br>
+
                         <a href="mailto:chcodeus@gmail.com">
                             chcodeus@gmail.com
                         </a>
+
                     </div>
+
                 </div>
 
-                <div class="contact-item">
-                    <div class="icon">✈️</div>
+
+                <div class="contact-row">
+
+                    <div class="contact-icon">
+                        ✈️
+                    </div>
+
                     <div>
+
                         <b>Telegram</b><br>
-                        <a href="https://t.me/vlaidst" target="_blank">
+
+                        <a
+                            href="https://t.me/vlaidst"
+                            target="_blank"
+                            rel="noopener"
+                        >
                             @vlaidst
                         </a>
+
                     </div>
+
                 </div>
+
 
             </div>
 
         </div>
 
 
-        <div class="window">
+        <div class="retro-window">
 
-            <div class="titlebar">
-                <span>📝 Message</span>
+            <div class="window-head">
+                send_message.exe
             </div>
 
-            <div class="window-content">
+            <div class="window-body">
 
-                <p>
-                    Есть идея проекта?
+                <h3>
+                    Есть идея?
+                </h3>
+
+                <p style="line-height:1.7">
+                    Если хочешь обсудить проект,
+                    сайт, Telegram-бота или
+                    автоматизацию — напиши мне.
                 </p>
 
-                <p>
-                    Напиши мне — обсудим задачу,
-                    технологии и возможный вариант
-                    реализации.
-                </p>
-
-                <a class="retro-button"
-                   href="mailto:chcodeus@gmail.com">
+                <a
+                    class="retro-button"
+                    href="mailto:chcodeus@gmail.com"
+                >
                     ✉ НАПИСАТЬ
                 </a>
 
@@ -1533,44 +2221,17 @@ footer {
 
 </section>
 
-
-<!-- COUNTER -->
-
-<section class="section">
-
-    <div class="window">
-
-        <div class="titlebar">
-            <span>📊 Website Statistics</span>
-        </div>
-
-        <div class="window-content counter">
-
-            <div>
-                YOU ARE VISITOR
-            </div>
-
-            <div class="counter-number" id="counter">
-                000001
-            </div>
-
-            <p class="retro" style="font-size:22px">
-                ★ THANK YOU FOR VISITING ★
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
 </main>
 
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
 <footer>
 
     <div class="footer-stars">
-        ★ ✦ ★ ✧ ★
+        ★ ✦ ★ ✧ ★ ✦ ★
     </div>
 
     <div class="footer-logo">
@@ -1578,131 +2239,392 @@ footer {
     </div>
 
     <div class="footer-text">
-        Сделано с ♥ любовью, кофе и старым добрым Интернетом.
+        Made with ♥, code & coffee.
     </div>
 
-    <div>
-        © 2026 chcode • Windows 2000 compatible
+    <div class="footer-small">
+        © 2026 chcode • Y2K PERSONAL HOMEPAGE •
+        NO COPYRIGHTED WINDOWS HERE :)
     </div>
 
 </footer>
 
 
-<div class="lang">
-    <button onclick="switchLanguage()">
+<!-- LANGUAGE -->
+
+<div class="language-switch">
+
+    <button id="languageButton">
         🇷🇺 RU / EN
     </button>
+
 </div>
 
 
 <script>
+/* =========================================================
+   MINI TERMINAL
+========================================================= */
 
-/* =========================
-   VISITOR COUNTER
-========================= */
+const terminalInput = document.getElementById("terminalInput");
+const terminalOutput = document.getElementById("terminalOutput");
 
-let visits = Number(localStorage.getItem("chcode_visits") || 0);
+function terminalPrint(text, muted = false) {
 
-visits++;
+    const line = document.createElement("div");
 
-localStorage.setItem("chcode_visits", visits);
+    line.className =
+        "terminal-line" +
+        (muted ? " terminal-muted" : "");
 
-const formatted = String(visits).padStart(6, "0");
+    line.innerHTML = text;
 
-document.getElementById("counter").textContent = formatted;
+    terminalOutput.appendChild(line);
 
-document.getElementById("desktopCounter").textContent = formatted;
+    terminalOutput.scrollTop =
+        terminalOutput.scrollHeight;
+}
 
 
-/* =========================
-   WINDOWS 2000 DRAG
-========================= */
+function runCommand(command) {
 
-document.querySelectorAll(".fake-window").forEach(win => {
+    const cmd = command
+        .trim()
+        .toLowerCase();
 
-    const title = win.querySelector(".titlebar");
+    if (!cmd) return;
 
-    let dragging = false;
-    let offsetX = 0;
-    let offsetY = 0;
 
-    title.addEventListener("mousedown", e => {
+    terminalPrint(
+        "C:\\CHCODE&gt; " +
+        escapeHtml(command)
+    );
 
-        dragging = true;
 
-        const rect = win.getBoundingClientRect();
+    switch (cmd) {
 
-        offsetX = e.clientX - rect.left;
-        offsetY = e.clientY - rect.top;
+        case "help":
 
-        win.style.transform = "none";
-        win.style.left = rect.left + "px";
-        win.style.top = rect.top + "px";
+            terminalPrint(
+                "available commands:"
+            );
+
+            terminalPrint(
+                "about&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;— обо мне"
+            );
+
+            terminalPrint(
+                "projects&nbsp;&nbsp;— проекты"
+            );
+
+            terminalPrint(
+                "skills&nbsp;&nbsp;&nbsp;&nbsp;— навыки"
+            );
+
+            terminalPrint(
+                "contact&nbsp;&nbsp;&nbsp;— контакты"
+            );
+
+            terminalPrint(
+                "home&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;— наверх"
+            );
+
+            terminalPrint(
+                "clear&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;— очистить"
+            );
+
+            terminalPrint(
+                "hello&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;— привет :)"
+            );
+
+            break;
+
+
+        case "about":
+
+            terminalPrint(
+                "chcode — developer & creator."
+            );
+
+            terminalPrint(
+                "Python / Web / Telegram / Automation"
+            );
+
+            document
+                .getElementById("about")
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+
+            break;
+
+
+        case "projects":
+
+            terminalPrint(
+                "loading projects..."
+            );
+
+            terminalPrint(
+                "Csanaks / Stargrad / Telegram Bots / chcode.dev"
+            );
+
+            document
+                .getElementById("projects")
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+
+            break;
+
+
+        case "skills":
+
+            terminalPrint(
+                "Python / HTML / CSS / JavaScript / API / SQL / GitHub"
+            );
+
+            document
+                .getElementById("skills")
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+
+            break;
+
+
+        case "contact":
+
+            terminalPrint(
+                "mail: chcodeus@gmail.com"
+            );
+
+            terminalPrint(
+                "telegram: @vlaidst"
+            );
+
+            document
+                .getElementById("contacts")
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+
+            break;
+
+
+        case "home":
+
+            terminalPrint(
+                "returning to homepage..."
+            );
+
+            document
+                .getElementById("home")
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+
+            break;
+
+
+        case "hello":
+
+            terminalPrint(
+                "Hello, Internet user! ★"
+            );
+
+            terminalPrint(
+                "Welcome to chcode.dev"
+            );
+
+            break;
+
+
+        case "clear":
+
+            terminalOutput.innerHTML = "";
+
+            break;
+
+
+        case "whoami":
+
+            terminalPrint(
+                "chcode"
+            );
+
+            break;
+
+
+        case "date":
+
+            terminalPrint(
+                new Date().toLocaleString("ru-RU")
+            );
+
+            break;
+
+
+        case "y2k":
+
+            terminalPrint(
+                "Y2K MODE: ACTIVATED ★"
+            );
+
+            break;
+
+
+        default:
+
+            terminalPrint(
+                "command not found: " +
+                escapeHtml(command)
+            );
+
+            terminalPrint(
+                'type "help" for available commands.',
+                true
+            );
+
+    }
+}
+
+
+function escapeHtml(text) {
+
+    return text
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+}
+
+
+terminalInput.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Enter") {
+
+            runCommand(
+                terminalInput.value
+            );
+
+            terminalInput.value = "";
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   TERMINAL SHORTCUT
+========================================================= */
+
+document
+    .getElementById("terminal")
+    .addEventListener("click", () => {
+        terminalInput.focus();
     });
 
-    document.addEventListener("mousemove", e => {
 
-        if (!dragging) return;
+/* =========================================================
+   LANGUAGE
+========================================================= */
 
-        win.style.left =
-            (e.clientX - offsetX) + "px";
-
-        win.style.top =
-            (e.clientY - offsetY) + "px";
-
-    });
-
-    document.addEventListener("mouseup", () => {
-        dragging = false;
-    });
-
-});
-
-
-/* =========================
-   SIMPLE RU / EN
-========================= */
+const languageButton =
+    document.getElementById("languageButton");
 
 let english = false;
 
-function switchLanguage() {
+languageButton.addEventListener(
+    "click",
+    () => {
 
-    english = !english;
+        english = !english;
 
-    if (english) {
+        if (!english) {
+
+            location.reload();
+
+            return;
+
+        }
+
 
         document.documentElement.lang = "en";
 
-        document.querySelector('a[href="#home"]').textContent = "Home";
-        document.querySelector('a[href="#about"]').textContent = "About";
-        document.querySelector('a[href="#skills"]').textContent = "Skills";
-        document.querySelector('a[href="#projects"]').textContent = "Projects";
-        document.querySelector('a[href="#services"]').textContent = "Services";
-        document.querySelector('a[href="#history"]').textContent = "History";
-        document.querySelector('a[href="#desktop"]').textContent = "Windows";
-        document.querySelector('a[href="#contacts"]').textContent = "Contact";
+        const translations = {
 
-        document.querySelector(".hero-subtitle").textContent =
-            "Developer from the Internet era";
+            "#about h2": "ABOUT ME",
 
-        document.querySelector(".hero-description").textContent =
-            "Hi! I'm chcode — a developer creating websites, Telegram bots, automation and digital projects. No endless AI gradients. Just code, Windows 2000, Internet and a little Y2K.";
+            "#skills h2": "SKILLS",
 
-        document.querySelector("#about h2").textContent = "ABOUT ME";
-        document.querySelector("#skills h2").textContent = "SKILLS";
-        document.querySelector("#projects h2").textContent = "PROJECTS";
-        document.querySelector("#services h2").textContent = "SERVICES";
-        document.querySelector("#history h2").textContent = "HISTORY";
-        document.querySelector("#desktop h2").textContent = "WINDOWS 2000";
-        document.querySelector("#contacts h2").textContent = "CONTACT";
+            "#projects h2": "PROJECTS",
 
-    } else {
+            "#services h2": "SERVICES",
 
-        location.reload();
+            "#terminal h2": "MINI TERMINAL",
+
+            "#contacts h2": "CONTACT"
+
+        };
+
+
+        Object.entries(translations)
+            .forEach(([selector, text]) => {
+
+                const element =
+                    document.querySelector(selector);
+
+                if (element) {
+                    element.textContent = text;
+                }
+
+            });
+
+
+        document.querySelector(
+            ".hero-subtitle"
+        ).textContent =
+            "Developer. Creator. Internet.";
+
+
+        document.querySelector(
+            ".hero-description"
+        ).textContent =
+            "Hi! I'm chcode — a developer creating websites, Telegram bots, automation and digital projects. I love clean code, unusual interfaces and the aesthetics of the old Internet.";
+
+
+        languageButton.textContent =
+            "🇬🇧 EN / RU";
 
     }
+);
 
-}
+
+/* =========================================================
+   SMALL RANDOM Y2K EFFECT
+========================================================= */
+
+setInterval(() => {
+
+    const stars =
+        document.querySelectorAll(".y2k-star");
+
+    const random =
+        stars[
+            Math.floor(
+                Math.random() * stars.length
+            )
+        ];
+
+    random.style.opacity =
+        Math.random() > .5 ? ".45" : "1";
+
+}, 1500);
 
 </script>
 
