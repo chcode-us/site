@@ -4,1275 +4,1963 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>chcode — Developer & AI</title>
-<meta name="description" content="chcode — разработчик Python, AI, Telegram-ботов и веб-приложений.">
-<meta name="theme-color" content="#07070b">
+<meta name="description" content="chcode — developer portfolio">
+<meta name="theme-color" content="#b9d8e8">
+
+<title>chcode // personal web</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&family=Press+Start+2P&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-:root {
-    --bg: #06060a;
-    --bg2: #0a0a10;
-    --card: rgba(15,15,23,.72);
-    --card2: #11111a;
-    --text: #f5f5f7;
-    --muted: #858592;
-    --muted2: #555563;
-    --border: rgba(255,255,255,.09);
-    --purple: #9b5cff;
-    --purple2: #6f2cff;
-    --cyan: #24ddff;
-    --green: #62e6a1;
-    --radius: 24px;
-    --max: 1200px;
+
+/* =========================================================
+   CHCODE // Y2K PERSONAL WEB
+   ========================================================= */
+
+:root{
+    --bg:#cfd9df;
+    --bg-light:#edf3f6;
+
+    --white:#ffffff;
+    --silver:#dce3e7;
+    --silver-dark:#9caab3;
+
+    --blue:#347da4;
+    --blue-dark:#1f5675;
+    --blue-light:#b8e1f4;
+
+    --text:#17232b;
+    --muted:#5c6b74;
+
+    --line:#77858e;
+    --shadow:rgba(30,45,55,.28);
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* RESET */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
-html {
-    scroll-behavior: smooth;
+html{
+    scroll-behavior:smooth;
 }
 
-body {
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+
+    color:var(--text);
+
+    font-family:
+        "Space Grotesk",
+        Arial,
+        sans-serif;
+
     background:
-        radial-gradient(circle at 80% 10%, rgba(111,44,255,.12), transparent 30%),
-        radial-gradient(circle at 10% 45%, rgba(36,221,255,.06), transparent 25%),
-        var(--bg);
-    color: var(--text);
-    font-family: Inter, sans-serif;
-    overflow-x: hidden;
+        linear-gradient(
+            135deg,
+            #eef3f6 0%,
+            #c5d0d7 48%,
+            #f8fafb 100%
+        );
+
+    background-attachment:fixed;
 }
 
-body::selection {
-    background: var(--purple);
-    color: white;
-}
+/* =========================================================
+   BACKGROUND
+   ========================================================= */
 
-a {
-    color: inherit;
-    text-decoration: none;
-}
+body::before{
+    content:"";
 
-button {
-    font: inherit;
-}
+    position:fixed;
+    inset:0;
 
-.container {
-    width: min(var(--max), calc(100% - 40px));
-    margin: auto;
-}
+    z-index:-5;
 
-/* BACKGROUND */
+    opacity:.32;
 
-.grid {
-    position: fixed;
-    inset: 0;
-    z-index: -5;
-    pointer-events: none;
-    opacity: .45;
     background-image:
-        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
-    background-size: 70px 70px;
-    mask-image: linear-gradient(to bottom, black, transparent 90%);
+        linear-gradient(
+            rgba(40,60,70,.13) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(40,60,70,.13) 1px,
+            transparent 1px
+        );
+
+    background-size:24px 24px;
+
+    pointer-events:none;
 }
 
-.noise {
-    position: fixed;
-    inset: 0;
-    z-index: 20;
-    pointer-events: none;
-    opacity: .025;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+/* subtle scanlines */
+
+body::after{
+    content:"";
+
+    position:fixed;
+    inset:0;
+
+    z-index:9999;
+
+    pointer-events:none;
+
+    opacity:.035;
+
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0,
+            transparent 3px,
+            #000 4px
+        );
 }
 
-.orb {
-    position: fixed;
-    width: 450px;
-    height: 450px;
-    border-radius: 50%;
-    filter: blur(120px);
-    pointer-events: none;
-    z-index: -3;
+/* =========================================================
+   DECORATIONS
+   ========================================================= */
+
+.star{
+    position:absolute;
+
+    color:white;
+
+    font-family:Arial;
+
+    text-shadow:
+        0 1px #52616a,
+        1px 0 #52616a;
+
+    user-select:none;
+
+    pointer-events:none;
 }
 
-.orb.one {
-    background: rgba(126,56,255,.13);
-    top: -250px;
-    right: -180px;
+.star.big{
+    font-size:70px;
 }
 
-.orb.two {
-    background: rgba(0,210,255,.07);
-    bottom: 0;
-    left: -250px;
+.star.small{
+    font-size:25px;
 }
 
-/* PROGRESS */
-
-.progress {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 0%;
-    height: 2px;
-    z-index: 9999;
-    background: linear-gradient(90deg, var(--purple), var(--cyan));
-    box-shadow: 0 0 14px var(--purple);
+.star.s1{
+    top:170px;
+    left:7%;
 }
 
-/* HEADER */
-
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 74px;
-    z-index: 1000;
-    border-bottom: 1px solid transparent;
-    transition: .3s;
+.star.s2{
+    top:550px;
+    right:8%;
 }
 
-header.scrolled {
-    background: rgba(6,6,10,.72);
-    backdrop-filter: blur(22px);
-    border-color: var(--border);
+.star.s3{
+    top:1100px;
+    left:5%;
 }
 
-.nav {
-    height: 74px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.star.s4{
+    top:1800px;
+    right:6%;
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-family: "DM Mono", monospace;
-    font-size: 15px;
-    font-weight: 500;
+/* =========================================================
+   LOADER
+   ========================================================= */
+
+.loader{
+    position:fixed;
+
+    inset:0;
+
+    z-index:10000;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    background:#d7e0e5;
+
+    transition:.7s;
 }
 
-.logo-mark {
-    width: 31px;
-    height: 31px;
-    display: grid;
-    place-items: center;
-    border-radius: 9px;
-    color: white;
-    font-size: 11px;
-    background: linear-gradient(135deg, var(--purple), var(--cyan));
-    box-shadow: 0 0 25px rgba(155,92,255,.25);
+.loader.hide{
+    opacity:0;
+    pointer-events:none;
 }
 
-.logo span {
-    color: var(--muted);
-}
+.loader-box{
+    width:min(470px,90%);
 
-.nav-links {
-    display: flex;
-    gap: 28px;
-    align-items: center;
-}
+    padding:25px;
 
-.nav-links a {
-    color: var(--muted);
-    font-family: "DM Mono", monospace;
-    font-size: 11px;
-    transition: .2s;
-}
+    border:2px solid #64727a;
 
-.nav-links a:hover {
-    color: white;
-}
+    border-radius:8px;
 
-.nav-status {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 11px;
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    color: var(--muted);
-    font: 10px "DM Mono", monospace;
-}
+    background:
+        linear-gradient(
+            #ffffff,
+            #dfe5e9 45%,
+            #b7c2c9 50%,
+            #f5f7f8
+        );
 
-.status-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--green);
-    box-shadow: 0 0 12px var(--green);
-}
-
-.menu {
-    display: none;
-    border: 0;
-    background: none;
-    color: white;
-    font-size: 25px;
-}
-
-/* HERO */
-
-.hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding: 150px 0 100px;
-}
-
-.hero-grid {
-    display: grid;
-    grid-template-columns: 1.25fr .75fr;
-    gap: 70px;
-    align-items: center;
-}
-
-.eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 9px;
-    margin-bottom: 23px;
-    color: var(--muted);
-    font: 10px "DM Mono", monospace;
-    letter-spacing: .5px;
-}
-
-.eyebrow::before {
-    content: "";
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: var(--green);
-    box-shadow: 0 0 15px var(--green);
-}
-
-h1 {
-    max-width: 850px;
-    font-size: clamp(58px, 8vw, 105px);
-    line-height: .91;
-    letter-spacing: -7px;
-    font-weight: 800;
-}
-
-.gradient {
-    background: linear-gradient(110deg, #fff 0%, #a86cff 45%, #29ddff 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-.hero-sub {
-    margin-top: 27px;
-    min-height: 24px;
-    color: #c7c7d0;
-    font: 13px "DM Mono", monospace;
-}
-
-.prompt {
-    color: var(--purple);
-}
-
-.cursor {
-    display: inline-block;
-    width: 7px;
-    height: 15px;
-    background: var(--cyan);
-    vertical-align: -3px;
-    margin-left: 4px;
-    animation: blink .8s infinite;
-}
-
-@keyframes blink {
-    50% { opacity: 0; }
-}
-
-.hero-text {
-    max-width: 650px;
-    margin-top: 25px;
-    color: var(--muted);
-    font-size: 15px;
-    line-height: 1.85;
-}
-
-.buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 32px;
-}
-
-.btn {
-    min-height: 48px;
-    padding: 0 18px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 9px;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    color: #dddde4;
-    background: rgba(255,255,255,.025);
-    font: 11px "DM Mono", monospace;
-    transition: .25s;
-}
-
-.btn:hover {
-    transform: translateY(-3px);
-    border-color: rgba(155,92,255,.5);
-    background: rgba(155,92,255,.07);
-}
-
-.btn.primary {
-    color: #08080b;
-    background: white;
-    border-color: white;
-    font-weight: 600;
-}
-
-.btn.primary:hover {
-    box-shadow: 0 12px 40px rgba(255,255,255,.1);
-}
-
-/* TERMINAL */
-
-.terminal-wrap {
-    perspective: 1000px;
-}
-
-.terminal {
-    overflow: hidden;
-    border: 1px solid rgba(255,255,255,.1);
-    border-radius: 20px;
-    background: rgba(12,12,18,.85);
     box-shadow:
-        0 40px 100px rgba(0,0,0,.45),
-        0 0 80px rgba(111,44,255,.08);
-    transform: rotateY(-5deg) rotateX(3deg);
-    transition: transform .5s;
+        inset 0 1px white,
+        inset 0 -1px #718089,
+        8px 10px 0 rgba(40,50,60,.15),
+        0 20px 40px rgba(40,50,60,.2);
 }
 
-.terminal:hover {
-    transform: rotateY(0) rotateX(0) translateY(-5px);
+.loader-title{
+    margin-bottom:18px;
+
+    font-family:
+        "Press Start 2P",
+        monospace;
+
+    font-size:10px;
+
+    color:#294f64;
 }
 
-.terminal-top {
-    height: 44px;
-    display: flex;
-    align-items: center;
-    padding: 0 14px;
-    border-bottom: 1px solid var(--border);
+.loader-bar{
+    height:14px;
+
+    padding:2px;
+
+    border:1px solid #65737c;
+
+    background:#aebac1;
+
+    box-shadow:
+        inset 0 2px 4px rgba(0,0,0,.25);
 }
 
-.t-dot {
-    width: 8px;
-    height: 8px;
-    margin-right: 6px;
-    border-radius: 50%;
-    background: #393942;
-}
+.loader-fill{
+    width:0;
+    height:100%;
 
-.t-title {
-    margin: auto;
-    color: #555562;
-    font: 9px "DM Mono", monospace;
-}
-
-.terminal-body {
-    padding: 25px;
-}
-
-.code {
-    color: #747481;
-    font: 11px/2 "DM Mono", monospace;
-}
-
-.code .key { color: var(--cyan); }
-.code .str { color: #a9d8bd; }
-.code .purple { color: #b17cff; }
-
-.terminal-name {
-    margin-top: 24px;
-    font-size: 27px;
-    font-weight: 700;
-}
-
-.terminal-role {
-    margin-top: 5px;
-    color: var(--muted);
-    font: 10px "DM Mono", monospace;
-}
-
-.tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 7px;
-    margin-top: 23px;
-}
-
-.tag {
-    padding: 7px 9px;
-    border: 1px solid var(--border);
-    border-radius: 7px;
-    color: #9999a5;
-    font: 9px "DM Mono", monospace;
-}
-
-.terminal-bottom {
-    margin-top: 28px;
-    padding-top: 16px;
-    border-top: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    color: var(--muted2);
-    font: 9px "DM Mono", monospace;
-}
-
-/* MARQUEE */
-
-.marquee {
-    overflow: hidden;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    background: rgba(255,255,255,.015);
-}
-
-.marquee-track {
-    width: max-content;
-    display: flex;
-    animation: marquee 25s linear infinite;
-}
-
-.marquee-item {
-    padding: 18px 35px;
-    color: #5c5c68;
-    font: 11px "DM Mono", monospace;
-}
-
-.marquee-item b {
-    color: #92929e;
-}
-
-@keyframes marquee {
-    to { transform: translateX(-50%); }
-}
-
-/* SECTIONS */
-
-section {
-    padding: 120px 0;
-}
-
-.heading {
-    display: flex;
-    justify-content: space-between;
-    align-items: end;
-    gap: 40px;
-    margin-bottom: 45px;
-}
-
-.section-num {
-    margin-bottom: 12px;
-    color: var(--purple);
-    font: 10px "DM Mono", monospace;
-}
-
-.heading h2 {
-    font-size: clamp(40px, 5vw, 62px);
-    letter-spacing: -4px;
-    line-height: .95;
-}
-
-.heading p {
-    max-width: 430px;
-    color: var(--muted);
-    font-size: 13px;
-    line-height: 1.75;
-}
-
-/* ABOUT */
-
-.about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-}
-
-.card {
-    padding: 32px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    background: var(--card);
-    backdrop-filter: blur(15px);
-    transition: .3s;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(155,92,255,.28);
-    background: rgba(18,18,27,.8);
-}
-
-.card h3 {
-    margin-bottom: 15px;
-    font-size: 20px;
-}
-
-.card p {
-    color: var(--muted);
-    font-size: 13px;
-    line-height: 1.8;
-}
-
-/* STATS */
-
-.stats {
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-    gap: 12px;
-    margin-top: 14px;
-}
-
-.stat {
-    padding: 25px;
-    border: 1px solid var(--border);
-    border-radius: 17px;
-    background: rgba(255,255,255,.018);
-}
-
-.stat-number {
-    font-size: 31px;
-    font-weight: 700;
-    letter-spacing: -2px;
-}
-
-.stat-label {
-    margin-top: 6px;
-    color: var(--muted);
-    font: 9px "DM Mono", monospace;
-}
-
-/* STACK */
-
-.stack-grid {
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 13px;
-}
-
-.stack-card {
-    padding: 25px;
-    border: 1px solid var(--border);
-    border-radius: 18px;
-    background: var(--card);
-    transition: .25s;
-}
-
-.stack-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(36,221,255,.25);
-}
-
-.stack-icon {
-    width: 42px;
-    height: 42px;
-    display: grid;
-    place-items: center;
-    margin-bottom: 20px;
-    border-radius: 12px;
-    background: rgba(155,92,255,.09);
-    color: var(--purple);
-    font: 13px "DM Mono", monospace;
-}
-
-.stack-card h3 {
-    font-size: 16px;
-}
-
-.stack-card p {
-    margin-top: 8px;
-    color: var(--muted);
-    font-size: 12px;
-    line-height: 1.65;
-}
-
-/* PROJECTS */
-
-.projects {
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    gap: 14px;
-}
-
-.project {
-    position: relative;
-    min-height: 280px;
-    overflow: hidden;
-    padding: 29px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border: 1px solid var(--border);
-    border-radius: 22px;
     background:
-        radial-gradient(circle at 90% 10%, rgba(155,92,255,.12), transparent 35%),
-        var(--card);
-    transition: .35s;
+        repeating-linear-gradient(
+            90deg,
+            #5b9bc0 0,
+            #5b9bc0 12px,
+            #b8e3f5 13px,
+            #b8e3f5 20px
+        );
+
+    animation:load 1.5s forwards;
 }
 
-.project:hover {
-    transform: translateY(-6px);
-    border-color: rgba(155,92,255,.35);
+@keyframes load{
+    to{
+        width:100%;
+    }
 }
 
-.project-number {
-    color: var(--muted2);
-    font: 10px "DM Mono", monospace;
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+header{
+    position:fixed;
+
+    top:12px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:min(1180px,calc(100% - 22px));
+
+    z-index:1000;
 }
 
-.project h3 {
-    margin-top: 55px;
-    font-size: 25px;
-    letter-spacing: -1px;
-}
+.nav{
+    display:flex;
 
-.project p {
-    max-width: 500px;
-    margin-top: 9px;
-    color: var(--muted);
-    font-size: 12px;
-    line-height: 1.7;
-}
+    align-items:center;
+    justify-content:space-between;
 
-.project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 7px;
-    margin-top: 22px;
-}
+    gap:15px;
 
-.project-tag {
-    padding: 6px 9px;
-    border: 1px solid var(--border);
-    border-radius: 7px;
-    color: #858591;
-    font: 9px "DM Mono", monospace;
-}
+    padding:7px 9px;
 
-/* CONTACT */
+    border:1px solid #65737d;
 
-.contact {
-    position: relative;
-    overflow: hidden;
-    padding: 70px;
-    border: 1px solid rgba(155,92,255,.2);
-    border-radius: 28px;
+    border-radius:8px;
+
     background:
-        radial-gradient(circle at 85% 20%, rgba(36,221,255,.12), transparent 30%),
-        radial-gradient(circle at 10% 100%, rgba(155,92,255,.12), transparent 35%),
-        rgba(15,15,23,.75);
+        linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #e5eaed 45%,
+            #b7c2c8 50%,
+            #edf1f3 100%
+        );
+
+    box-shadow:
+        inset 0 1px #ffffff,
+        inset 0 -1px #78868e,
+        3px 5px 0 rgba(40,55,65,.18),
+        0 10px 25px rgba(40,55,65,.18);
 }
 
-.contact::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background: linear-gradient(120deg, transparent, rgba(255,255,255,.035), transparent);
-    transform: translateX(-100%);
-    animation: shine 7s infinite;
+.logo{
+    display:flex;
+
+    align-items:center;
+
+    gap:9px;
+
+    text-decoration:none;
+
+    color:#17242c;
+
+    font-family:"Orbitron",sans-serif;
+
+    font-weight:900;
 }
 
-@keyframes shine {
-    50%,100% { transform: translateX(100%); }
+.logo-disc{
+    width:38px;
+    height:38px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #9ca8ae 0 8%,
+            #e8eef1 9% 17%,
+            #718089 18% 20%,
+            transparent 21%
+        ),
+        conic-gradient(
+            #d7e7ee,
+            #8baec0,
+            #e8eef1,
+            #9dbbc8,
+            #dce9ee,
+            #708d9b,
+            #d7e7ee
+        );
+
+    border:1px solid #65747d;
+
+    box-shadow:
+        inset 0 1px white,
+        0 3px 5px rgba(0,0,0,.2);
+
+    animation:discSpin 12s linear infinite;
 }
 
-.contact h2 {
-    max-width: 750px;
-    font-size: clamp(42px,6vw,72px);
-    line-height: .95;
-    letter-spacing: -5px;
-}
-
-.contact p {
-    max-width: 600px;
-    margin-top: 20px;
-    color: var(--muted);
-    line-height: 1.8;
-    font-size: 13px;
-}
-
-.contact-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 9px;
-    margin-top: 30px;
-}
-
-/* FOOTER */
-
-footer {
-    padding: 45px 0;
-    border-top: 1px solid var(--border);
-}
-
-.footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    color: var(--muted2);
-    font: 9px "DM Mono", monospace;
-}
-
-.footer-right {
-    display: flex;
-    gap: 18px;
-}
-
-.footer-right a:hover {
-    color: white;
-}
-
-
-
-.reveal {
-    opacity: 0;
-    transform: translateY(25px);
-    transition:
-        opacity .7s ease,
-        transform .7s ease;
-}
-
-.reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-
-
-@media (max-width: 900px) {
-    .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 55px;
-    }
-
-    .terminal {
-        max-width: 600px;
-    }
-
-    .stack-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .stats {
-        grid-template-columns: 1fr 1fr;
+@keyframes discSpin{
+    to{
+        transform:rotate(360deg);
     }
 }
 
-@media (max-width: 700px) {
-    .container {
-        width: min(var(--max), calc(100% - 28px));
-    }
+.logo span{
+    letter-spacing:-1px;
+}
 
-    header {
-        height: 64px;
-    }
+nav{
+    display:flex;
 
-    .nav {
-        height: 64px;
-    }
+    gap:4px;
+}
 
-    .nav-links,
-    .nav-status {
-        display: none;
-    }
+nav a{
+    padding:9px 11px;
 
-    .menu {
-        display: block;
-    }
+    color:#23333c;
 
-    .hero {
-        padding-top: 125px;
-    }
+    text-decoration:none;
 
-    h1 {
-        font-size: clamp(53px, 17vw, 78px);
-        letter-spacing: -5px;
-    }
+    font-size:12px;
 
-    .hero-text {
-        font-size: 14px;
-    }
+    border:1px solid transparent;
 
-    section {
-        padding: 85px 0;
-    }
+    border-radius:5px;
 
-    .heading {
-        display: block;
-    }
+    transition:.15s;
+}
 
-    .heading p {
-        margin-top: 20px;
-    }
+nav a:hover{
+    border-color:#6d7b83;
 
-    .about-grid,
-    .projects {
-        grid-template-columns: 1fr;
-    }
+    background:
+        linear-gradient(
+            #fff,
+            #dbeaf2 50%,
+            #a9cfdf 51%,
+            #f4f9fb
+        );
 
-    .stack-grid {
-        grid-template-columns: 1fr;
-    }
+    box-shadow:
+        inset 0 1px white;
+}
 
-    .stats {
-        grid-template-columns: 1fr 1fr;
-    }
+.lang{
+    padding:8px 11px;
 
-    .contact {
-        padding: 35px 25px;
-        border-radius: 22px;
-    }
+    color:#24343d;
 
-    .contact h2 {
-        letter-spacing: -3px;
-    }
+    border:1px solid #6d7b83;
 
-    .footer {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+    border-radius:5px;
 
-    .terminal {
-        transform: none;
+    background:
+        linear-gradient(
+            #fff,
+            #dce3e7 50%,
+            #b2bdc4 51%,
+            #f4f6f7
+        );
+
+    cursor:pointer;
+
+    font-weight:700;
+}
+
+/* =========================================================
+   GENERAL
+   ========================================================= */
+
+.container{
+    width:min(1120px,calc(100% - 30px));
+
+    margin:auto;
+}
+
+section{
+    position:relative;
+
+    padding:105px 0;
+}
+
+.section-label{
+    margin-bottom:12px;
+
+    color:#35647c;
+
+    font-family:
+        "Press Start 2P",
+        monospace;
+
+    font-size:9px;
+}
+
+.section-title{
+    margin-bottom:28px;
+
+    color:#1b2a32;
+
+    font-family:
+        "Orbitron",
+        sans-serif;
+
+    font-size:
+        clamp(30px,5vw,56px);
+
+    line-height:1;
+}
+
+.section-title span{
+    color:#347da4;
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero{
+    min-height:100vh;
+
+    display:flex;
+
+    align-items:center;
+
+    padding-top:145px;
+}
+
+.hero-grid{
+    display:grid;
+
+    grid-template-columns:
+        1.15fr
+        .85fr;
+
+    gap:55px;
+
+    align-items:center;
+}
+
+.badge{
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    margin-bottom:24px;
+
+    padding:7px 11px;
+
+    border:1px solid #657680;
+
+    border-radius:5px;
+
+    background:
+        linear-gradient(
+            #ffffff,
+            #dce5e9 50%,
+            #b6c5cd 51%,
+            #f7f9fa
+        );
+
+    box-shadow:
+        inset 0 1px white,
+        2px 3px rgba(40,55,65,.12);
+
+    color:#315f77;
+
+    font-family:
+        "Press Start 2P",
+        monospace;
+
+    font-size:8px;
+}
+
+.status-dot{
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:#4d9d72;
+
+    border:1px solid #326a4d;
+
+    box-shadow:
+        0 0 0 2px #dcece3;
+}
+
+.hero h1{
+    font-family:
+        "Orbitron",
+        sans-serif;
+
+    font-size:
+        clamp(48px,8vw,92px);
+
+    line-height:.9;
+
+    letter-spacing:-5px;
+
+    color:#283841;
+
+    text-shadow:
+        0 1px #fff,
+        0 2px #9ca8ae,
+        3px 4px 0 rgba(50,60,70,.16);
+}
+
+.chrome{
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #b4bec4 32%,
+            #ffffff 45%,
+            #75848d 52%,
+            #eef3f5 63%,
+            #a7b2b8 80%,
+            #ffffff 100%
+        );
+
+    -webkit-background-clip:text;
+
+    background-clip:text;
+
+    color:transparent;
+}
+
+.hero-subtitle{
+    color:#356d8b;
+
+    font-family:
+        "Orbitron",
+        sans-serif;
+
+    font-size:
+        clamp(20px,3vw,35px);
+
+    margin-top:8px;
+}
+
+.hero p{
+    max-width:650px;
+
+    margin:28px 0;
+
+    color:#4d5d66;
+
+    font-size:16px;
+
+    line-height:1.8;
+}
+
+.buttons{
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+}
+
+.btn{
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    min-height:42px;
+
+    padding:0 18px;
+
+    color:#23333c;
+
+    text-decoration:none;
+
+    border:1px solid #65737d;
+
+    border-radius:6px;
+
+    background:
+        linear-gradient(
+            #ffffff,
+            #e6ecef 47%,
+            #bac5cb 50%,
+            #f7f9fa
+        );
+
+    box-shadow:
+        inset 0 1px #fff,
+        inset 0 -1px #7c8991,
+        2px 3px 0 rgba(40,55,65,.17);
+
+    transition:.12s;
+}
+
+.btn:hover{
+    transform:translateY(-1px);
+
+    background:
+        linear-gradient(
+            #ffffff,
+            #e8f5fb 47%,
+            #abd0e0 50%,
+            #f8fcfe
+        );
+}
+
+.btn:active{
+    transform:translate(1px,2px);
+
+    box-shadow:
+        inset 0 2px 4px rgba(0,0,0,.22);
+}
+
+/* =========================================================
+   WINDOW
+   ========================================================= */
+
+.window{
+    border:1px solid #687780;
+
+    border-radius:7px;
+
+    overflow:hidden;
+
+    background:#d8e0e4;
+
+    box-shadow:
+        inset 0 1px white,
+        6px 8px 0 rgba(40,55,65,.14),
+        0 20px 35px rgba(40,55,65,.18);
+
+    transform:rotate(1deg);
+
+    transition:.3s;
+}
+
+.window:hover{
+    transform:rotate(0) translateY(-4px);
+}
+
+.window-bar{
+    display:flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    padding:7px 9px;
+
+    border-bottom:1px solid #6d7b84;
+
+    background:
+        linear-gradient(
+            #fdfefe,
+            #d9e1e5 47%,
+            #aab7bf 50%,
+            #edf1f3
+        );
+}
+
+.win-dot{
+    width:12px;
+    height:12px;
+
+    border:1px solid #64737c;
+
+    border-radius:2px;
+
+    background:
+        linear-gradient(
+            #fff,
+            #bcc7cd
+        );
+
+    box-shadow:
+        inset 0 1px white;
+}
+
+.window-title{
+    margin:auto;
+
+    color:#32444e;
+
+    font-family:
+        "Press Start 2P",
+        monospace;
+
+    font-size:7px;
+}
+
+.terminal{
+    padding:30px;
+
+    color:#26363f;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size:13px;
+
+    line-height:2;
+}
+
+.prompt{
+    color:#2b6380;
+}
+
+.command{
+    color:#17232b;
+    font-weight:bold;
+}
+
+.value{
+    color:#52636c;
+}
+
+.cursor{
+    display:inline-block;
+
+    width:7px;
+    height:14px;
+
+    background:#397d9e;
+
+    vertical-align:middle;
+
+    animation:blink .8s infinite;
+}
+
+@keyframes blink{
+    50%{
+        opacity:.2;
     }
 }
 
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
-        transition-duration: .01ms !important;
+/* =========================================================
+   MARQUEE
+   ========================================================= */
+
+.marquee{
+    overflow:hidden;
+
+    border-top:1px solid #76858e;
+    border-bottom:1px solid #76858e;
+
+    background:
+        linear-gradient(
+            #edf2f4,
+            #c0cbd1 50%,
+            #f3f6f7
+        );
+
+    box-shadow:
+        inset 0 1px white,
+        inset 0 -1px rgba(70,85,95,.3);
+}
+
+.marquee-track{
+    display:flex;
+
+    width:max-content;
+
+    padding:11px 0;
+
+    animation:marquee 25s linear infinite;
+}
+
+.marquee span{
+    margin:0 25px;
+
+    color:#36596a;
+
+    font-family:
+        "Press Start 2P",
+        monospace;
+
+    font-size:9px;
+
+    white-space:nowrap;
+}
+
+.marquee b{
+    color:#8a9aa3;
+}
+
+@keyframes marquee{
+    to{
+        transform:translateX(-50%);
     }
 }
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+
+.card,
+.project,
+.service,
+.friend,
+.contact-box{
+    border:1px solid #77858d;
+
+    border-radius:9px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.98),
+            rgba(215,222,226,.96)
+        );
+
+    box-shadow:
+        inset 0 1px white,
+        inset 0 -1px rgba(70,85,95,.3),
+        6px 8px 0 rgba(55,70,80,.1),
+        0 15px 30px rgba(50,65,75,.15);
+}
+
+/* =========================================================
+   ABOUT
+   ========================================================= */
+
+.about-grid{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:18px;
+}
+
+.card{
+    padding:28px;
+}
+
+.card h3{
+    margin-bottom:13px;
+
+    color:#294452;
+
+    font-family:"Orbitron",sans-serif;
+}
+
+.card p{
+    color:#53636c;
+
+    line-height:1.75;
+}
+
+.code-card{
+    font-family:
+        "Courier New",
+        monospace;
+
+    line-height:2;
+}
+
+.code-card .key{
+    color:#316f91;
+}
+
+.code-card .str{
+    color:#52707e;
+}
+
+.code-card .num{
+    color:#283941;
+}
+
+/* =========================================================
+   PROJECTS
+   ========================================================= */
+
+.projects{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:18px;
+}
+
+.project{
+    min-height:300px;
+
+    padding:26px;
+
+    transition:.2s;
+}
+
+.project:hover{
+    transform:translateY(-5px);
+
+    box-shadow:
+        inset 0 1px white,
+        8px 12px 0 rgba(55,70,80,.12),
+        0 20px 35px rgba(50,65,75,.18);
+}
+
+.project-number{
+    color:#56717e;
+
+    font-family:
+        "Press Start 2P",
+        monospace;
+
+    font-size:8px;
+}
+
+.project-icon{
+    margin:28px 0 16px;
+
+    font-size:40px;
+
+    filter:
+        grayscale(.3)
+        drop-shadow(2px 3px 0 rgba(50,60,70,.18));
+}
+
+.project h3{
+    margin-bottom:11px;
+
+    color:#294452;
+
+    font-family:"Orbitron",sans-serif;
+}
+
+.project p{
+    color:#5a6971;
+
+    font-size:14px;
+
+    line-height:1.7;
+}
+
+.tags{
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:6px;
+
+    margin-top:19px;
+}
+
+.tag{
+    padding:5px 7px;
+
+    color:#3e6172;
+
+    border:1px solid #84949d;
+
+    border-radius:4px;
+
+    background:
+        linear-gradient(
+            #f9fbfc,
+            #d6dfe4
+        );
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size:9px;
+}
+
+/* =========================================================
+   SERVICES
+   ========================================================= */
+
+.services{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:18px;
+}
+
+.service{
+    padding:32px 24px;
+
+    text-align:center;
+}
+
+.service-icon{
+    margin-bottom:15px;
+
+    font-size:38px;
+
+    filter:
+        grayscale(.25)
+        drop-shadow(2px 3px rgba(40,50,60,.15));
+}
+
+.service h3{
+    margin-bottom:10px;
+
+    color:#294452;
+
+    font-family:"Orbitron",sans-serif;
+
+    font-size:15px;
+}
+
+.service p{
+    color:#5b6b73;
+
+    font-size:14px;
+
+    line-height:1.6;
+}
+
+/* =========================================================
+   VISITOR COUNTER
+   ========================================================= */
+
+.visitor-section{
+    text-align:center;
+}
+
+.visitor-box{
+    width:min(680px,100%);
+
+    margin:30px auto 0;
+
+    padding:32px;
+
+    border:1px solid #697881;
+
+    border-radius:9px;
+
+    background:
+        linear-gradient(
+            #f8fafb,
+            #d5dee3 50%,
+            #edf1f3
+        );
+
+    box-shadow:
+        inset 0 1px white,
+        inset 0 -1px #87949c,
+        6px 8px 0 rgba(55,70,80,.1),
+        0 15px 30px rgba(50,65,75,.15);
+}
+
+.counter-label{
+    color:#506672;
+
+    font-family:
+        "Press Start 2P",
+        monospace;
+
+    font-size:8px;
+}
+
+.counter{
+    display:flex;
+
+    justify-content:center;
+
+    gap:5px;
+
+    margin:20px 0;
+}
+
+.digit{
+    width:43px;
+    height:57px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    color:#dceaf1;
+
+    border:1px solid #263b47;
+
+    border-radius:3px;
+
+    background:
+        linear-gradient(
+            #354e5b,
+            #101b22
+        );
+
+    box-shadow:
+        inset 0 1px rgba(255,255,255,.25),
+        inset 0 -2px rgba(0,0,0,.35);
+
+    font-family:
+        "Press Start 2P",
+        monospace;
+
+    font-size:17px;
+
+    text-shadow:
+        0 1px #000;
+}
+
+.visitor-note{
+    color:#71818a;
+
+    font-size:11px;
+}
+
+/* =========================================================
+   FRIENDS
+   ========================================================= */
+
+.friends{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:16px;
+}
+
+.friend{
+    min-height:145px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+
+    padding:21px;
+}
+
+.friend-top{
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+}
+
+.friend-logo{
+    width:42px;
+    height:42px;
+
+    display:grid;
+
+    place-items:center;
+
+    color:#304955;
+
+    border:1px solid #71818a;
+
+    border-radius:6px;
+
+    background:
+        linear-gradient(
+            #fff,
+            #d5dfe4 48%,
+            #aebbc3 50%,
+            #f5f8f9
+        );
+
+    box-shadow:
+        inset 0 1px white;
+}
+
+.friend h3{
+    color:#334e5c;
+
+    font-size:14px;
+}
+
+.friend p{
+    margin-top:4px;
+
+    color:#7a8991;
+
+    font-size:11px;
+}
+
+.friend a{
+    color:#356f8d;
+
+    text-decoration:none;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size:11px;
+}
+
+.friend a:hover{
+    text-decoration:underline;
+}
+
+.sponsor-note{
+    margin-top:20px;
+
+    color:#65757e;
+
+    font-size:11px;
+}
+
+/* =========================================================
+   CONTACT
+   ========================================================= */
+
+.contact{
+    text-align:center;
+}
+
+.contact-box{
+    padding:55px 30px;
+}
+
+.contact h2{
+    margin-bottom:18px;
+
+    color:#253741;
+
+    font-family:
+        "Orbitron",
+        sans-serif;
+
+    font-size:
+        clamp(30px,6vw,62px);
+
+    line-height:1;
+}
+
+.contact h2 span{
+    color:#367c9f;
+}
+
+.contacts{
+    display:flex;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    gap:8px;
+
+    margin-top:28px;
+}
+
+.contact-link{
+    padding:11px 15px;
+
+    color:#365a6b;
+
+    text-decoration:none;
+
+    border:1px solid #7b8991;
+
+    border-radius:5px;
+
+    background:
+        linear-gradient(
+            #ffffff,
+            #dce4e8 50%,
+            #b7c3c9 51%,
+            #f8fafb
+        );
+
+    box-shadow:
+        inset 0 1px white,
+        2px 3px rgba(40,55,65,.12);
+
+    transition:.15s;
+}
+
+.contact-link:hover{
+    transform:translateY(-2px);
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer{
+    padding:40px 0 55px;
+
+    text-align:center;
+
+    border-top:1px solid #7c8991;
+
+    background:
+        linear-gradient(
+            #dfe6ea,
+            #c0cbd1
+        );
+}
+
+.footer-logo{
+    color:#334b58;
+
+    font-family:
+        "Orbitron",
+        sans-serif;
+
+    font-size:20px;
+
+    font-weight:900;
+}
+
+footer p{
+    margin-top:10px;
+
+    color:#6a7b84;
+
+    font-size:11px;
+}
+
+.footer-badges{
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:6px;
+
+    margin-top:18px;
+}
+
+.footer-badge{
+    padding:6px 8px;
+
+    color:#4b6775;
+
+    border:1px solid #84929a;
+
+    border-radius:4px;
+
+    background:#e9eef1;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size:8px;
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media(max-width:850px){
+
+    nav{
+        display:none;
+    }
+
+    .hero-grid,
+    .about-grid{
+        grid-template-columns:1fr;
+    }
+
+    .projects,
+    .services,
+    .friends{
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+        padding-top:125px;
+    }
+
+    .window{
+        transform:none;
+    }
+
+    section{
+        padding:80px 0;
+    }
+
+}
+
+@media(max-width:500px){
+
+    .container{
+        width:min(100% - 20px,1120px);
+    }
+
+    header{
+        width:calc(100% - 16px);
+    }
+
+    .logo span{
+        font-size:13px;
+    }
+
+    .hero h1{
+        font-size:46px;
+
+        letter-spacing:-3px;
+    }
+
+    .hero p{
+        font-size:14px;
+    }
+
+    .terminal{
+        padding:20px;
+
+        font-size:11px;
+    }
+
+    .digit{
+        width:32px;
+        height:49px;
+
+        font-size:13px;
+    }
+
+    .star{
+        display:none;
+    }
+
+}
+
+/* =========================================================
+   SELECTION
+   ========================================================= */
+
+::selection{
+    color:#fff;
+
+    background:#397e9f;
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="progress"></div>
-<div class="grid"></div>
-<div class="noise"></div>
-<div class="orb one"></div>
-<div class="orb two"></div>
+<!-- =======================================================
+     LOADER
+     ======================================================= -->
 
-<header id="header">
-    <div class="container nav">
+<div class="loader" id="loader">
 
-        <a href="#" class="logo">
-            <div class="logo-mark">ch</div>
-            chcode<span>@GitHub</span>
-        </a>
+    <div class="loader-box">
 
-        <nav class="nav-links">
-            <a href="#about">about</a>
-            <a href="#stack">stack</a>
-            <a href="#projects">projects</a>
-            <a href="#contact">contact</a>
-        </nav>
-
-        <div class="nav-status">
-            <span class="status-dot"></span>
-            available
+        <div class="loader-title">
+            CHCODE.EXE // LOADING PERSONAL WEB...
         </div>
 
-        <button class="menu" onclick="toggleMenu()">☰</button>
+        <div class="loader-bar">
+            <div class="loader-fill"></div>
+        </div>
+
     </div>
+
+</div>
+
+<!-- DECORATIONS -->
+
+<div class="star big s1">✦</div>
+<div class="star small s2">★</div>
+<div class="star small s3">✦</div>
+<div class="star big s4">✧</div>
+
+
+<!-- =======================================================
+     HEADER
+     ======================================================= -->
+
+<header>
+
+    <div class="nav">
+
+        <a href="#home" class="logo">
+
+            <div class="logo-disc"></div>
+
+            <span>chcode</span>
+
+        </a>
+
+        <nav>
+
+            <a href="#about">ABOUT</a>
+            <a href="#projects">PROJECTS</a>
+            <a href="#services">SERVICES</a>
+            <a href="#friends">FRIENDS</a>
+            <a href="#contact">CONTACT</a>
+
+        </nav>
+
+        <button
+            class="lang"
+            onclick="cycleLanguage()"
+        >
+            RU
+        </button>
+
+    </div>
+
 </header>
+
+
+<!-- =======================================================
+     HERO
+     ======================================================= -->
 
 <main>
 
+<section class="hero" id="home">
 
+    <div class="container">
 
-<section class="hero">
-    <div class="container hero-grid">
+        <div class="hero-grid">
 
-        <div class="reveal">
+            <div>
 
-            <div class="eyebrow">
-                independent developer · 2026
-            </div>
+                <div class="badge">
 
-            <h1>
-                Code.<br>
-                Build.<br>
-                <span class="gradient">Create.</span>
-            </h1>
+                    <span class="status-dot"></span>
 
-            <div class="hero-sub">
-                <span class="prompt">~/chcode $</span>
-                <span id="typewriter"></span>
-                <span class="cursor"></span>
-            </div>
+                    PERSONAL WEB // ONLINE
 
-            <p class="hero-text">
-                Разрабатываю современные веб-приложения, Telegram-ботов,
-                AI-интеграции и автоматизацию. Люблю превращать идеи
-                в быстрые, удобные и красивые продукты.
-            </p>
-
-            <div class="buttons">
-                <a href="#projects" class="btn primary">
-                    посмотреть проекты →
-                </a>
-
-                <a href="https://github.com/chcode-us"
-                   target="_blank"
-                   rel="noopener"
-                   class="btn">
-                    GitHub ↗
-                </a>
-            </div>
-
-        </div>
-
-        <div class="terminal-wrap reveal">
-
-            <div class="terminal">
-
-                <div class="terminal-top">
-                    <span class="t-dot"></span>
-                    <span class="t-dot"></span>
-                    <span class="t-dot"></span>
-                    <span class="t-title">chcode.config</span>
                 </div>
 
-                <div class="terminal-body">
+                <h1>
 
-<pre class="code">{
-  <span class="key">"name"</span>: <span class="str">"chcode"</span>,
-  <span class="key">"role"</span>: <span class="str">"developer"</span>,
-  <span class="key">"focus"</span>: [
-    <span class="str">"Python"</span>,
-    <span class="str">"AI"</span>,
-    <span class="str">"Web"</span>,
-    <span class="str">"Telegram"</span>
-  ],
-  <span class="key">"status"</span>: <span class="purple">"building"</span>
-}</pre>
-
-                    <div class="terminal-name">
+                    <span class="chrome">
                         chcode
-                    </div>
+                    </span>
 
-                    <div class="terminal-role">
-                        Python · AI · Web · Automation
-                    </div>
+                </h1>
 
-                    <div class="tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">AI</span>
-                        <span class="tag">Telegram</span>
-                        <span class="tag">Backend</span>
-                    </div>
+                <div class="hero-subtitle">
+                    digital developer.
+                </div>
 
-                    <div class="terminal-bottom">
-                        <span>coffee → code</span>
-                        <span>v2.026</span>
+                <p>
+
+                    Welcome to my little corner of the Internet.
+                    I build websites, Telegram bots, backend systems,
+                    AI experiments and other things that should probably
+                    not be started at 2 AM.
+
+                </p>
+
+                <div class="buttons">
+
+                    <a
+                        href="#projects"
+                        class="btn"
+                    >
+                        ★ ENTER PROJECTS
+                    </a>
+
+                    <a
+                        href="#contact"
+                        class="btn"
+                    >
+                        ✉ CONTACT
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- WINDOW -->
+
+            <div class="window">
+
+                <div class="window-bar">
+
+                    <span class="win-dot"></span>
+                    <span class="win-dot"></span>
+                    <span class="win-dot"></span>
+
+                    <div class="window-title">
+                        chcode://terminal
                     </div>
 
                 </div>
+
+                <div class="terminal">
+
+                    <div>
+
+                        <span class="prompt">
+                            C:\CHCODE&gt;
+                        </span>
+
+                        whoami
+
+                    </div>
+
+                    <div class="value">
+                        developer
+                    </div>
+
+                    <br>
+
+                    <div>
+
+                        <span class="prompt">
+                            C:\CHCODE&gt;
+                        </span>
+
+                        status
+
+                    </div>
+
+                    <div class="value">
+                        ONLINE
+                    </div>
+
+                    <div class="value">
+                        coffee = required
+                    </div>
+
+                    <div class="value">
+                        ideas = unlimited
+                    </div>
+
+                    <br>
+
+                    <div>
+
+                        <span class="prompt">
+                            C:\CHCODE&gt;
+                        </span>
+
+                        _
+                        <span class="cursor"></span>
+
+                    </div>
+
+                </div>
+
             </div>
+
         </div>
 
     </div>
+
 </section>
 
 
+<!-- =======================================================
+     MARQUEE
+     ======================================================= -->
 
 <div class="marquee">
+
     <div class="marquee-track">
 
-        <div class="marquee-item">PYTHON <b>•</b></div>
-        <div class="marquee-item">AI <b>•</b></div>
-        <div class="marquee-item">TELEGRAM BOTS <b>•</b></div>
-        <div class="marquee-item">WEB DEVELOPMENT <b>•</b></div>
-        <div class="marquee-item">AUTOMATION <b>•</b></div>
-        <div class="marquee-item">BACKEND <b>•</b></div>
+        <span>★ WELCOME</span>
+        <span>✦ CHCODE</span>
+        <span>★ PERSONAL WEB</span>
+        <span>✦ PYTHON</span>
+        <span>★ JAVASCRIPT</span>
+        <span>✦ TELEGRAM</span>
+        <span>★ BACKEND</span>
+        <span>✦ WEB</span>
 
-        <div class="marquee-item">PYTHON <b>•</b></div>
-        <div class="marquee-item">AI <b>•</b></div>
-        <div class="marquee-item">TELEGRAM BOTS <b>•</b></div>
-        <div class="marquee-item">WEB DEVELOPMENT <b>•</b></div>
-        <div class="marquee-item">AUTOMATION <b>•</b></div>
-        <div class="marquee-item">BACKEND <b>•</b></div>
+        <span>★ WELCOME</span>
+        <span>✦ CHCODE</span>
+        <span>★ PERSONAL WEB</span>
+        <span>✦ PYTHON</span>
+        <span>★ JAVASCRIPT</span>
+        <span>✦ TELEGRAM</span>
+        <span>★ BACKEND</span>
+        <span>✦ WEB</span>
 
     </div>
+
 </div>
 
 
+<!-- =======================================================
+     ABOUT
+     ======================================================= -->
 
 <section id="about">
+
     <div class="container">
 
-        <div class="heading reveal">
-            <div>
-                <div class="section-num">01 / ABOUT</div>
-                <h2>Кто я.</h2>
-            </div>
-
-            <p>
-                Разработка для меня — это не просто написание кода.
-                Это поиск простого решения сложной задачи.
-            </p>
+        <div class="section-label">
+            01 / ABOUT.TXT
         </div>
+
+        <h2 class="section-title">
+            About <span>me.</span>
+        </h2>
+
 
         <div class="about-grid">
 
-            <div class="card reveal">
-                <h3>Разработчик</h3>
+            <div class="card">
+
+                <h3>
+                    HELLO, INTERNET!
+                </h3>
+
                 <p>
-                    Создаю backend и frontend-приложения,
-                    Telegram-ботов, API и различные автоматизации.
-                    Работаю с Python, JavaScript и современным web stack.
-                </p>
-            </div>
 
-            <div class="card reveal">
-                <h3>AI & Automation</h3>
+                    I'm chcode — a developer who likes
+                    creating useful digital things.
+
+                </p>
+
+                <br>
+
                 <p>
-                    Интегрирую искусственный интеллект в приложения,
-                    автоматизирую рутинные процессы и создаю
-                    инструменты, которые экономят время.
+
+                    My main interests are web development,
+                    Python, Telegram bots, backend systems,
+                    automation and artificial intelligence.
+
                 </p>
-            </div>
 
-        </div>
+                <br>
 
-        <div class="stats">
-
-            <div class="stat reveal">
-                <div class="stat-number">∞</div>
-                <div class="stat-label">IDEAS TO BUILD</div>
-            </div>
-
-            <div class="stat reveal">
-                <div class="stat-number">24/7</div>
-                <div class="stat-label">CURIOUS</div>
-            </div>
-
-            <div class="stat reveal">
-                <div class="stat-number">01</div>
-                <div class="stat-label">MAIN RULE — KEEP LEARNING</div>
-            </div>
-
-            <div class="stat reveal">
-                <div class="stat-number">0%</div>
-                <div class="stat-label">INTEREST IN BORING UI</div>
-            </div>
-
-        </div>
-
-    </div>
-</section>
-
-<!-- STACK -->
-
-<section id="stack">
-    <div class="container">
-
-        <div class="heading reveal">
-            <div>
-                <div class="section-num">02 / STACK</div>
-                <h2>Инструменты.</h2>
-            </div>
-
-            <p>
-                Набор технологий, с которыми я создаю
-                продукты и экспериментирую с новыми идеями.
-            </p>
-        </div>
-
-        <div class="stack-grid">
-
-            <div class="stack-card reveal">
-                <div class="stack-icon">PY</div>
-                <h3>Python</h3>
                 <p>
-                    Backend, автоматизация, Telegram-боты,
-                    API и AI-интеграции.
+
+                    This website is intentionally personal.
+                    No corporate landing page energy here.
+
                 </p>
+
             </div>
 
-            <div class="stack-card reveal">
-                <div class="stack-icon">JS</div>
-                <h3>JavaScript</h3>
-                <p>
-                    Интерактивные интерфейсы, web-приложения
-                    и клиентская логика.
-                </p>
-            </div>
 
-            <div class="stack-card reveal">
-                <div class="stack-icon">AI</div>
-                <h3>Artificial Intelligence</h3>
-                <p>
-                    AI API, интеллектуальные функции,
-                    автоматизация и эксперименты.
-                </p>
-            </div>
+            <div class="card code-card">
 
-            <div class="stack-card reveal">
-                <div class="stack-icon">TG</div>
-                <h3>Telegram</h3>
-                <p>
-                    Боты, мини-приложения, автоматизация
-                    и интеграции.
-                </p>
-            </div>
+                <div>
+                    <span class="key">nickname</span> =
+                    <span class="str">"chcode"</span>
+                </div>
 
-            <div class="stack-card reveal">
-                <div class="stack-icon">DB</div>
-                <h3>Databases</h3>
-                <p>
-                    SQLite, PostgreSQL и работа
-                    с данными приложений.
-                </p>
-            </div>
+                <div>
+                    <span class="key">occupation</span> =
+                    <span class="str">"developer"</span>
+                </div>
 
-            <div class="stack-card reveal">
-                <div class="stack-icon">WEB</div>
-                <h3>Web</h3>
-                <p>
-                    HTML, CSS, JavaScript, responsive UI
-                    и современные интерфейсы.
-                </p>
+                <div>
+                    <span class="key">location</span> =
+                    <span class="str">"internet"</span>
+                </div>
+
+                <div>
+                    <span class="key">status</span> =
+                    <span class="str">"online"</span>
+                </div>
+
+                <div>
+                    <span class="key">coffee</span> =
+                    <span class="str">true</span>
+                </div>
+
+                <div>
+                    <span class="key">ideas</span> =
+                    <span class="num">∞</span>
+                </div>
+
             </div>
 
         </div>
 
     </div>
+
 </section>
 
 
+<!-- =======================================================
+     PROJECTS
+     ======================================================= -->
 
 <section id="projects">
+
     <div class="container">
 
-        <div class="heading reveal">
-            <div>
-                <div class="section-num">03 / PROJECTS</div>
-                <h2>Проекты.</h2>
-            </div>
-
-            <p>
-                Несколько направлений, в которых я создаю
-                собственные продукты и экспериментальные проекты.
-            </p>
+        <div class="section-label">
+            02 / PROJECTS
         </div>
+
+        <h2 class="section-title">
+            Stuff I've <span>built.</span>
+        </h2>
+
 
         <div class="projects">
 
-            <article class="project reveal">
 
-                <div>
-                    <div class="project-number">PROJECT / 001</div>
+            <article class="project">
 
-                    <h3>Csanaks</h3>
-
-                    <p>
-                        Современный messenger с группами,
-                        каналами, реакциями, файлами,
-                        WebSocket-событиями и профилями.
-                    </p>
+                <div class="project-number">
+                    PROJECT 01
                 </div>
 
-                <div class="project-tags">
-                    <span class="project-tag">WEB</span>
-                    <span class="project-tag">WEBSOCKET</span>
-                    <span class="project-tag">BACKEND</span>
-                    <span class="project-tag">MESSENGER</span>
+                <div class="project-icon">
+                    💿
                 </div>
 
-            </article>
+                <h3>
+                    CSANAKS
+                </h3>
 
-            <article class="project reveal">
+                <p>
 
-                <div>
-                    <div class="project-number">PROJECT / 002</div>
+                    Modern messenger project with
+                    real-time communication, groups,
+                    channels, reactions and files.
 
-                    <h3>Telegram Bots</h3>
+                </p>
 
-                    <p>
-                        Боты для автоматизации, RP-проектов,
-                        сервисов и различных Telegram-систем.
-                    </p>
-                </div>
+                <div class="tags">
 
-                <div class="project-tags">
-                    <span class="project-tag">PYTHON</span>
-                    <span class="project-tag">AIOGRAM</span>
-                    <span class="project-tag">API</span>
-                    <span class="project-tag">BOT</span>
+                    <span class="tag">NODE.JS</span>
+                    <span class="tag">SQLITE</span>
+                    <span class="tag">WEBSOCKET</span>
+
                 </div>
 
             </article>
 
-            <article class="project reveal">
 
-                <div>
-                    <div class="project-number">PROJECT / 003</div>
+            <article class="project">
 
-                    <h3>AI Systems</h3>
-
-                    <p>
-                        Эксперименты с искусственным интеллектом,
-                        API-интеграциями и интеллектуальной автоматизацией.
-                    </p>
+                <div class="project-number">
+                    PROJECT 02
                 </div>
 
-                <div class="project-tags">
-                    <span class="project-tag">AI</span>
-                    <span class="project-tag">API</span>
-                    <span class="project-tag">PYTHON</span>
+                <div class="project-icon">
+                    🤖
+                </div>
+
+                <h3>
+                    TELEGRAM BOTS
+                </h3>
+
+                <p>
+
+                    Telegram bots for communities,
+                    RP projects, administration
+                    and automation.
+
+                </p>
+
+                <div class="tags">
+
+                    <span class="tag">PYTHON</span>
+                    <span class="tag">AIOGRAM</span>
+                    <span class="tag">API</span>
+
                 </div>
 
             </article>
 
-            <article class="project reveal">
 
-                <div>
-                    <div class="project-number">PROJECT / 004</div>
+            <article class="project">
 
-                    <h3>Web Experiments</h3>
-
-                    <p>
-                        Интерфейсы, landing pages, портфолио,
-                        UI-концепты и различные frontend-эксперименты.
-                    </p>
+                <div class="project-number">
+                    PROJECT 03
                 </div>
 
-                <div class="project-tags">
-                    <span class="project-tag">HTML</span>
-                    <span class="project-tag">CSS</span>
-                    <span class="project-tag">JS</span>
-                    <span class="project-tag">UI</span>
+                <div class="project-icon">
+                    🧠
+                </div>
+
+                <h3>
+                    AI SYSTEMS
+                </h3>
+
+                <p>
+
+                    Experiments with AI,
+                    automation, intelligent
+                    interfaces and useful tools.
+
+                </p>
+
+                <div class="tags">
+
+                    <span class="tag">AI</span>
+                    <span class="tag">AUTOMATION</span>
+                    <span class="tag">PYTHON</span>
+
                 </div>
 
             </article>
@@ -1280,56 +1968,331 @@ footer {
         </div>
 
     </div>
+
 </section>
 
 
+<!-- =======================================================
+     SERVICES
+     ======================================================= -->
 
-<section id="contact">
+<section id="services">
+
     <div class="container">
 
-        <div class="contact reveal">
+        <div class="section-label">
+            03 / SERVICES
+        </div>
 
-            <div class="section-num">04 / CONTACT</div>
+        <h2 class="section-title">
+            What I <span>do.</span>
+        </h2>
+
+
+        <div class="services">
+
+
+            <div class="service">
+
+                <div class="service-icon">
+                    🤖
+                </div>
+
+                <h3>
+                    TELEGRAM BOTS
+                </h3>
+
+                <p>
+                    Custom bots for communities,
+                    projects and automation.
+                </p>
+
+            </div>
+
+
+            <div class="service">
+
+                <div class="service-icon">
+                    🧠
+                </div>
+
+                <h3>
+                    AI INTEGRATION
+                </h3>
+
+                <p>
+                    AI integrations for bots,
+                    websites and applications.
+                </p>
+
+            </div>
+
+
+            <div class="service">
+
+                <div class="service-icon">
+                    ⚙
+                </div>
+
+                <h3>
+                    AUTOMATION
+                </h3>
+
+                <p>
+                    Turning repetitive work
+                    into simple software.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     VISITOR COUNTER
+     ======================================================= -->
+
+<section class="visitor-section">
+
+    <div class="container">
+
+        <div class="section-label">
+            04 / VISITOR.LOG
+        </div>
+
+        <h2 class="section-title">
+            People who <span>visited.</span>
+        </h2>
+
+
+        <div class="visitor-box">
+
+            <div class="counter-label">
+                TOTAL VISITS ON THIS BROWSER
+            </div>
+
+
+            <div
+                class="counter"
+                id="counter"
+            >
+
+                <div class="digit">0</div>
+                <div class="digit">0</div>
+                <div class="digit">0</div>
+                <div class="digit">0</div>
+                <div class="digit">0</div>
+                <div class="digit">0</div>
+
+            </div>
+
+
+            <div class="visitor-note">
+
+                ★ thanks for visiting ★
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     FRIENDS / SPONSORS
+     ======================================================= -->
+
+<section id="friends">
+
+    <div class="container">
+
+        <div class="section-label">
+            05 / FRIENDS.TXT
+        </div>
+
+        <h2 class="section-title">
+            Friends of the <span>site.</span>
+        </h2>
+
+
+        <div class="friends">
+
+
+            <div class="friend">
+
+                <div class="friend-top">
+
+                    <div class="friend-logo">
+                        ?
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Your project
+                        </h3>
+
+                        <p>
+                            indie developer
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <a href="#contact">
+                    become a friend →
+                </a>
+
+            </div>
+
+
+            <div class="friend">
+
+                <div class="friend-top">
+
+                    <div class="friend-logo">
+                        ★
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Your project
+                        </h3>
+
+                        <p>
+                            small web project
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <a href="#contact">
+                    become a friend →
+                </a>
+
+            </div>
+
+
+            <div class="friend">
+
+                <div class="friend-top">
+
+                    <div class="friend-logo">
+                        +
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Your project
+                        </h3>
+
+                        <p>
+                            independent creator
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <a href="#contact">
+                    become a friend →
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="sponsor-note">
+
+            Want to appear here?
+            Contact me for collaboration.
+            Only real projects and supporters are listed.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     CONTACT
+     ======================================================= -->
+
+<section
+    class="contact"
+    id="contact"
+>
+
+    <div class="container">
+
+        <div class="contact-box">
+
+            <div class="section-label">
+                06 / CONTACT.EXE
+            </div>
 
             <h2>
-                Есть идея?<br>
-                <span class="gradient">Let's build it.</span>
+
+                Let's build<br>
+
+                <span>
+                    something cool.
+                </span>
+
             </h2>
 
-            <p>
-                Если у тебя есть интересная идея, проект
-                или просто хочется обсудить разработку —
-                можешь найти меня здесь.
+            <p style="color:#5b6b73">
+
+                Have an idea?
+                Send me a message.
+
             </p>
 
-            <div class="contact-links">
+
+            <div class="contacts">
 
                 <a
-                    class="btn primary"
-                    href="https://github.com/chcode-us"
-                    target="_blank"
-                    rel="noopener">
-                    GitHub ↗
-                </a>
-
-                <a
-                    class="btn"
+                    class="contact-link"
                     href="https://t.me/vlaidst"
                     target="_blank"
-                    rel="noopener">
-                    Telegram ↗
+                    rel="noopener"
+                >
+                    💬 @vlaidst
                 </a>
 
                 <a
-                    class="btn"
-                    href="mailto:chcode@mail.ru">
-                    chcode@mail.ru
+                    class="contact-link"
+                    href="mailto:chcode@mail.ru"
+                >
+                    🇷🇺 chcode@mail.ru
                 </a>
 
                 <a
-                    class="btn"
-                    href="mailto:chcodeus@gmail.com">
-                    chcodeus@gmail.com
+                    class="contact-link"
+                    href="mailto:chcodeus@gmail.com"
+                >
+                    🌎 chcodeus@gmail.com
+                </a>
+
+                <a
+                    class="contact-link"
+                    href="https://github.com/chcode-us"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    💻 GitHub
                 </a>
 
             </div>
@@ -1337,191 +2300,205 @@ footer {
         </div>
 
     </div>
+
 </section>
 
 </main>
 
-<footer>
-    <div class="container footer">
 
-        <div>
-            © 2026 chcode · created with love & coffee
+<!-- =======================================================
+     FOOTER
+     ======================================================= -->
+
+<footer>
+
+    <div class="container">
+
+        <div class="footer-logo">
+            💿 chcode
         </div>
 
-        <div class="footer-right">
-            <a href="https://github.com/chcode-us" target="_blank" rel="noopener">GitHub</a>
-            <a href="https://t.me/vlaidst" target="_blank" rel="noopener">Telegram</a>
+        <p>
+            Created with ♥, code & coffee.
+        </p>
+
+        <div class="footer-badges">
+
+            <span class="footer-badge">
+                BEST VIEWED
+            </span>
+
+            <span class="footer-badge">
+                PERSONAL WEB
+            </span>
+
+            <span class="footer-badge">
+                EST. 2026
+            </span>
+
+            <span class="footer-badge">
+                ★ ★ ★
+            </span>
+
         </div>
 
     </div>
+
 </footer>
+
 
 <script>
 
+/* =========================================================
+   LOADER
+   ========================================================= */
 
-const phrases = [
-    "building something new...",
-    "creating Telegram bots...",
-    "integrating artificial intelligence...",
-    "writing Python...",
-    "designing better interfaces...",
-    "turning ideas into products..."
+window.addEventListener("load", () => {
+
+    setTimeout(() => {
+
+        document
+            .getElementById("loader")
+            .classList
+            .add("hide");
+
+    }, 1400);
+
+});
+
+
+/* =========================================================
+   LANGUAGE BUTTON
+   ========================================================= */
+
+const languages = [
+    "RU",
+    "EN",
+    "DE",
+    "中文"
 ];
 
-const typewriter = document.getElementById("typewriter");
+let languageIndex = 0;
 
-let phrase = 0;
-let char = 0;
-let deleting = false;
+function cycleLanguage(){
 
-function type() {
-    const current = phrases[phrase];
+    languageIndex++;
 
-    if (!deleting) {
-        typewriter.textContent = current.slice(0, char++);
-    } else {
-        typewriter.textContent = current.slice(0, char--);
+    if(languageIndex >= languages.length){
+        languageIndex = 0;
     }
 
-    let speed = deleting ? 35 : 65;
+    document.querySelector(".lang").textContent =
+        languages[languageIndex];
 
-    if (!deleting && char > current.length) {
-        deleting = true;
-        speed = 1400;
-    }
-
-    if (deleting && char < 0) {
-        deleting = false;
-        phrase = (phrase + 1) % phrases.length;
-        char = 0;
-        speed = 400;
-    }
-
-    setTimeout(type, speed);
 }
 
-type();
 
+/* =========================================================
+   VISITOR COUNTER
+   =========================================================
 
+   Local counter.
 
-const header = document.getElementById("header");
+   It stores visits in localStorage so the number survives
+   page reloads in the same browser.
 
-window.addEventListener("scroll", () => {
-    header.classList.toggle("scrolled", window.scrollY > 20);
+   It is intentionally not presented as a global analytics
+   counter because there is no backend attached to this
+   standalone HTML file.
+   */
 
-    const max =
-        document.documentElement.scrollHeight -
-        window.innerHeight;
+const VISITOR_KEY =
+    "chcode_personal_web_visits";
 
-    const progress =
-        max > 0 ? (window.scrollY / max) * 100 : 0;
+let visits =
+    parseInt(
+        localStorage.getItem(VISITOR_KEY) || "0",
+        10
+    );
 
-    document.querySelector(".progress").style.width =
-        progress + "%";
-});
+visits++;
 
-
-
-const observer = new IntersectionObserver(
-    entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("visible");
-                observer.unobserve(entry.target);
-            }
-        });
-    },
-    {
-        threshold: .12
-    }
+localStorage.setItem(
+    VISITOR_KEY,
+    visits
 );
 
-document.querySelectorAll(".reveal").forEach(el => {
-    observer.observe(el);
-});
 
+function renderCounter(value){
 
+    const formatted =
+        String(value)
+            .padStart(6, "0")
+            .slice(-6);
 
-function toggleMenu() {
-    const nav = document.querySelector(".nav-links");
+    const digits =
+        document.querySelectorAll(
+            "#counter .digit"
+        );
 
-    if (nav.style.display === "flex") {
-        nav.style.display = "";
-        return;
-    }
+    digits.forEach((digit, index) => {
 
-    nav.style.position = "fixed";
-    nav.style.top = "64px";
-    nav.style.left = "14px";
-    nav.style.right = "14px";
-    nav.style.display = "flex";
-    nav.style.flexDirection = "column";
-    nav.style.alignItems = "stretch";
-    nav.style.gap = "0";
-    nav.style.padding = "10px";
-    nav.style.border = "1px solid rgba(255,255,255,.09)";
-    nav.style.borderRadius = "16px";
-    nav.style.background = "rgba(10,10,15,.95)";
-    nav.style.backdropFilter = "blur(20px)";
+        digit.textContent =
+            formatted[index];
 
-    nav.querySelectorAll("a").forEach(a => {
-        a.style.padding = "15px";
-        a.onclick = () => {
-            nav.style.display = "";
-        };
     });
+
 }
 
+renderCounter(visits);
 
 
-const terminal = document.querySelector(".terminal");
+/* =========================================================
+   SMOOTH LINKS
+   ========================================================= */
 
-if (window.matchMedia("(pointer:fine)").matches) {
+document
+    .querySelectorAll('a[href^="#"]')
+    .forEach(link => {
 
-    document.querySelector(".terminal-wrap")
-        .addEventListener("mousemove", e => {
+        link.addEventListener("click", event => {
 
-            const rect =
-                terminal.getBoundingClientRect();
+            const target =
+                document.querySelector(
+                    link.getAttribute("href")
+                );
 
-            const x =
-                (e.clientX - rect.left) / rect.width - .5;
+            if(!target) return;
 
-            const y =
-                (e.clientY - rect.top) / rect.height - .5;
+            event.preventDefault();
 
-            terminal.style.transform =
-                `rotateY(${x * 8}deg) rotateX(${-y * 8}deg)`;
-        });
+            target.scrollIntoView({
+                behavior:"smooth",
+                block:"start"
+            });
 
-    document.querySelector(".terminal-wrap")
-        .addEventListener("mouseleave", () => {
-            terminal.style.transform =
-                "rotateY(-5deg) rotateX(3deg)";
-        });
-}
-
-
-
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-
-    link.addEventListener("click", e => {
-
-        const target =
-            document.querySelector(link.getAttribute("href"));
-
-        if (!target) return;
-
-        e.preventDefault();
-
-        target.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
         });
 
     });
 
-});
+
+/* =========================================================
+   OLD SCHOOL CONSOLE MESSAGE
+   ========================================================= */
+
+console.log(
+`
+========================================
+        CHCODE PERSONAL WEB
+========================================
+
+Welcome to my website.
+
+Status: ONLINE
+Year: 2026
+Style: Y2K / Web 2000
+
+C:\\CHCODE> _
+========================================
+`
+);
+
 </script>
 
 </body>
