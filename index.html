@@ -19,35 +19,64 @@ main{width:min(1100px,calc(100% - 26px));margin:auto}section{padding:85px 0;scro
 @media(max-width:620px){body:before{display:none}.stars .star:nth-child(n+4){display:none}.topbar{font-size:7px}.topbar span{margin:0 4px}header{top:5px;width:calc(100% - 14px);margin-top:8px;backdrop-filter:none}.nav{min-height:58px}.navlinks{display:none}.brand-name{font-size:15px}.cd{width:38px;height:38px}.cd:after{inset:11px}.cd:before{left:16px;top:16px}main{width:calc(100% - 18px)}section{padding:65px 0}.hero{padding-top:55px;min-height:auto}.hero h1{font-size:55px;letter-spacing:-4px}.hero-subtitle{font-size:18px}.hero-description{font-size:14px}.grid,.services{grid-template-columns:1fr}.card{padding:20px}.code{min-height:280px;font-size:14px}.big-cd{width:80px;height:80px;right:-18px;bottom:-22px}.big-cd:after{inset:28px}.marquee-track{animation:none;transform:none}.terminal-body{height:285px}.y2k-zone{padding:27px 15px}.log{grid-template-columns:1fr;gap:6px}.footer-note{font-size:8px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;scroll-behavior:auto!important}}
 
-/* Новый CSS для команды larisa */
+/* Тряска экрана */
 .shake-screen {
-  animation: shake 0.2s ease-in-out infinite;
+  animation: shake 0.12s linear infinite;
 }
 @keyframes shake {
-  0% { transform: translate(1px, 1px) rotate(0deg); }
-  10% { transform: translate(-1px, -2px) rotate(-1deg); }
-  20% { transform: translate(-3px, 0px) rotate(1deg); }
-  30% { transform: translate(3px, 2px) rotate(0deg); }
-  40% { transform: translate(1px, -1px) rotate(1deg); }
-  50% { transform: translate(-1px, 2px) rotate(-1deg); }
-  60% { transform: translate(-3px, 1px) rotate(0deg); }
-  70% { transform: translate(3px, 1px) rotate(-1deg); }
-  80% { transform: translate(-1px, -1px) rotate(1deg); }
-  90% { transform: translate(1px, 2px) rotate(0deg); }
-  100% { transform: translate(1px, -2px) rotate(-1deg); }
+  0% { transform: translate(3px, 2px) rotate(0deg); }
+  20% { transform: translate(-4px, -3px) rotate(-1deg); }
+  40% { transform: translate(-2px, 3px) rotate(1deg); }
+  60% { transform: translate(4px, 1px) rotate(0deg); }
+  80% { transform: translate(1px, -3px) rotate(1deg); }
+  100% { transform: translate(-3px, 2px) rotate(-1deg); }
 }
-.blood-screen {
+
+/* Контейнер для стекающей и капающей крови */
+.blood-overlay {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 9999;
-  background: linear-gradient(to bottom, rgba(255, 0, 0, 0.6) 0%, rgba(255, 0, 0, 0) 100%);
-  background-size: 100% 200%;
-  animation: blood-flow 1.5s linear infinite;
+  z-index: 99999;
+  overflow: hidden;
 }
-@keyframes blood-flow {
-  0% { background-position: 0% 0%; }
-  100% { background-position: 0% 100%; }
+.blood-drips {
+  position: absolute;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  fill: #800000;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.8));
+  animation: bloodGrow 4s ease-out forwards;
+}
+@keyframes bloodGrow {
+  0% { transform: scaleY(0.2); }
+  100% { transform: scaleY(1); }
+}
+
+.blood-drop {
+  position: absolute;
+  top: 0;
+  background: radial-gradient(circle at 30% 30%, #b30000, #4a0000);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  box-shadow: inset -1px -2px 4px rgba(0,0,0,0.8), 0 2px 5px rgba(128,0,0,0.5);
+  animation: fall linear infinite;
+}
+@keyframes fall {
+  0% {
+    top: 0px;
+    opacity: 0.9;
+    transform: scale(0.8, 1.2);
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    top: 100vh;
+    opacity: 0;
+    transform: scale(1.2, 0.8);
+  }
 }
 </style>
 </head>
@@ -88,7 +117,35 @@ main{width:min(1100px,calc(100% - 26px));margin:auto}section{padding:85px 0;scro
 const body=document.body,term=document.getElementById('terminalBody'),input=document.getElementById('terminalInput');let history=[],hi=-1;
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}function out(s){const d=document.createElement('div');d.className='term-output';d.innerHTML=esc(s).replace(/\n/g,'<br>');term.insertBefore(d,term.querySelector('.prompt'));term.scrollTop=term.scrollHeight}function go(id){document.getElementById(id)?.scrollIntoView({behavior:'smooth'})}
 const commands=['help','about','projects','skills','services','contact','github','telegram','email','home','y2k','coffee','neofetch','status','version','whoami','pwd','ls','date','time','echo','theme','clear','reload','disco','secret','matrix','konami','hello','larisa'];
-function run(raw){let v=raw.trim();if(!v)return;const d=document.createElement('div');d.className='term-line term-command';d.textContent='C:\\CHCODE> '+v;term.insertBefore(d,term.querySelector('.prompt'));let [cmd,...a]=v.split(' '),arg=a.join(' ');cmd=cmd.toLowerCase();if(!history.length||history[history.length-1]!==v)history.push(v);hi=history.length;switch(cmd){case'help':out('help about projects skills services contact github telegram email home y2k coffee neofetch status version whoami pwd ls date time echo theme clear reload disco secret matrix konami hello larisa');break;case'about':out('CHCODE\nDeveloper & digital creator.\nPython / AI / Telegram / Web / Automation');go('about');break;case'projects':out('Csanaks\nStargrad\nTelegram Bots\nWeb Projects\nAI Tools\nExperiments');go('projects');break;case'skills':out('Python / JavaScript / HTML / CSS / Node.js / Telegram API / AI / SQL / Linux / WebSocket');go('skills');break;case'services':out('Telegram bots\nWeb development\nAI integration\nAutomation');go('services');break;case'contact':out('chcode@mail.ru\nchcodeus@gmail.com\nTelegram: @vlaidst');go('contacts');break;case'github':window.open('https://github.com/chcode-us','_blank','noopener');out('Opening GitHub...');break;case'telegram':case'tg':window.open('https://t.me/vlaidst','_blank','noopener');out('Opening Telegram...');break;case'email':out('chcode@mail.ru\nchcodeus@gmail.com');break;case'home':go('home');break;case'y2k':out('★ Y2K MODE ACTIVE ★\nSilver / Chrome / Old Internet');break;case'disco':body.classList.toggle('disco-mode');out(body.classList.contains('disco-mode')?'★ DISCO MODE: ON ★':'DISCO MODE: OFF');break;case'coffee':out('COFFEE: READY\nDEVELOPER: ONLINE\nSLEEP: UNKNOWN');break;case'neofetch':out('CHCODE OS\nVERSION 2.026\nSHELL CHCODE.SHELL\nMODE Y2K\nSTATUS ONLINE\nCOFFEE TRUE');break;case'status':out('● WEBSITE ONLINE\n● TERMINAL ONLINE\n● Y2K ACTIVE\n● COFFEE READY');break;case'version':out('CHCODE.EXE Version 2.026\nBuild: Y2K\nEngine: HTML / CSS / JS');break;case'whoami':out('chcode — developer, creator, internet enjoyer.');break;case'pwd':out('C:\\CHCODE\\PORTFOLIO');break;case'ls':out('about/\nprojects/\nskills/\nservices/\nterminal/\ncontacts/\nREADME.txt\ndeveloper.py\ncoffee.exe');break;case'date':out(new Date().toLocaleDateString('ru-RU'));break;case'time':out(new Date().toLocaleTimeString('ru-RU'));break;case'echo':out(arg||'ECHO: nothing to say.');break;case'theme':out('Silver Chrome Y2K\nSoft Glass\nRetro Terminal\nNo AI Neon');break;case'clear':term.querySelectorAll('.term-line:not(.prompt),.term-output').forEach(e=>e.remove());out('Terminal cleared.');break;case'reload':location.reload();break;case'secret':out('★ SECRET FOUND ★\nY2K FOREVER.');break;case'matrix':out('01001001 00100000 01001100 01001111 01010110 01000101');break;case'konami':out('↑ ↑ ↓ ↓ ← → ← → B A\nCHEAT CODE ACCEPTED ★');break;case'hello':out('HELLO, HUMAN.\nWelcome to chcode.dev ★');break;case'larisa':body.classList.add('shake-screen');if(!document.querySelector('.blood-screen')){const blood=document.createElement('div');blood.className='blood-screen';body.appendChild(blood)}out('SYSTEM ERROR: Blood and shake.');break;default:out('Command not found: '+cmd+'\nType "help" for available commands.')}}
+
+function startBloodEffect(){
+  body.classList.add('shake-screen');
+  if(!document.querySelector('.blood-overlay')){
+    const overlay = document.createElement('div');
+    overlay.className = 'blood-overlay';
+    overlay.innerHTML = `
+      <svg class="blood-drips" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,0 L1200,0 L1200,40 Q1150,90 1100,40 Q1050,110 1000,50 Q950,30 900,70 Q850,120 800,40 Q750,10 700,60 Q650,100 600,30 Q550,80 500,40 Q450,110 400,50 Q350,20 300,80 Q250,120 200,40 Q150,70 100,30 Q50,90 0,40 Z"></path>
+      </svg>
+    `;
+    body.appendChild(overlay);
+
+    // Генерация капель
+    setInterval(() => {
+      const drop = document.createElement('div');
+      drop.className = 'blood-drop';
+      const size = Math.random() * 12 + 8;
+      drop.style.width = size + 'px';
+      drop.style.height = (size * 1.4) + 'px';
+      drop.style.left = Math.random() * 100 + 'vw';
+      drop.style.animationDuration = (Math.random() * 1.5 + 1) + 's';
+      overlay.appendChild(drop);
+      setTimeout(() => drop.remove(), 2500);
+    }, 150);
+  }
+}
+
+function run(raw){let v=raw.trim();if(!v)return;const d=document.createElement('div');d.className='term-line term-command';d.textContent='C:\\CHCODE> '+v;term.insertBefore(d,term.querySelector('.prompt'));let [cmd,...a]=v.split(' '),arg=a.join(' ');cmd=cmd.toLowerCase();if(!history.length||history[history.length-1]!==v)history.push(v);hi=history.length;switch(cmd){case'help':out('help about projects skills services contact github telegram email home y2k coffee neofetch status version whoami pwd ls date time echo theme clear reload disco secret matrix konami hello larisa');break;case'about':out('CHCODE\nDeveloper & digital creator.\nPython / AI / Telegram / Web / Automation');go('about');break;case'projects':out('Csanaks\nStargrad\nTelegram Bots\nWeb Projects\nAI Tools\nExperiments');go('projects');break;case'skills':out('Python / JavaScript / HTML / CSS / Node.js / Telegram API / AI / SQL / Linux / WebSocket');go('skills');break;case'services':out('Telegram bots\nWeb development\nAI integration\nAutomation');go('services');break;case'contact':out('chcode@mail.ru\nchcodeus@gmail.com\nTelegram: @vlaidst');go('contacts');break;case'github':window.open('https://github.com/chcode-us','_blank','noopener');out('Opening GitHub...');break;case'telegram':case'tg':window.open('https://t.me/vlaidst','_blank','noopener');out('Opening Telegram...');break;case'email':out('chcode@mail.ru\nchcodeus@gmail.com');break;case'home':go('home');break;case'y2k':out('★ Y2K MODE ACTIVE ★\nSilver / Chrome / Old Internet');break;case'disco':body.classList.toggle('disco-mode');out(body.classList.contains('disco-mode')?'★ DISCO MODE: ON ★':'DISCO MODE: OFF');break;case'coffee':out('COFFEE: READY\nDEVELOPER: ONLINE\nSLEEP: UNKNOWN');break;case'neofetch':out('CHCODE OS\nVERSION 2.026\nSHELL CHCODE.SHELL\nMODE Y2K\nSTATUS ONLINE\nCOFFEE TRUE');break;case'status':out('● WEBSITE ONLINE\n● TERMINAL ONLINE\n● Y2K ACTIVE\n● COFFEE READY');break;case'version':out('CHCODE.EXE Version 2.026\nBuild: Y2K\nEngine: HTML / CSS / JS');break;case'whoami':out('chcode — developer, creator, internet enjoyer.');break;case'pwd':out('C:\\CHCODE\\PORTFOLIO');break;case'ls':out('about/\nprojects/\nskills/\nservices/\nterminal/\ncontacts/\nREADME.txt\ndeveloper.py\ncoffee.exe');break;case'date':out(new Date().toLocaleDateString('ru-RU'));break;case'time':out(new Date().toLocaleTimeString('ru-RU'));break;case'echo':out(arg||'ECHO: nothing to say.');break;case'theme':out('Silver Chrome Y2K\nSoft Glass\nRetro Terminal\nNo AI Neon');break;case'clear':term.querySelectorAll('.term-line:not(.prompt),.term-output').forEach(e=>e.remove());out('Terminal cleared.');break;case'reload':location.reload();break;case'secret':out('★ SECRET FOUND ★\nY2K FOREVER.');break;case'matrix':out('01001001 00100000 01001100 01001111 01010110 01000101');break;case'konami':out('↑ ↑ ↓ ↓ ← → ← → B A\nCHEAT CODE ACCEPTED ★');break;case'hello':out('HELLO, HUMAN.\nWelcome to chcode.dev ★');break;case'larisa':startBloodEffect();out('CRITICAL SYSTEM FAILURE: LARISA PROTOCOL ACTIVATED.');break;default:out('Command not found: '+cmd+'\nType "help" for available commands.')}}
 input.addEventListener('keydown',e=>{if(e.key==='Enter'){run(input.value);input.value=''}else if(e.key==='ArrowUp'){e.preventDefault();if(hi>0)input.value=history[--hi]||''}else if(e.key==='ArrowDown'){e.preventDefault();if(hi<history.length-1)input.value=history[++hi]||'';else{hi=history.length;input.value=''}}else if(e.key==='Tab'){e.preventDefault();const v=input.value.toLowerCase();const match=commands.find(c=>c.startsWith(v));if(match)input.value=match}});document.querySelector('.terminal').addEventListener('click',()=>input.focus());
 let en=false;document.getElementById('langBtn').onclick=()=>{en=!en;document.documentElement.lang=en?'en':'ru';document.getElementById('langBtn').textContent=en?'EN / RU':'RU / EN'};
 </script>
