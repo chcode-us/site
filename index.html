@@ -1,142 +1,313 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="chcode — Python, AI, automation, Telegram bots and web development.">
-<meta name="theme-color" content="#dfe5eb">
-<title>chcode — Y2K Digital Portfolio</title>
-<style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(135deg,#dce1e6,#f7f8fa 48%,#cdd3d9);color:#202328;font-family:Tahoma,Arial,sans-serif;overflow-x:hidden}body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(circle at 20% 8%,rgba(255,255,255,.9),transparent 28%),radial-gradient(circle at 85% 20%,rgba(180,195,205,.3),transparent 30%)}.stars{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:1}.star{position:absolute;color:#fff;text-shadow:0 1px 3px #555;animation:t 4s ease-in-out infinite}.star:nth-child(1){left:7%;top:18%}.star:nth-child(2){left:22%;top:70%;animation-delay:1s}.star:nth-child(3){left:43%;top:11%;animation-delay:2s}.star:nth-child(4){left:67%;top:74%;animation-delay:.5s}.star:nth-child(5){left:86%;top:16%;animation-delay:1.5s}.star:nth-child(6){left:94%;top:55%;animation-delay:2.5s}@keyframes t{50%{opacity:1;transform:scale(1.25)}0%,100%{opacity:.35}}
-.topbar{padding:7px 15px;text-align:center;background:rgba(250,250,250,.72);border-bottom:1px solid #ffffff;box-shadow:0 2px 10px #0001;font:10px monospace;color:#626a71}.online{color:#3e7042}.online:before{content:"●";margin-right:5px}.topbar span{margin:0 10px}
-header{position:sticky;top:8px;z-index:20;width:min(1180px,calc(100% - 24px));margin:12px auto 0;border:1px solid #fff;border-radius:20px;background:rgba(238,242,245,.84);box-shadow:0 10px 28px #0002,inset 0 1px #fff;backdrop-filter:blur(10px)}.nav{min-height:66px;padding:9px 15px;display:flex;align-items:center;justify-content:space-between;gap:15px}.brand{display:flex;align-items:center;gap:10px;color:#202328;text-decoration:none}.cd{width:42px;height:42px;border-radius:50%;background:conic-gradient(#fff,#aab3bb,#fdfdfd,#737e87,#fff,#9da7af,#fff);box-shadow:inset 0 0 0 2px #0002,0 5px 12px #0002;position:relative;animation:spin 10s linear infinite}.cd:after{content:"";position:absolute;inset:12px;border-radius:50%;background:#c5cbd0;box-shadow:inset 0 1px 3px #0004}.cd:before{content:"";position:absolute;width:6px;height:6px;left:18px;top:18px;border-radius:50%;background:#56616a;z-index:2}@keyframes spin{to{transform:rotate(360deg)}}.brand-name{font:700 17px monospace}.brand-name span{color:#607789}.navlinks{display:flex;gap:3px;list-style:none;margin:0;padding:0}.navlinks a{display:block;padding:9px 10px;border-radius:11px;color:#363b40;text-decoration:none;font:10px monospace}.navlinks a:hover{background:#fff;box-shadow:0 4px 12px #0002}.lang{border:1px solid #0002;background:linear-gradient(#fff,#d5dae0);border-radius:99px;padding:8px;font:9px monospace}.marquee{overflow:hidden;background:#ffffff55;border-block:1px solid #0001}.marquee-track{width:max-content;display:flex;gap:40px;padding:8px;font:9px monospace;color:#69727a;animation:m 30s linear infinite}@keyframes m{to{transform:translateX(-50%)}}
-main{width:min(1100px,calc(100% - 26px));margin:auto}section{padding:85px 0;scroll-margin-top:90px}.kicker{margin-bottom:9px;color:#60798c;font:10px monospace}.section-title{margin:0;font:700 clamp(24px,4vw,38px) monospace;letter-spacing:-2px;text-shadow:0 2px #fff}.section-title span{color:#78838c}.section-head{margin-bottom:28px}.hero{min-height:calc(100vh - 125px);display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:55px;padding-top:55px}.hero-small{margin-bottom:17px;color:#68727a;font:10px monospace}.hero h1{margin:0 0 20px;font:700 clamp(52px,9vw,100px)/.95 monospace;letter-spacing:-7px;color:#b7bec5;text-shadow:0 1px #fff,0 3px #89939b,0 6px #fff,0 10px 20px #0002}.hero h1 span{color:#687985}.hero-subtitle{font-size:21px;font-weight:700;margin-bottom:12px}.hero-description{max-width:600px;color:#687078;line-height:1.8;font-size:15px}.hero-buttons{display:flex;flex-wrap:wrap;gap:10px;margin-top:25px}.btn{display:inline-flex;padding:12px 16px;border:1px solid #0002;border-radius:12px;background:linear-gradient(#fff,#d4d9de);color:#252a2e;text-decoration:none;font:10px monospace;box-shadow:0 5px 13px #0002,inset 0 1px #fff}.btn.primary{background:linear-gradient(#879daa,#536d7d);color:#fff}.code-card{background:linear-gradient(145deg,#30363b,#111417);padding:3px;border-radius:24px;box-shadow:0 20px 45px #0003;transform:rotate(1deg)}.code-inner{overflow:hidden;border-radius:21px;background:#191d20}.window-head,.terminal-head{height:39px;padding:0 13px;display:flex;align-items:center;gap:6px;background:linear-gradient(#444b51,#2b3034)}.dot{width:9px;height:9px;border-radius:50%;background:#b8bdc1;box-shadow:inset 0 1px #fff8}.window-title,.terminal-title{margin:auto;color:#c9ced2;font:9px monospace}.code{min-height:330px;padding:20px;color:#d7dde1;font:18px/1.5 monospace;white-space:pre-wrap}.gray{color:#737b82}.blue{color:#90adc1}.green{color:#9caf9c}.big-cd{position:absolute;width:125px;height:125px;right:-35px;bottom:-45px;border-radius:50%;background:conic-gradient(#fff,#a0aab2,#fff,#717c85,#fff,#8e99a2,#fff);box-shadow:0 14px 28px #0003;animation:spin 12s linear infinite}.big-cd:after{content:"";position:absolute;inset:44px;border-radius:50%;background:#c0c6cb}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{position:relative;padding:23px;border:1px solid #fff;border-radius:22px;background:linear-gradient(145deg,#ffffffc9,#d0d6dbb8);box-shadow:0 9px 24px #0002,inset 0 1px #fff;transition:transform .25s,box-shadow .25s}.card:hover{transform:translateY(-4px);box-shadow:0 15px 28px #0002}.card-icon{font-size:26px;margin-bottom:15px}.card h3{font-size:15px;margin:0 0 10px}.card p{color:#687078;font-size:14px;line-height:1.7;margin:0}.about{display:grid;grid-template-columns:1fr 1fr;gap:15px}.about-box{padding:28px;border-radius:22px;background:#ffffff80;border:1px solid #fff;box-shadow:0 9px 24px #0002}.about-box p{color:#626a71;line-height:1.9;font-size:15px;margin:0}.skills{display:flex;flex-wrap:wrap;gap:9px}.skill{padding:9px 13px;border:1px solid #0002;border-radius:999px;background:linear-gradient(#fff,#d6dbe0);box-shadow:0 4px 9px #0001;font:9px monospace}.project{min-height:205px}.project-number{position:absolute;right:17px;top:14px;color:#9aa2a9;font:9px monospace}.project-tag{display:inline-block;margin-top:16px;padding:6px 8px;border-radius:7px;background:#fff9;border:1px solid #0001;font:8px monospace}.services{grid-template-columns:1fr 1fr}.service{display:flex;gap:16px}.service-icon{min-width:48px;height:48px;display:grid;place-items:center;border-radius:14px;background:linear-gradient(145deg,#fff,#c4cbd1);border:1px solid #0001;box-shadow:inset 0 1px #fff,0 5px 11px #0002;font-size:21px}
-.terminal-wrap{max-width:800px;margin:auto}.terminal{overflow:hidden;border-radius:21px;background:#101214;box-shadow:0 20px 45px #0004,0 0 0 1px #fff5}.terminal-body{height:330px;padding:17px;overflow-y:auto;font:18px/1.4 monospace;color:#d9dedf}.term-line{margin-bottom:5px}.term-command{color:#fff}.term-output{color:#9da9b0;margin-bottom:9px;white-space:pre-wrap}.prompt{display:flex;gap:7px}.prompt-label{color:#aebbc3;white-space:nowrap}#terminalInput{width:100%;border:0;outline:0;background:transparent;color:#fff;font:18px monospace}
-.y2k-zone{padding:34px;border:1px solid #fff;border-radius:27px;background:linear-gradient(145deg,#ffffffc9,#bbc3cabb);box-shadow:0 18px 40px #0002;text-align:center}.badges{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:23px}.badge{padding:10px 13px;border:1px solid #0002;border-radius:999px;background:linear-gradient(#fff,#c8ced3);box-shadow:inset 0 1px #fff,0 5px 10px #0002;font:9px monospace}.timeline{display:flex;flex-direction:column;gap:9px}.log{display:grid;grid-template-columns:100px 1fr;gap:15px;padding:16px;border-radius:14px;background:#fff8;border:1px solid #fff}.log-date{font:9px monospace;color:#66727b}.log-text{color:#4f575e;font-size:14px}.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.contact{text-decoration:none;color:inherit}.contact small{display:block;margin-bottom:8px;color:#79828a;font:8px monospace}.contact strong{font-size:14px;word-break:break-word}footer{padding:32px 15px 45px;text-align:center;color:#727a81;font-size:11px}.footer-logo{font:15px monospace;color:#4e5961;margin-bottom:9px}.footer-stars{margin-top:13px;font-size:17px;letter-spacing:8px}.footer-note{margin-top:12px;font-size:9px;color:#8a9299;font-family:monospace}
-.disco-label{display:none;position:fixed;top:80px;right:15px;z-index:100;padding:7px 11px;border-radius:999px;background:#fffffff0;border:1px solid #0002;box-shadow:0 7px 18px #0002;font:9px monospace}.disco-mode .disco-label{display:block}.disco-mode .card,.disco-mode .about-box,.disco-mode .y2k-zone{animation:d 3s ease-in-out infinite}.disco-mode .star{animation:t .8s ease-in-out infinite}.disco-mode .cd,.disco-mode .big-cd{animation:spin 2.5s linear infinite}@keyframes d{50%{transform:translateY(-3px)}}
-@media(max-width:850px){header{backdrop-filter:none}.hero{grid-template-columns:1fr;gap:35px}.grid{grid-template-columns:1fr 1fr}.about{grid-template-columns:1fr}.contact-grid{grid-template-columns:1fr}}
-@media(max-width:620px){body:before{display:none}.stars .star:nth-child(n+4){display:none}.topbar{font-size:7px}.topbar span{margin:0 4px}header{top:5px;width:calc(100% - 14px);margin-top:8px;backdrop-filter:none}.nav{min-height:58px}.navlinks{display:none}.brand-name{font-size:15px}.cd{width:38px;height:38px}.cd:after{inset:11px}.cd:before{left:16px;top:16px}main{width:calc(100% - 18px)}section{padding:65px 0}.hero{padding-top:55px;min-height:auto}.hero h1{font-size:55px;letter-spacing:-4px}.hero-subtitle{font-size:18px}.hero-description{font-size:14px}.grid,.services{grid-template-columns:1fr}.card{padding:20px}.code{min-height:280px;font-size:14px}.big-cd{width:80px;height:80px;right:-18px;bottom:-22px}.big-cd:after{inset:28px}.marquee-track{animation:none;transform:none}.terminal-body{height:285px}.y2k-zone{padding:27px 15px}.log{grid-template-columns:1fr;gap:6px}.footer-note{font-size:8px}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;scroll-behavior:auto!important}}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="chcode — разработка на Python, Telegram-боты и веб-проекты.">
+  <meta name="theme-color" content="#eef1ef">
+  <title>chcode — разработчик и цифровые проекты</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #252b29;
+      --muted: #68716d;
+      --pine: #315b4a;
+      --pine-dark: #244638;
+      --paper: #f5f6f3;
+      --line: #dce2dc;
+      --red: #a64b46;
+      --serif: Georgia, "Times New Roman", serif;
+      --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    }
 
-/* Эффект ФРИЗА И ЗАВИСАНИЯ экрана */
-.freeze-screen {
-  animation: freezeGlitch 0.3s steps(2, start) infinite;
-}
-@keyframes freezeGlitch {
-  0% { transform: translate(0, 0) skew(0deg); filter: none; }
-  20% { transform: translate(-5px, 2px) skew(1deg); filter: opacity(0.8) contrast(1.2); }
-  40% { transform: translate(0, 0); }
-  60% { transform: translate(6px, -3px) skew(-2deg); filter: hue-rotate(90deg); }
-  80% { transform: translate(-2px, 4px); filter: invert(0.1); }
-  100% { transform: translate(0, 0); }
-}
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      min-width: 320px;
+      margin: 0;
+      overflow-x: hidden;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    a:focus-visible { outline: 2px solid var(--pine); outline-offset: 4px; }
 
-/* Стекающая сверху кровь */
-.blood-overlay {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 99999;
-}
-.blood-drips {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  fill: #800000;
-  filter: drop-shadow(0 5px 8px rgba(0,0,0,0.9));
-  transform-origin: top;
-  animation: bloodStream 8s cubic-bezier(0.1, 0.7, 0.1, 1) forwards;
-}
-@keyframes bloodStream {
-  0% { transform: scaleY(0); }
-  100% { transform: scaleY(1); }
-}
+    .snow {
+      position: fixed;
+      z-index: 5;
+      inset: -100px 0 0;
+      pointer-events: none;
+      background-image:
+        radial-gradient(2px 2px at 30px 40px, #fff 98%, transparent),
+        radial-gradient(1.5px 1.5px at 90px 120px, #fff 98%, transparent),
+        radial-gradient(2px 2px at 160px 70px, #fff 98%, transparent),
+        radial-gradient(1px 1px at 210px 180px, #fff 98%, transparent);
+      background-size: 250px 220px;
+      opacity: .56;
+      animation: snowfall 18s linear infinite;
+    }
+    .snow--slow {
+      opacity: .34;
+      background-size: 340px 310px;
+      background-position: 65px 20px;
+      animation-duration: 30s;
+      animation-direction: reverse;
+    }
+    @keyframes snowfall {
+      to { transform: translate3d(35px, 220px, 0); }
+    }
 
-.blood-drop {
-  position: absolute;
-  top: -20px;
-  background: radial-gradient(circle at 30% 30%, #c00000, #400000);
-  border-radius: 50% 50% 50% 50% / 70% 70% 30% 30%;
-  box-shadow: inset -1px -2px 4px rgba(0,0,0,0.8), 0 3px 6px rgba(128,0,0,0.6);
-  animation: dripDown linear infinite;
-}
-@keyframes dripDown {
-  0% { top: -20px; opacity: 1; transform: scaleY(1); }
-  80% { opacity: 1; }
-  100% { top: 105vh; opacity: 0.2; transform: scaleY(1.5); }
-}
-</style>
+    .topline {
+      padding: 8px 18px;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      background: #f5f6f3;
+      text-align: center;
+      font: 10px var(--mono);
+      letter-spacing: .08em;
+    }
+    .topline span + span::before { content: "·"; margin: 0 10px; color: #aeb8b1; }
+    .topline .status { color: var(--pine); }
+
+    .site-header {
+      position: sticky;
+      z-index: 10;
+      top: 0;
+      border-bottom: 1px solid #dce2dccc;
+      background: #f5f6f3eF;
+      backdrop-filter: blur(12px);
+    }
+    .nav {
+      width: min(1120px, calc(100% - 40px));
+      min-height: 68px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand { color: var(--pine-dark); text-decoration: none; font: 700 17px var(--mono); letter-spacing: -.06em; }
+    .brand span { color: #87958d; font-weight: 400; }
+    .nav-links { display: flex; align-items: center; gap: 24px; margin: 0; padding: 0; list-style: none; }
+    .nav-links a { color: #56615b; text-decoration: none; font: 10px var(--mono); letter-spacing: .04em; }
+    .nav-links a:hover { color: var(--pine); }
+
+    main { width: min(1020px, calc(100% - 40px)); margin: auto; }
+    section { padding: 78px 0; scroll-margin-top: 68px; }
+    .hero {
+      position: relative;
+      min-height: 510px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 250px;
+      align-items: center;
+      gap: 50px;
+      padding: 78px 0 66px;
+    }
+    .eyebrow, .section-label { color: var(--pine); font: 10px var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+    h1 {
+      margin: 16px 0 12px;
+      color: var(--pine-dark);
+      font: 400 clamp(58px, 10vw, 104px)/.95 var(--serif);
+      letter-spacing: -.075em;
+    }
+    h1 span { color: #87958d; }
+    .hero-role { margin: 0 0 18px; font: 18px var(--serif); }
+    .hero-copy { max-width: 570px; margin: 0; color: var(--muted); font-size: 15px; }
+    .hero-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+    .button {
+      display: inline-flex;
+      min-height: 42px;
+      align-items: center;
+      padding: 10px 15px;
+      border: 1px solid #cbd5ce;
+      border-radius: 3px;
+      color: var(--pine-dark);
+      background: #ffffffa8;
+      text-decoration: none;
+      font: 10px var(--mono);
+      transition: background .2s, border-color .2s;
+    }
+    .button:hover { border-color: var(--pine); background: white; }
+    .button--primary { border-color: var(--pine); color: white; background: var(--pine); }
+    .button--primary:hover { background: var(--pine-dark); }
+
+    .tree-art { width: 220px; justify-self: center; color: var(--pine); }
+    .tree-art svg { display: block; width: 100%; height: auto; overflow: visible; }
+    .tree-note { margin-top: 12px; color: #89938e; text-align: center; font: 9px var(--mono); letter-spacing: .08em; }
+    .rule { height: 1px; border: 0; background: var(--line); }
+    .section-heading { display: flex; align-items: baseline; gap: 16px; margin-bottom: 25px; }
+    .section-heading h2 { margin: 0; font: 400 clamp(28px, 4vw, 40px)/1.1 var(--serif); letter-spacing: -.04em; }
+    .section-heading .section-label { color: #929b96; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+    .about-grid p { margin: 0; color: var(--muted); font-size: 15px; }
+    .about-grid p + p { margin-top: 14px; }
+    .skills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+    .skill { padding: 6px 10px; border: 1px solid var(--line); color: #56615b; background: #ffffff70; font: 10px var(--mono); }
+
+    .projects { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .project {
+      min-height: 205px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      background: #ffffff8c;
+      transition: border-color .2s, transform .2s;
+    }
+    .project:hover { transform: translateY(-2px); border-color: #b7c5bb; }
+    .project-top { display: flex; justify-content: space-between; gap: 16px; color: #939c97; font: 10px var(--mono); }
+    .project h3 { margin: 24px 0 8px; color: var(--pine-dark); font: 400 22px var(--serif); }
+    .project p { max-width: 430px; margin: 0; color: var(--muted); font-size: 13px; }
+    .project-tag { display: inline-block; margin-top: 17px; color: var(--pine); font: 9px var(--mono); letter-spacing: .08em; }
+
+    .services { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .service { padding: 22px 18px 22px 0; }
+    .service + .service { padding-left: 18px; border-left: 1px solid var(--line); }
+    .service h3 { margin: 0 0 8px; color: var(--pine-dark); font: 400 19px var(--serif); }
+    .service p { margin: 0; color: var(--muted); font-size: 13px; }
+
+    .contact-box { display: flex; align-items: center; justify-content: space-between; gap: 30px; padding: 28px; border: 1px solid var(--line); background: #ffffff8c; }
+    .contact-box h2 { margin: 0 0 7px; color: var(--pine-dark); font: 400 30px var(--serif); }
+    .contact-box p { margin: 0; color: var(--muted); font-size: 13px; }
+    .contact-links { display: flex; flex-wrap: wrap; gap: 9px; }
+    footer { padding: 28px 20px 34px; color: #7b8580; text-align: center; font: 10px var(--mono); }
+    footer .footer-brand { margin-bottom: 5px; color: var(--pine-dark); font-size: 13px; }
+
+    @media (max-width: 700px) {
+      .nav { width: calc(100% - 28px); min-height: 58px; }
+      .nav-links { gap: 12px; }
+      .nav-links li:nth-child(2), .nav-links li:nth-child(3) { display: none; }
+      main { width: calc(100% - 34px); }
+      section { padding: 58px 0; }
+      .hero { min-height: 0; grid-template-columns: 1fr; gap: 22px; padding: 66px 0 48px; }
+      .tree-art { width: 125px; justify-self: start; }
+      .tree-note { text-align: left; }
+      .about-grid, .projects { grid-template-columns: 1fr; }
+      .about-grid { gap: 18px; }
+      .services { grid-template-columns: 1fr; }
+      .service, .service + .service { padding: 17px 0; border-left: 0; }
+      .service + .service { border-top: 1px solid var(--line); }
+      .contact-box { align-items: flex-start; flex-direction: column; padding: 22px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .snow { display: none; }
+    }
+  </style>
 </head>
 <body>
-<div class="stars" aria-hidden="true"><span class="star">★</span><span class="star">✦</span><span class="star">✧</span><span class="star">★</span><span class="star">✦</span><span class="star">✧</span></div>
-<div class="disco-label">✦ DISCO MODE ON ✦</div>
-<div class="topbar"><span class="online">ONLINE</span><span>✦ Y2K MODE</span><span>CHCODE.EXE</span><span>VERSION 2.026</span></div>
-<header><nav class="nav"><a class="brand" href="#home"><div class="cd"></div><div class="brand-name">chcode<span>.dev</span></div></a><ul class="navlinks"><li><a href="#about">ОБО МНЕ</a></li><li><a href="#skills">SKILLS</a></li><li><a href="#projects">ПРОЕКТЫ</a></li><li><a href="#services">УСЛУГИ</a></li><li><a href="#terminal">TERMINAL</a></li><li><a href="#contacts">КОНТАКТЫ</a></li></ul><button class="lang" id="langBtn">RU / EN</button></nav></header>
-<div class="marquee"><div class="marquee-track"><span>★ CHCODE DIGITAL PORTFOLIO ★</span><span>✦ PYTHON ✦ AI ✦ AUTOMATION ✦ WEB ✦</span><span>★ OLD INTERNET NEVER DIES ★</span><span>✧ MADE WITH LOVE & COFFEE ✧</span><span>★ CHCODE DIGITAL PORTFOLIO ★</span><span>✦ PYTHON ✦ AI ✦ AUTOMATION ✦ WEB ✦</span></div></div>
-<main>
-<section class="hero" id="home"><div><div class="hero-small">WELCOME TO MY PERSONAL WEBSITE ✦ 2000→2026</div><h1>ch<span>code</span></h1><div class="hero-subtitle">Python · AI · Automation · Web</div><p class="hero-description">Разрабатываю сайты, Telegram-ботов, автоматизацию и цифровые продукты. Люблю чистый код, необычные интерфейсы и старый добрый Интернет.</p><div class="hero-buttons"><a href="#projects" class="btn primary">★ МОИ ПРОЕКТЫ</a><a href="#terminal" class="btn">⌘ ОТКРЫТЬ TERMINAL</a></div></div><div class="code-card"><div class="code-inner"><div class="window-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="window-title">developer.py</span></div><div class="code"><span class="gray"># chcode developer profile</span>
+  <div class="snow" aria-hidden="true"></div>
+  <div class="snow snow--slow" aria-hidden="true"></div>
 
-<span class="blue">class</span> <span class="white">Developer</span>:
+  <div class="topline"><span class="status">НА СВЯЗИ</span><span>ЗИМНЯЯ ВЕРСИЯ</span><span>CHCODE.DEV</span></div>
+  <header class="site-header">
+    <nav class="nav" aria-label="Основная навигация">
+      <a class="brand" href="#home">chcode<span>.dev</span></a>
+      <ul class="nav-links">
+        <li><a href="#about">ОБО МНЕ</a></li>
+        <li><a href="#projects">ПРОЕКТЫ</a></li>
+        <li><a href="#services">ЧЕМ ЗАНИМАЮСЬ</a></li>
+        <li><a href="#contacts">КОНТАКТЫ</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    name = <span class="green">"chcode"</span>
-    language = <span class="green">"Python"</span>
+  <main>
+    <section class="hero" id="home">
+      <div>
+        <div class="eyebrow">Небольшой личный сайт · зима 2026</div>
+        <h1>ch<span>code</span></h1>
+        <p class="hero-role">Разработка, автоматизация и немного любопытства.</p>
+        <p class="hero-copy">Делаю Telegram-ботов, веб-проекты и инструменты на Python. Люблю, когда всё работает просто и не требует инструкции на двадцать страниц.</p>
+        <div class="hero-links">
+          <a class="button button--primary" href="#projects">Посмотреть проекты</a>
+          <a class="button" href="https://github.com/chcode-us" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        </div>
+      </div>
+      <div class="tree-art" aria-hidden="true">
+        <svg viewBox="0 0 220 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M110 22 73 79h22L58 125h30l-43 55h130l-43-55h30l-37-46h22L110 22Z" fill="#315B4A"/>
+          <path d="M110 22 73 79h22L58 125h30l-43 55h130l-43-55h30l-37-46h22L110 22Z" stroke="#244638" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M103 180h14v43h-14z" fill="#8C6F55"/>
+          <path d="m110 22 7 11-7 3-7-3 7-11Z" fill="#A64B46"/>
+          <circle cx="84" cy="101" r="4" fill="#D9B76A"/><circle cx="133" cy="137" r="4" fill="#A64B46"/>
+          <circle cx="104" cy="157" r="3" fill="#D9B76A"/><circle cx="133" cy="85" r="3" fill="#E7E9E4"/>
+          <path d="M22 224c29-9 58-9 88 0 30 9 59 9 88 0" stroke="#DCE2DC" stroke-width="2" stroke-linecap="round"/>
+          <path d="M36 239c24-6 49-6 74 0 25 6 50 6 75 0" stroke="#E3E7E2" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <div class="tree-note">// пусть будет немного снега</div>
+      </div>
+    </section>
 
-    skills = [
-        <span class="green">"AI"</span>,
-        <span class="green">"Bots"</span>,
-        <span class="green">"Web"</span>,
-        <span class="green">"Automation"</span>
-    ]
+    <hr class="rule">
 
-    status = <span class="green">"online"</span>
-    coffee = <span class="green">True</span></div></div><div class="big-cd"></div></div></section>
-<section id="about"><div class="section-head"><div class="kicker">01 ✦ PROFILE</div><h2 class="section-title">Обо <span>мне</span></h2></div><div class="about"><div class="about-box"><p>Я <strong>chcode</strong> — разработчик, которому нравится создавать не просто работающие программы, а полноценные цифровые проекты.</p><br><p>Работаю с Python, Telegram API, веб-разработкой, автоматизацией и искусственным интеллектом.</p></div><div class="about-box"><p><strong>Мой подход:</strong></p><br><p>★ функциональность<br>★ аккуратный код<br>★ необычный дизайн<br>★ внимание к деталям<br>★ минимум лишнего</p></div></div></section>
-<section id="skills"><div class="section-head"><div class="kicker">02 ✦ TECHNOLOGY</div><h2 class="section-title">Мои <span>skills</span></h2></div><div class="skills"><span class="skill">PYTHON</span><span class="skill">JAVASCRIPT</span><span class="skill">HTML</span><span class="skill">CSS</span><span class="skill">NODE.JS</span><span class="skill">TELEGRAM API</span><span class="skill">AI</span><span class="skill">SQL</span><span class="skill">SQLITE</span><span class="skill">POSTGRESQL</span><span class="skill">REST API</span><span class="skill">WEBSOCKET</span><span class="skill">GITHUB</span><span class="skill">LINUX</span><span class="skill">AUTOMATION</span><span class="skill">UI / UX</span></div></section>
-<section id="projects"><div class="section-head"><div class="kicker">03 ✦ SELECTED WORK</div><h2 class="section-title">Проекты <span>★</span></h2></div><div class="grid"><article class="card project"><div class="project-number">01</div><div class="card-icon">◉</div><h3>Csanaks</h3><p>Современный мессенджер с чатами, группами, каналами, реакциями, WebSocket и системой профилей.</p><span class="project-tag">MESSENGER</span></article><article class="card project"><div class="project-number">02</div><div class="card-icon">★</div><h3>Stargrad</h3><p>RP-система города с экономикой, ролями, образованием, законами, работами и Telegram-интеграцией.</p><span class="project-tag">TELEGRAM / RP</span></article><article class="card project"><div class="project-number">03</div><div class="card-icon">⌘</div><h3>Telegram Bots</h3><p>Боты для бизнеса, автоматизации, сообществ, RP-проектов и различных цифровых сервисов.</p><span class="project-tag">PYTHON</span></article><article class="card project"><div class="project-number">04</div><div class="card-icon">◆</div><h3>Web Projects</h3><p>Автономные сайты, лендинги, панели управления, интерфейсы и экспериментальные проекты.</p><span class="project-tag">FRONTEND</span></article><article class="card project"><div class="project-number">05</div><div class="card-icon">✦</div><h3>AI Tools</h3><p>Интеграция AI в сайты, ботов и автоматизированные системы.</p><span class="project-tag">AI</span></article><article class="card project"><div class="project-number">06</div><div class="card-icon">∞</div><h3>Experiments</h3><p>Маленькие идеи, прототипы и странные проекты, которые однажды могут стать большими.</p><span class="project-tag">LAB</span></article></div></section>
-<section id="services"><div class="section-head"><div class="kicker">04 ✦ WHAT I DO</div><h2 class="section-title">Что я <span>делаю</span></h2></div><div class="grid services"><div class="card service"><div class="service-icon">⌘</div><div><h3>Telegram-боты</h3><p>Боты на Python для автоматизации, сообществ, бизнеса и RP-проектов.</p></div></div><div class="card service"><div class="service-icon">◆</div><div><h3>Web Development</h3><p>Современные сайты и интерфейсы без лишнего визуального шума.</p></div></div><div class="card service"><div class="service-icon">✦</div><div><h3>AI Integration</h3><p>Добавление AI-функций в существующие цифровые продукты.</p></div></div><div class="card service"><div class="service-icon">∞</div><div><h3>Automation</h3><p>Убираю рутинные действия и связываю разные сервисы между собой.</p></div></div></div></section>
-<section id="terminal"><div class="section-head"><div class="kicker">05 ✦ SYSTEM</div><h2 class="section-title">Mini <span>Terminal</span></h2></div><div class="terminal-wrap"><div class="terminal"><div class="terminal-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><div class="terminal-title">CHCODE COMMAND LINE</div></div><div class="terminal-body" id="terminalBody"><div class="term-line">CHCODE OS [Version 2.026]</div><div class="term-line">© chcode digital systems</div><div class="term-output">Type "help" to see available commands.</div><div class="prompt"><span class="prompt-label">C:\CHCODE&gt;</span><input id="terminalInput" autocomplete="off" spellcheck="false"></div></div></div></div></section>
-<section><div class="y2k-zone"><div class="kicker">06 ✦ INTERNET ARCHIVE</div><h2 class="section-title">Y2K <span>ZONE ★</span></h2><p style="margin:15px 0 0;color:#687078;line-height:1.7">Somewhere between 2000 and 2026.<br>Silver CDs, old websites, pixels and unlimited imagination.</p><div class="badges"><div class="badge">★ BEST VIEWED</div><div class="badge">✦ HTML POWER</div><div class="badge">◆ Y2K WEB</div><div class="badge">⌘ NO FRAMEWORK</div><div class="badge">★ HAND CODED</div><div class="badge">✧ COFFEE OK</div></div></div></section>
-<section><div class="section-head"><div class="kicker">07 ✦ DEVELOPMENT LOG</div><h2 class="section-title">Dev <span>log</span></h2></div><div class="timeline"><div class="log"><div class="log-date">2026.09</div><div class="log-text">Новый Y2K дизайн портфолио ★</div></div><div class="log"><div class="log-date">2026.08</div><div class="log-text">Улучшение Csanaks Messenger.</div></div><div class="log"><div class="log-date">2026.07</div><div class="log-text">Новые Telegram и AI эксперименты.</div></div><div class="log"><div class="log-date">∞</div><div class="log-text">Следующий проект уже где-то в голове...</div></div></div></section>
-<section id="contacts"><div class="section-head"><div class="kicker">08 ✦ CONNECTION</div><h2 class="section-title">Связаться <span>со мной</span></h2></div><div class="contact-grid"><a class="card contact" href="mailto:chcode@mail.ru"><small>RUSSIA / EMAIL</small><strong>chcode@mail.ru</strong></a><a class="card contact" href="mailto:chcodeus@gmail.com"><small>WORLD / EMAIL</small><strong>chcodeus@gmail.com</strong></a><a class="card contact" href="https://t.me/vlaidst" target="_blank" rel="noopener"><small>TELEGRAM</small><strong>@vlaidst</strong></a></div></section>
-</main>
-<footer><div class="footer-logo">chcode.dev</div><div>© 2026 chcode · Создано с ♥ любовью и кофе</div><div class="footer-stars">★ ✦ ✧ ★ ✦</div><div class="footer-note">лариса шл??а</div></footer>
-<script>
-const body=document.body,term=document.getElementById('terminalBody'),input=document.getElementById('terminalInput');let history=[],hi=-1;
-function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}function out(s){const d=document.createElement('div');d.className='term-output';d.innerHTML=esc(s).replace(/\n/g,'<br>');term.insertBefore(d,term.querySelector('.prompt'));term.scrollTop=term.scrollHeight}function go(id){document.getElementById(id)?.scrollIntoView({behavior:'smooth'})}
-const commands=['help','about','projects','skills','services','contact','github','telegram','email','home','y2k','coffee','neofetch','status','version','whoami','pwd','ls','date','time','echo','theme','clear','reload','disco','secret','matrix','konami','hello','larisa'];
+    <section id="about">
+      <div class="section-heading"><span class="section-label">01 / ПРОФИЛЬ</span><h2>Обо мне</h2></div>
+      <div class="about-grid">
+        <div>
+          <p>Я chcode. Пишу на Python, собираю Telegram-ботов и иногда делаю сайты. Начинаю с задачи, а не с модного фреймворка — так обычно получается быстрее и понятнее.</p>
+          <p>Здесь собраны несколько проектов и способов связаться со мной. Сайт тоже часть эксперимента: этой зимой на нём пошёл снег.</p>
+        </div>
+        <div>
+          <p>В работе ценю ясный код, аккуратные интерфейсы и решения, которые не разваливаются после первого запуска.</p>
+          <div class="skills" aria-label="Технологии">
+            <span class="skill">PYTHON</span><span class="skill">TELEGRAM API</span><span class="skill">HTML / CSS</span>
+            <span class="skill">JAVASCRIPT</span><span class="skill">SQL</span><span class="skill">AUTOMATION</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-function startLarisaEffect(){
-  body.classList.add('freeze-screen');
-  if(!document.querySelector('.blood-overlay')){
-    const overlay = document.createElement('div');
-    overlay.className = 'blood-overlay';
-    overlay.innerHTML = `
-      <svg class="blood-drips" viewBox="0 0 1200 800" preserveAspectRatio="none">
-        <path d="M0,0 L1200,0 L1200,100 Q1100,600 1000,150 Q900,800 800,200 Q700,500 600,120 Q500,750 400,180 Q300,600 200,100 Q100,450 0,150 Z"></path>
-      </svg>
-    `;
-    body.appendChild(overlay);
+    <section id="projects">
+      <div class="section-heading"><span class="section-label">02 / ИЗБРАННОЕ</span><h2>Проекты</h2></div>
+      <div class="projects">
+        <article class="project">
+          <div class="project-top"><span>01</span><span>MESSENGER</span></div>
+          <h3>Csanaks</h3>
+          <p>Мессенджер с чатами и уведомлениями в реальном времени. Сделан как самостоятельный веб-проект.</p>
+          <span class="project-tag">WEBSOCKET · WEB</span>
+        </article>
+        <article class="project">
+          <div class="project-top"><span>02</span><span>TELEGRAM / RP</span></div>
+          <h3>Stargrad</h3>
+          <p>Ролевая игра в Telegram: персонажи, игровые сценарии и инструменты для сообщества.</p>
+          <span class="project-tag">PYTHON · TELEGRAM</span>
+        </article>
+        <article class="project">
+          <div class="project-top"><span>03</span><span>PYTHON</span></div>
+          <h3>Telegram-боты</h3>
+          <p>Боты для автоматизации повседневных задач, работы с API и игровых проектов.</p>
+          <span class="project-tag">BOTS · API</span>
+        </article>
+        <article class="project">
+          <div class="project-top"><span>04</span><span>ПЕСОЧНИЦА</span></div>
+          <h3>Лаборатория</h3>
+          <p>Небольшие эксперименты с интерфейсами, автоматизацией и новыми инструментами.</p>
+          <span class="project-tag">ИЗУЧАЮ · ПРОБУЮ</span>
+        </article>
+      </div>
+    </section>
 
-    setInterval(() => {
-      const drop = document.createElement('div');
-      drop.className = 'blood-drop';
-      const size = Math.random() * 14 + 10;
-      drop.style.width = size + 'px';
-      drop.style.height = (size * 1.6) + 'px';
-      drop.style.left = Math.random() * 100 + 'vw';
-      drop.style.animationDuration = (Math.random() * 2 + 1.5) + 's';
-      overlay.appendChild(drop);
-      setTimeout(() => drop.remove(), 3500);
-    }, 120);
-  }
-}
+    <section id="services">
+      <div class="section-heading"><span class="section-label">03 / ЧЕМ ЗАНИМАЮСЬ</span><h2>Помогаю с задачами</h2></div>
+      <div class="services">
+        <article class="service"><h3>Telegram-боты</h3><p>Боты и интеграции на Python: от небольшого помощника до связки с API.</p></article>
+        <article class="service"><h3>Веб-разработка</h3><p>Личные страницы и небольшие сайты — с понятной структурой и без лишнего.</p></article>
+        <article class="service"><h3>Автоматизация</h3><p>Скрипты для рутинных задач, чтобы тратить меньше времени на повторения.</p></article>
+      </div>
+    </section>
 
-function run(raw){let v=raw.trim();if(!v)return;const d=document.createElement('div');d.className='term-line term-command';d.textContent='C:\\CHCODE> '+v;term.insertBefore(d,term.querySelector('.prompt'));let [cmd,...a]=v.split(' '),arg=a.join(' ');cmd=cmd.toLowerCase();if(!history.length||history[history.length-1]!==v)history.push(v);hi=history.length;switch(cmd){case'help':out('help about projects skills services contact github telegram email home y2k coffee neofetch status version whoami pwd ls date time echo theme clear reload disco secret matrix konami hello larisa');break;case'about':out('CHCODE\nDeveloper & digital creator.\nPython / AI / Telegram / Web / Automation');go('about');break;case'projects':out('Csanaks\nStargrad\nTelegram Bots\nWeb Projects\nAI Tools\nExperiments');go('projects');break;case'skills':out('Python / JavaScript / HTML / CSS / Node.js / Telegram API / AI / SQL / Linux / WebSocket');go('skills');break;case'services':out('Telegram bots\nWeb development\nAI integration\nAutomation');go('services');break;case'contact':out('chcode@mail.ru\nchcodeus@gmail.com\nTelegram: @vlaidst');go('contacts');break;case'github':window.open('https://github.com/chcode-us','_blank','noopener');out('Opening GitHub...');break;case'telegram':case'tg':window.open('https://t.me/vlaidst','_blank','noopener');out('Opening Telegram...');break;case'email':out('chcode@mail.ru\nchcodeus@gmail.com');break;case'home':go('home');break;case'y2k':out('★ Y2K MODE ACTIVE ★\nSilver / Chrome / Old Internet');break;case'disco':body.classList.toggle('disco-mode');out(body.classList.contains('disco-mode')?'★ DISCO MODE: ON ★':'DISCO MODE: OFF');break;case'coffee':out('COFFEE: READY\nDEVELOPER: ONLINE\nSLEEP: UNKNOWN');break;case'neofetch':out('CHCODE OS\nVERSION 2.026\nSHELL CHCODE.SHELL\nMODE Y2K\nSTATUS ONLINE\nCOFFEE TRUE');break;case'status':out('● WEBSITE ONLINE\n● TERMINAL ONLINE\n● Y2K ACTIVE\n● COFFEE READY');break;case'version':out('CHCODE.EXE Version 2.026\nBuild: Y2K\nEngine: HTML / CSS / JS');break;case'whoami':out('chcode — developer, creator, internet enjoyer.');break;case'pwd':out('C:\\CHCODE\\PORTFOLIO');break;case'ls':out('about/\nprojects/\nskills/\nservices/\nterminal/\ncontacts/\nREADME.txt\ndeveloper.py\ncoffee.exe');break;case'date':out(new Date().toLocaleDateString('ru-RU'));break;case'time':out(new Date().toLocaleTimeString('ru-RU'));break;case'echo':out(arg||'ECHO: nothing to say.');break;case'theme':out('Silver Chrome Y2K\nSoft Glass\nRetro Terminal\nNo AI Neon');break;case'clear':term.querySelectorAll('.term-line:not(.prompt),.term-output').forEach(e=>e.remove());out('Terminal cleared.');break;case'reload':location.reload();break;case'secret':out('★ SECRET FOUND ★\nY2K FOREVER.');break;case'matrix':out('01001001 00100000 01001100 01001111 01010110 01000101');break;case'konami':out('↑ ↑ ↓ ↓ ← → ← → B A\nCHEAT CODE ACCEPTED ★');break;case'hello':out('HELLO, HUMAN.\nWelcome to chcode.dev ★');break;case'larisa':startLarisaEffect();out('SYSTEM FREEZE: LARISA INFECTION DETECTED.');break;default:out('Command not found: '+cmd+'\nType "help" for available commands.')}}
-input.addEventListener('keydown',e=>{if(e.key==='Enter'){run(input.value);input.value=''}else if(e.key==='ArrowUp'){e.preventDefault();if(hi>0)input.value=history[--hi]||''}else if(e.key==='ArrowDown'){e.preventDefault();if(hi<history.length-1)input.value=history[++hi]||'';else{hi=history.length;input.value=''}}else if(e.key==='Tab'){e.preventDefault();const v=input.value.toLowerCase();const match=commands.find(c=>c.startsWith(v));if(match)input.value=match}});document.querySelector('.terminal').addEventListener('click',()=>input.focus());
-let en=false;document.getElementById('langBtn').onclick=()=>{en=!en;document.documentElement.lang=en?'en':'ru';document.getElementById('langBtn').textContent=en?'EN / RU':'RU / EN'};
-</script>
+    <section id="contacts">
+      <div class="contact-box">
+        <div><h2>Есть идея?</h2><p>Напишите — обсудим, что можно сделать.</p></div>
+        <div class="contact-links">
+          <a class="button button--primary" href="mailto:chcode@mail.ru">Почта</a>
+          <a class="button" href="https://t.me/vlaidst" target="_blank" rel="noopener noreferrer">Telegram ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="footer-brand">chcode.dev</div><div>© 2026 chcode · сделано вручную, с кофе и зимним настроением</div></footer>
 </body>
 </html>
