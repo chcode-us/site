@@ -2175,7 +2175,15 @@
       if (!countdown || !greeting) return;
 
       // 23:59 в Самаре (UTC+4) — одна и та же абсолютная дата для всех посетителей.
-      const releaseAt = Date.parse('2026-11-12T22:41:30+04:00');
+      const demoMode = new URLSearchParams(window.location.search).get('demo') === '1';
+      const releaseAt = demoMode
+        ? Date.now() + 60 * 1000
+        : Date.parse('2026-12-12T23:59:00+04:00');
+
+      const dateLabel = countdown.querySelector('.countdown-date');
+      if (demoMode && dateLabel) {
+        dateLabel.textContent = 'ТЕСТОВЫЙ ПРОСМОТР · ОТКРЫТИЕ ЧЕРЕЗ ОДНУ МИНУТУ';
+      }
       const fields = {
         days: document.getElementById('countdown-days'),
         hours: document.getElementById('countdown-hours'),
