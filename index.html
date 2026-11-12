@@ -623,6 +623,40 @@
     .contact p { margin-top: 23px; color: var(--muted); font-size: 13px; }
     .contact .button { margin-top: 32px; }
     .contact-handle { margin-top: 16px; color: #879080; font-family: 'DM Mono', monospace; font-size: 10px; }
+    .contact-mail-grid {
+      width: min(720px, 100%);
+      margin: 38px auto 0;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      text-align: left;
+    }
+    .contact-mail-card {
+      position: relative;
+      display: flex;
+      min-width: 0;
+      flex-direction: column;
+      gap: 8px;
+      padding: 20px 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--paper);
+      transition: transform .25s var(--ease), border-color .25s, box-shadow .25s;
+    }
+    .contact-mail-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--lime-deep);
+      box-shadow: 0 14px 30px rgba(17,20,16,.06);
+    }
+    .contact-mail-label, .retro-player-kicker {
+      color: #7b866f;
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: .12em;
+    }
+    .contact-mail-card strong { padding-right: 22px; font-size: 15px; overflow-wrap: anywhere; }
+    .contact-mail-note { color: var(--muted); font-size: 11px; line-height: 1.6; }
+    .contact-mail-arrow { position: absolute; right: 19px; bottom: 19px; color: #7d9e42; font-size: 15px; }
 
     /* Подвал страницы */
     footer { padding: 25px 0; background: #0c0f0b; color: #c1c9ba; }
@@ -631,6 +665,62 @@
     .footer-meta { color: #8b9484; font-size: 10px; }
     .back-top { color: #e9eee3; font-size: 10px; font-weight: 800; transition: color .2s; }
     .back-top:hover { color: var(--lime); }
+    .retro-secret {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 14px;
+    }
+    .retro-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 11px;
+      border: 1px solid rgba(193,201,186,.16);
+      border-radius: 999px;
+      background: transparent;
+      color: #899283;
+      cursor: pointer;
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: .08em;
+      transition: color .2s, border-color .2s, background .2s;
+    }
+    .retro-toggle:hover, .retro-toggle:focus-visible {
+      border-color: rgba(199,243,107,.55);
+      background: rgba(199,243,107,.06);
+      color: var(--lime);
+      outline: none;
+    }
+    .retro-player {
+      width: min(560px, calc(100% - 56px));
+      margin: 16px auto 0;
+      padding: 16px;
+      border: 1px solid var(--dark-line);
+      border-radius: 16px;
+      background: #151a13;
+    }
+    .retro-player[hidden] { display: none; }
+    .retro-player-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 13px;
+    }
+    .retro-player-head > div { display: flex; flex-direction: column; gap: 5px; }
+    .retro-player-head strong { color: #f0f3eb; font-size: 13px; }
+    .retro-player-head a { color: var(--lime); font-size: 10px; white-space: nowrap; }
+    .retro-player-kicker { color: #8e9a81; }
+    .retro-frame {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 10px;
+      background: #080a07;
+    }
+    .retro-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .retro-player-note { margin-top: 10px; color: #899283; font-size: 9px; line-height: 1.6; }
 
 
     /* Слайдер Digital Lab */
@@ -885,7 +975,10 @@
       .philosophy { padding: 95px 0; }
       .philosophy::after { right: -110px; bottom: -110px; font-size: 360px; }
       .contact { padding: 95px 0; }
+      .contact-mail-grid { grid-template-columns: 1fr; max-width: 440px; margin-top: 28px; }
       .footer-inner { flex-wrap: wrap; }
+      .retro-player { width: calc(100% - 36px); }
+      .retro-player-head { align-items: flex-start; flex-direction: column; }
     }
     @media (max-width: 390px) {
       .hero h1 { font-size: 70px; }
@@ -1485,6 +1578,20 @@
         <a class="button button-dark" href="https://t.me/vlaidst" target="_blank" rel="noopener noreferrer">
           Написать в Telegram <span class="arrow">↗</span>
         </a>
+        <div class="contact-mail-grid">
+          <a class="contact-mail-card" href="mailto:chcode@mail.ru?subject=Обращение%20по%20поводу%20проекта">
+            <span class="contact-mail-label">РОССИЯ / RU</span>
+            <strong>chcode@mail.ru</strong>
+            <span class="contact-mail-note">Для обращений на русском языке</span>
+            <span class="contact-mail-arrow">↗</span>
+          </a>
+          <a class="contact-mail-card" href="mailto:chcodeus@gmail.com?subject=Hello%20from%20chcode">
+            <span class="contact-mail-label">INTERNATIONAL</span>
+            <strong>chcodeus@gmail.com</strong>
+            <span class="contact-mail-note">Можно писать на удобном языке</span>
+            <span class="contact-mail-arrow">↗</span>
+          </a>
+        </div>
         <div class="contact-handle">@vlaidst</div>
       </div>
     </section>
@@ -1496,6 +1603,24 @@
       <div class="footer-meta">Independent creator · 2026</div>
       <a class="back-top" href="#home">Back to top ↑</a>
     </div>
+
+    <div class="container retro-secret">
+      <button class="retro-toggle" id="retro-toggle" type="button" aria-expanded="false" aria-controls="retro-player">
+        Гоу в 90-е <span aria-hidden="true">↗</span>
+      </button>
+    </div>
+
+    <section class="container retro-player" id="retro-player" aria-label="Музыкальная пасхалка" hidden>
+      <div class="retro-player-head">
+        <div>
+          <span class="retro-player-kicker">НЕБОЛЬШАЯ ПАСХАЛКА</span>
+          <strong>Монеточка — «90»</strong>
+        </div>
+        <a href="https://www.youtube.com/watch?v=n4h-WpSsXVw" target="_blank" rel="noopener noreferrer">Открыть на YouTube ↗</a>
+      </div>
+      <div class="retro-frame" id="retro-frame"></div>
+      <p class="retro-player-note">Клип загружается с официального YouTube-канала исполнительницы.</p>
+    </section>
   </footer>
 
   <script>
@@ -1594,6 +1719,37 @@
 
     slidePrev?.addEventListener('click', () => showSlide(activeSlide - 1));
     slideNext?.addEventListener('click', () => showSlide(activeSlide + 1));
+
+    // По нажатию загружаем официальный клип; при закрытии останавливаем воспроизведение.
+    const retroToggle = document.getElementById('retro-toggle');
+    const retroPlayer = document.getElementById('retro-player');
+    const retroFrame = document.getElementById('retro-frame');
+
+    if (retroToggle && retroPlayer && retroFrame) {
+      retroToggle.addEventListener('click', () => {
+        const shouldOpen = retroPlayer.hidden;
+
+        if (shouldOpen) {
+          const player = document.createElement('iframe');
+          player.src = 'https://www.youtube-nocookie.com/embed/n4h-WpSsXVw?autoplay=1&rel=0';
+          player.title = 'Монеточка — 90 (официальный клип)';
+          player.allow = 'autoplay; encrypted-media; picture-in-picture; web-share';
+          player.referrerPolicy = 'strict-origin-when-cross-origin';
+          player.allowFullscreen = true;
+
+          retroFrame.replaceChildren(player);
+          retroPlayer.hidden = false;
+          retroToggle.innerHTML = 'Свернуть плеер <span aria-hidden="true">×</span>';
+          retroToggle.setAttribute('aria-expanded', 'true');
+          retroPlayer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else {
+          retroFrame.replaceChildren();
+          retroPlayer.hidden = true;
+          retroToggle.innerHTML = 'Гоу в 90-е <span aria-hidden="true">↗</span>';
+          retroToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
 
     // Небольшой наклон карточек при движении указателя.
     const tiltCards = document.querySelectorAll('.tilt-card');
