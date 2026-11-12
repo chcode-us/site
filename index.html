@@ -648,7 +648,7 @@
       border-color: var(--lime-deep);
       box-shadow: 0 14px 30px rgba(17,20,16,.06);
     }
-    .contact-mail-label, .retro-player-kicker {
+    .contact-mail-label {
       color: #7b866f;
       font-family: 'DM Mono', monospace;
       font-size: 9px;
@@ -665,93 +665,7 @@
     .footer-meta { color: #8b9484; font-size: 10px; }
     .back-top { color: #e9eee3; font-size: 10px; font-weight: 800; transition: color .2s; }
     .back-top:hover { color: var(--lime); }
-    .retro-secret {
-      display: flex;
-      justify-content: flex-end;
-      margin-top: 14px;
-    }
-    .retro-toggle {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 7px 11px;
-      border: 1px solid rgba(193,201,186,.16);
-      border-radius: 999px;
-      background: transparent;
-      color: #899283;
-      cursor: pointer;
-      font-family: 'DM Mono', monospace;
-      font-size: 9px;
-      letter-spacing: .08em;
-      transition: color .2s, border-color .2s, background .2s;
-    }
-    .retro-toggle:hover, .retro-toggle:focus-visible {
-      border-color: rgba(199,243,107,.55);
-      background: rgba(199,243,107,.06);
-      color: var(--lime);
-      outline: none;
-    }
-    .retro-player {
-      width: min(560px, calc(100% - 56px));
-      margin: 16px auto 0;
-      padding: 16px;
-      border: 1px solid var(--dark-line);
-      border-radius: 16px;
-      background: #151a13;
-    }
-    .retro-player[hidden] { display: none; }
-    .retro-player-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      margin-bottom: 13px;
-    }
-    .retro-player-head > div { display: flex; flex-direction: column; gap: 5px; }
-    .retro-player-head strong { color: #f0f3eb; font-size: 13px; }
-    .retro-player-format { color: var(--lime); font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: .1em; }
-    .retro-player-kicker { color: #8e9a81; }
-    .retro-audio-player {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      padding: 17px;
-      border: 1px solid #343b31;
-      border-radius: 12px;
-      background: #0e120c;
-    }
-    .retro-play {
-      display: grid;
-      width: 43px;
-      height: 43px;
-      flex: 0 0 43px;
-      place-items: center;
-      border: 0;
-      border-radius: 50%;
-      background: var(--lime);
-      color: #111410;
-      cursor: pointer;
-      font-size: 15px;
-      transition: transform .2s, background .2s;
-    }
-    .retro-play:hover:not(:disabled) { transform: scale(1.06); background: #d7ff8a; }
-    .retro-play:disabled { cursor: wait; opacity: .5; }
-    .retro-audio-main { min-width: 0; flex: 1; }
-    .retro-audio-meta { display: flex; justify-content: space-between; gap: 12px; color: #e8ede2; font-size: 10px; }
-    #retro-time { color: #929c88; font-family: 'DM Mono', monospace; font-size: 9px; white-space: nowrap; }
-    .retro-progress, .retro-volume {
-      display: block;
-      width: 100%;
-      height: 4px;
-      margin-top: 13px;
-      accent-color: var(--lime);
-      cursor: pointer;
-    }
-    .retro-progress:disabled { cursor: default; opacity: .45; }
-    .retro-volume-wrap { display: flex; align-items: center; gap: 7px; color: var(--lime); font-size: 14px; }
-    .retro-volume { width: 66px; margin: 0; }
-    .retro-player-note { margin-top: 10px; color: #899283; font-size: 9px; line-height: 1.6; }
-    .retro-player-note.is-error { color: #f1a29a; }
+
 
 
     /* Слайдер Digital Lab */
@@ -1008,11 +922,6 @@
       .contact { padding: 95px 0; }
       .contact-mail-grid { grid-template-columns: 1fr; max-width: 440px; margin-top: 28px; }
       .footer-inner { flex-wrap: wrap; }
-      .retro-player { width: calc(100% - 36px); }
-      .retro-player-head { align-items: flex-start; flex-direction: column; }
-      .retro-audio-player { gap: 10px; padding: 13px; }
-      .retro-volume-wrap { gap: 4px; }
-      .retro-volume { width: 48px; }
     }
     @media (max-width: 390px) {
       .hero h1 { font-size: 70px; }
@@ -1638,41 +1547,6 @@
       <a class="back-top" href="#home">Back to top ↑</a>
     </div>
 
-    <div class="container retro-secret">
-      <button class="retro-toggle" id="retro-toggle" type="button" aria-expanded="false" aria-controls="retro-player">
-        Гоу в 90-е <span aria-hidden="true">↗</span>
-      </button>
-    </div>
-
-    <section class="container retro-player" id="retro-player" aria-label="Музыкальная пасхалка" hidden>
-      <div class="retro-player-head">
-        <div>
-          <span class="retro-player-kicker">НЕБОЛЬШАЯ ПАСХАЛКА</span>
-          <strong>Монеточка — «90»</strong>
-        </div>
-        <span class="retro-player-format">MP3 · AUDIO</span>
-      </div>
-
-      <div class="retro-audio-player">
-        <button class="retro-play" id="retro-play" type="button" aria-label="Воспроизвести" disabled>▶</button>
-        <div class="retro-audio-main">
-          <div class="retro-audio-meta">
-            <span>Монеточка — 90</span>
-            <span id="retro-time">0:00 / --:--</span>
-          </div>
-          <input class="retro-progress" id="retro-progress" type="range" min="0" max="100" value="0" step="0.1" aria-label="Позиция воспроизведения" disabled>
-        </div>
-        <label class="retro-volume-wrap" aria-label="Громкость">
-          <span aria-hidden="true">♪</span>
-          <input class="retro-volume" id="retro-volume" type="range" min="0" max="1" value="0.8" step="0.01" aria-label="Громкость">
-        </label>
-      </div>
-
-      <audio id="retro-audio" preload="none">
-        <source src="monetochka-90.mp3" type="audio/mpeg">
-      </audio>
-      <p class="retro-player-note" id="retro-status" role="status">Нажми Play, чтобы включить трек.</p>
-    </section>
   </footer>
 
   <script>
@@ -1771,111 +1645,6 @@
 
     slidePrev?.addEventListener('click', () => showSlide(activeSlide - 1));
     slideNext?.addEventListener('click', () => showSlide(activeSlide + 1));
-
-    // Музыкальная пасхалка: воспроизведение MP3 прямо на странице.
-    const retroToggle = document.getElementById('retro-toggle');
-    const retroPlayer = document.getElementById('retro-player');
-    const retroAudio = document.getElementById('retro-audio');
-    const retroPlay = document.getElementById('retro-play');
-    const retroProgress = document.getElementById('retro-progress');
-    const retroVolume = document.getElementById('retro-volume');
-    const retroTime = document.getElementById('retro-time');
-    const retroStatus = document.getElementById('retro-status');
-
-    const formatAudioTime = seconds => {
-      if (!Number.isFinite(seconds)) return '--:--';
-      const minutes = Math.floor(seconds / 60);
-      const rest = Math.floor(seconds % 60).toString().padStart(2, '0');
-      return minutes + ':' + rest;
-    };
-
-    if (retroToggle && retroPlayer && retroAudio && retroPlay && retroProgress && retroVolume && retroTime && retroStatus) {
-      retroAudio.volume = Number(retroVolume.value);
-
-      retroToggle.addEventListener('click', () => {
-        const shouldOpen = retroPlayer.hidden;
-        retroPlayer.hidden = !shouldOpen;
-        retroToggle.innerHTML = shouldOpen
-          ? 'Свернуть плеер <span aria-hidden="true">×</span>'
-          : 'Гоу в 90-е <span aria-hidden="true">↗</span>';
-        retroToggle.setAttribute('aria-expanded', String(shouldOpen));
-
-        if (shouldOpen) {
-          retroPlayer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        } else {
-          retroAudio.pause();
-          retroAudio.currentTime = 0;
-          retroPlay.textContent = '▶';
-          retroPlay.setAttribute('aria-label', 'Воспроизвести');
-        }
-      });
-
-      retroPlay.addEventListener('click', async () => {
-        if (retroAudio.paused) {
-          try {
-            await retroAudio.play();
-            retroStatus.textContent = 'Сейчас играет.';
-            retroStatus.classList.remove('is-error');
-          } catch {
-            retroStatus.textContent = 'Не удалось загрузить MP3. Проверь, что monetochka-90.mp3 добавлен в корень сайта.';
-            retroStatus.classList.add('is-error');
-          }
-        } else {
-          retroAudio.pause();
-        }
-      });
-
-      retroAudio.addEventListener('loadedmetadata', () => {
-        retroProgress.disabled = false;
-        retroPlay.disabled = false;
-        retroTime.textContent = '0:00 / ' + formatAudioTime(retroAudio.duration);
-      });
-
-      retroAudio.addEventListener('canplay', () => {
-        retroPlay.disabled = false;
-        retroStatus.textContent = 'Нажми Play, чтобы включить трек.';
-        retroStatus.classList.remove('is-error');
-      });
-
-      retroAudio.addEventListener('timeupdate', () => {
-        if (Number.isFinite(retroAudio.duration) && retroAudio.duration > 0) {
-          retroProgress.value = String((retroAudio.currentTime / retroAudio.duration) * 100);
-          retroTime.textContent = formatAudioTime(retroAudio.currentTime) + ' / ' + formatAudioTime(retroAudio.duration);
-        }
-      });
-
-      retroAudio.addEventListener('play', () => {
-        retroPlay.textContent = 'Ⅱ';
-        retroPlay.setAttribute('aria-label', 'Пауза');
-      });
-
-      retroAudio.addEventListener('pause', () => {
-        retroPlay.textContent = '▶';
-        retroPlay.setAttribute('aria-label', 'Воспроизвести');
-      });
-
-      retroAudio.addEventListener('ended', () => {
-        retroProgress.value = '0';
-        retroStatus.textContent = 'Трек закончился.';
-      });
-
-      retroAudio.addEventListener('error', () => {
-        retroPlay.disabled = true;
-        retroProgress.disabled = true;
-        retroStatus.textContent = 'Файл monetochka-90.mp3 пока не найден в корне сайта.';
-        retroStatus.classList.add('is-error');
-      });
-
-      retroProgress.addEventListener('input', () => {
-        if (Number.isFinite(retroAudio.duration) && retroAudio.duration > 0) {
-          retroAudio.currentTime = (Number(retroProgress.value) / 100) * retroAudio.duration;
-        }
-      });
-
-      retroVolume.addEventListener('input', () => {
-        retroAudio.volume = Number(retroVolume.value);
-      });
-    }
 
     // Небольшой наклон карточек при движении указателя.
     const tiltCards = document.querySelectorAll('.tilt-card');
